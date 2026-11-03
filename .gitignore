@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example
+logs/
+results/
+models/
+*.safetensors
+*.pt
+*.pth
+*.ckpt

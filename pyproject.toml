@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-attribution"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Replay-validated context attribution through generated summaries"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+model = ["torch>=2.2", "transformers>=4.51,<6", "accelerate>=0.30"]
+mlx = ["mlx-lm==0.32.2; platform_system == 'Darwin' and platform_machine == 'arm64'"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
