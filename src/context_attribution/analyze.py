@@ -70,6 +70,28 @@ def analyze(root):
                     "time_ratio_to_full_replay":float(np.mean(costs)),
                     "token_ratio_to_full_replay":float(np.mean(tokens)),"mean_model_calls":float(np.mean(calls))})
         output['caps'].append(entry)
+    strata=[]
+    for cap in sorted(set(r['cap'] for r in rows)):
+        for kind in sorted(set(r.get('data_kind','legacy_unspecified') for r in rows)):
+            for correct_only in [False,True]:
+                subset=[r for r in rows if r['cap']==cap and r.get('data_kind','legacy_unspecified')==kind
+                        and (not correct_only or r['correct'])]
+                methods=[]
+                for method in ['recursive_surrogate','lexical','source_id','random_exact_expectation','oracle']:
+                    for budget in [1,2,3]:
+                        clusters={}
+                        for row in subset:
+                            c=next(c for c in row['comparisons'] if c['method']==method and c['budget']==budget)
+                            if c['hit'] is not None:clusters.setdefault(row['base_id'],[]).append(float(c['hit']))
+                        values=[np.mean(v) for v in clusters.values()]
+                        boot=[np.mean(rng.choice(values,len(values))) for _ in range(1000)] if values else []
+                        methods.append({'method':method,'budget':budget,'base_clusters':len(values),
+                            'hit_rate':float(np.mean(values)) if values else None,
+                            'bootstrap_95ci':np.quantile(boot,[.025,.975]).tolist() if boot else None})
+                strata.append({'cap':cap,'data_kind':kind,'slice':'original_correct' if correct_only else 'all',
+                    'conditions':len(subset),'accuracy':float(np.mean([r['correct'] for r in subset])) if subset else None,
+                    'methods':methods})
+    output['by_data_kind']=strata
     (root/'analysis.json').write_text(json.dumps(output,indent=2,allow_nan=False))
     return output
 

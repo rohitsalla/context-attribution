@@ -2,6 +2,8 @@
 
 Research code for tracing source influence through a summarize-then-answer pipeline. Based on Rohit Kumar Salla's November 2, 2026 project proposal. The implementation includes a reproducible pilot harness, complete source interventions, recursive local ranking, and budgeted replay evaluation. This is exploratory research infrastructure; no general attribution or efficiency guarantee is claimed. See [the pilot protocol](PILOT_PROTOCOL.md) for hypotheses and limitations.
 
+The expanded study is specified in [FULL_RUN_PROTOCOL.md](FULL_RUN_PROTOCOL.md). Its frozen dataset contains 80 fictional questions and 40 assistant-checked official facts-page examples, with a 40/80 development/test split. The natural subset is not a completed human audit or a long-form prose benchmark. Source URLs and provenance checks are in `data/main-v1/natural_audit.json`.
+
 ## Run the infrastructure validation
 
 ```sh
@@ -57,7 +59,11 @@ Analyze completed or partially completed traces with:
 python -m context_attribution.analyze results/qwen25-7b-arc
 ```
 
-Generated datasets, traces, reports, model weights, and machine-specific logs are excluded from version control. They remain local to each experiment. No pretrained model weights are distributed here.
+For the expanded run, submit `run_arc_preflight.slurm` first, then `run_arc_full.slurm` with an `afterok` dependency on that job and the same model environment. The GPU array evaluates all three summary caps, stress controls, paired stochastic repeats, and actual online selective replay. It uses one GPU at a time and a second serial resume pass. Submit `run_arc_finalize.slurm` with an `afterany` dependency on the complete array to audit counts and build reports even if a component fails. Choose site account, partition and QoS explicitly, as in the example above.
+
+The main dataset is already frozen in the repository. `build_main_dataset.py` can regenerate a new dataset directory by downloading official source records; it refuses to overwrite an existing frozen directory. Cached HTML is not redistributed. The abbreviation parser and explicit city aliases differ from the legacy pilot as documented in the full-run protocol.
+
+Run-generated traces, reports, model weights, cached HTML, and machine-specific logs are excluded from version control. Frozen input datasets are included. No pretrained model weights are distributed here.
 
 ## Implemented
 

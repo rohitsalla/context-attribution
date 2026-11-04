@@ -1,0 +1,23 @@
+{
+  "version": "main-v1",
+  "base_items": 120,
+  "fictional_items": 80,
+  "natural_facts_page_items": 40,
+  "dev_items": 40,
+  "test_items": 80,
+  "stress_items": 60,
+  "stochastic_items": 8,
+  "files": {
+    "stress.jsonl": "a6a350a36d02e7033750c4fb1ac4030d7e629d77d836d1e45a23640ea68c35b0",
+    "natural_audit.json": "0cc41d19006e2f4f558bbbcaeab424d7742bad1b91dcef4b7068467c507ba990",
+    "stochastic.jsonl": "7129f0bf2e6cb56fcbd93af7278de4f368977737e8768ec8ca0546fc949c8eaa",
+    "main.jsonl": "d490593ca45455eb0a9b03630ae75a7c45814491a1975ad6e93309cebcbb7536"
+  },
+  "natural_api": "https://api.nobelprize.org/2.1/laureates?limit=200&sort=asc&nobelPrizeYear=2000&yearTo=2015",
+  "human_audited": false,
+  "natural_audit_status": "assistant-reviewed; human audit not claimed",
+  "notes": [
+    "Natural subset consists of official facts-page excerpts, not long-form prose.",
+    "All natural examples are test-only; fictional templates 0-3 are development-only."
+  ]
+}

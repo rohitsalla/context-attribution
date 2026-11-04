@@ -27,6 +27,10 @@ def branch(backend, item, blocks, cap, fixed_answer=None, seed=0, temperature=0)
             "logprob": score, "summary_info": summary_info, "cost": backend.cost(start)}
 
 
+def answer_correct(item, answer):
+    return answer.strip().casefold() in {str(x).casefold() for x in [item['gold']]+item.get('gold_aliases',[])}
+
+
 def discovery(effects, selected, noise):
     maximum = max(abs(v) for v in effects.values())
     negligible = maximum <= noise
@@ -65,6 +69,12 @@ def run_item(backend, item, cap, samples=32, alpha=.01, seed=0, repeats=2, tempe
         paired = [f["logprob"] - b["logprob"] for f, b in zip(unchanged, trials)]
         effects[source["id"]] = float(np.mean(paired))
         branches[source["id"]] = {"trials": trials, "paired_effects": paired}
+    groups=[]
+    for group in item.get('diagnostic_groups',[]):
+        trials=[branch(backend,item,[s for s in item['sources'] if s['id'] not in group],
+                       cap,answer,seed+r,temperature) for r in range(repeats)]
+        groups.append({'removed':group,'trials':trials,
+                       'paired_effects':[f['logprob']-b['logprob'] for f,b in zip(unchanged,trials)]})
     candidates, overhead = {}, {}
     for name, scorer in [("recursive_surrogate", lambda: recursive(backend, item, original["summary"], answer,
                                                                 samples, alpha, seed)),
@@ -96,8 +106,10 @@ def run_item(backend, item, cap, samples=32, alpha=.01, seed=0, repeats=2, tempe
                                 **discovery(effects, chosen, noise)})
     return {"item_id": item["id"], "base_id": item["base_id"], "split": item["split"], "cap": cap,
             "backend": backend.name, "temperature": temperature, "original": original,
-            "raw_context_answer": raw, "raw_context_correct": raw.strip().casefold() == item["gold"].casefold(),
-            "gold": item["gold"], "correct": answer.strip().casefold() == item["gold"].casefold(),
+            "family":item.get('family'),"data_kind":item.get('data_kind'),"variant":item.get('variant','base'),
+            "raw_context_answer": raw, "raw_context_correct": answer_correct(item,raw),
+            "gold": item["gold"],"gold_aliases":item.get('gold_aliases',[]),"correct":answer_correct(item,answer),
+            "group_diagnostics":groups,
             "unchanged": unchanged, "replay_noise": noise, "reference": branches, "effects": effects,
             "irrelevant_effect": effects[item["irrelevant_id"]], "candidate_scores": candidates,
             "rank_correlation": {n: rank_correlation(s, effects) for n, s in candidates.items()},
@@ -132,7 +144,7 @@ def summarize(rows, seed=0):
 
 def resume_rows(directory, config, source_hashes, dataset_hash):
     manifest = json.loads((directory / "manifest.json").read_text())
-    for key in ["backend", "model", "revision", "device", "caps", "start", "limit",
+    for key in ["backend", "model", "revision", "device", "caps", "start", "limit", "dataset",
                 "samples", "alpha", "seed", "repeats", "temperature"]:
         if manifest.get(key, 0 if key == "start" else None) != config.get(key):
             raise ValueError(f"Resume configuration mismatch: {key}")
@@ -157,6 +169,8 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--backend", choices=["fixture", "hf", "mlx"], default="fixture")
     p.add_argument("--model")
+    p.add_argument('--dataset',type=Path,help='Frozen JSONL dataset; defaults to legacy pilot fixtures')
+    p.add_argument('--verify-likelihood',action='store_true')
     p.add_argument("--revision")
     p.add_argument("--device", default="cpu")
     p.add_argument("--caps", nargs="+", type=int, default=[128, 256])
@@ -176,7 +190,8 @@ def main():
     if args.output.exists() and any(args.output.iterdir()) and not args.resume:
         p.error("output directory must be empty to protect earlier runs")
     args.output.mkdir(parents=True, exist_ok=True)
-    items = make_pilot()
+    items = ([json.loads(line) for line in args.dataset.read_text().splitlines() if line.strip()]
+             if args.dataset else make_pilot())
     validate(items)
     dataset = "".join(json.dumps(i, sort_keys=True) + "\n" for i in items)
     dataset_hash = hashlib.sha256(dataset.encode()).hexdigest()
@@ -184,7 +199,7 @@ def main():
                      for p in Path(__file__).parent.glob("*.py")}
     rows = []
     if (args.output / 'manifest.json').exists():
-        rows = resume_rows(args.output, vars(args), source_hashes, dataset_hash)
+        rows = resume_rows(args.output, {**vars(args),'dataset':str(args.dataset) if args.dataset else None}, source_hashes, dataset_hash)
     completed = {(r['item_id'], r['cap']) for r in rows}
     wanted = {(i['id'], cap) for i in items[args.start:args.start+args.limit] for cap in args.caps}
     if wanted <= completed:
@@ -196,9 +211,16 @@ def main():
         p.error("--model is required for a real-model backend")
     backend = FixtureBackend() if args.backend == "fixture" else (
         MLXBackend(args.model) if args.backend == "mlx" else HFBackend(args.model, args.device, args.revision))
-    manifest = {**vars(args), "output": str(args.output), "backend_name": backend.name,
+    likelihood_check=None
+    if args.verify_likelihood:
+        if not isinstance(backend,HFBackend): p.error('--verify-likelihood requires the hf backend')
+        first=items[args.start]
+        likelihood_check=backend.verify_likelihood(answer_prompt(first['question'],first['sources'][0]['text']),first['gold'])
+    manifest = {**vars(args), "output": str(args.output),'dataset':str(args.dataset) if args.dataset else None,
+                'likelihood_check':likelihood_check,"backend_name": backend.name,
                 "source_sha256": source_hashes,
                 "dataset_sha256": dataset_hash,
+                'input_dataset_sha256':hashlib.sha256(args.dataset.read_bytes()).hexdigest() if args.dataset else None,
                 "python": platform.python_version(), "platform": platform.platform(),
                 "resolved_revision": getattr(backend, "resolved_revision", None),
                 "research_evidence": args.backend != "fixture",

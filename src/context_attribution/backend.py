@@ -85,6 +85,23 @@ class HFBackend(Backend):
                                                         torch_dtype="auto").to(device).eval()
         self.resolved_revision = getattr(self.model.config, "_commit_hash", None)
 
+    def verify_likelihood(self, prompt, target):
+        """Cross-check explicit indexing against the model's masked-label loss."""
+        tok,torch=self.tokenizer,self.torch
+        rendered=tok.apply_chat_template([{'role':'user','content':prompt}],tokenize=False,
+                                         add_generation_prompt=True,enable_thinking=False)
+        prefix=tok.encode(rendered,add_special_tokens=False)
+        suffix=tok.encode(target,add_special_tokens=False)
+        ids=torch.tensor([prefix+suffix],device=self.device)
+        labels=ids.clone();labels[:,:len(prefix)]=-100
+        with torch.inference_mode():
+            expected=-float(self.model(input_ids=ids,labels=labels,use_cache=False).loss)*len(suffix)
+        observed=self.call('likelihood_validation',prompt,target=target)
+        error=abs(expected-observed)
+        if error>0.001: raise ValueError(f'Answer likelihood validation failed: {error}')
+        return {'masked_loss_logprob':expected,'explicit_logprob':observed,'absolute_error':error,
+                'tolerance':0.001,'passed':True,'target_tokens':len(suffix)}
+
     def _call(self, task, prompt, target, cap, seed, temperature):
         torch, tok = self.torch, self.tokenizer
         # Disable reasoning where supported; all calls use the same prompt template.

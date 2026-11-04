@@ -8,10 +8,14 @@ from pathlib import Path
 from context_attribution.data import make_pilot, validate
 from context_attribution.backend import FixtureBackend
 from context_attribution.experiment import branch, run_item, discovery
-from context_attribution.attribution import logit_from_logprob
+from context_attribution.online import run_online
+from context_attribution.attribution import logit_from_logprob, sentences
 
 
 class PilotTests(unittest.TestCase):
+    def test_fact_page_abbreviations_remain_in_sentences(self):
+        self.assertEqual(sentences('Dr. A. B. Names works in St. Petersburg [s2]. Project X is led by Names [s1].'),
+                         ['Dr. A. B. Names works in St. Petersburg [s2].','Project X is led by Names [s1].'])
     def test_split_and_source_contract(self):
         items = make_pilot()
         validate(items)
@@ -47,6 +51,22 @@ class PilotTests(unittest.TestCase):
         group = branch(backend, item, [s for s in item['sources'] if s['id'] not in ['s2','s6']], 128, original['fixed_answer'])
         self.assertEqual(single['logprob'], original['logprob'])
         self.assertLess(group['logprob'], original['logprob'])
+        item['diagnostic_groups']=[['s2','s6']]
+        item['irrelevant_id']='s5';item['support_ids']=['s1','s2','s6']
+        row=run_item(backend,item,128,samples=8)
+        self.assertEqual(row['effects']['s2'],0)
+        self.assertTrue(all(x>0 for x in row['group_diagnostics'][0]['paired_effects']))
+
+    def test_online_selective_replay_keeps_untested_effects_unknown(self):
+        row=run_online(FixtureBackend(),make_pilot()[0])
+        self.assertFalse(row['reference_lookups_used'])
+        for method in row['methods']:
+            for result in method['budgets']:
+                budget=result['budget']
+                self.assertEqual(len(result['untested']),6-budget)
+                self.assertEqual(sum(v is not None for v in result['verified_effects'].values()),budget)
+                if method['method'] in ['source_id','lexical','random']:
+                    self.assertEqual(result['cost']['calls'],3*budget)
 
     def test_misleading_source_can_support_wrong_answer(self):
         item, backend = copy.deepcopy(make_pilot()[0]), FixtureBackend()

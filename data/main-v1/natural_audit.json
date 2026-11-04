@@ -1,0 +1,962 @@
+[
+  {
+    "id": "730",
+    "name": "Alan MacDiarmid",
+    "year": "2000",
+    "category": "Chemistry",
+    "org": "University of Pennsylvania",
+    "city": "Philadelphia, PA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2000/macdiarmid/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Pennsylvania",
+    "location_span": "University of Pennsylvania, Philadelphia, PA",
+    "page_sha256": "0f7f51ce8830b00a6427e3187c5d4301d52d7eaf8addcc6edc253a9af4804f55",
+    "normalized_text_sha256": "6a6940983642d7bfff213ab44070d0126727040567234c47eaa90578dd77a013",
+    "affiliation_offsets": [
+      1452,
+      1516
+    ],
+    "location_offsets": [
+      1490,
+      1534
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "722",
+    "name": "Arvid Carlsson",
+    "year": "2000",
+    "category": "Physiology or Medicine",
+    "org": "Göteborg University",
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "url": "https://www.nobelprize.org/prizes/medicine/2000/carlsson/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Göteborg University",
+    "location_span": "Göteborg University, Gothenburg",
+    "page_sha256": "46c7636502cd2b3bdd7316c27a935d83bd516f6d031d855fe60e177588148a0d",
+    "normalized_text_sha256": "4025ca009acdd5426f9c87d53fbef11e9dcea815aaf777a0d579e20af91d6777",
+    "affiliation_offsets": [
+      1389,
+      1446
+    ],
+    "location_offsets": [
+      1427,
+      1458
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "724",
+    "name": "Eric Kandel",
+    "year": "2000",
+    "category": "Physiology or Medicine",
+    "org": "Columbia University",
+    "city": "New York, NY",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2000/kandel/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Columbia University",
+    "location_span": "Columbia University, New York, NY",
+    "page_sha256": "e59a6b258e9ff10320c1bee4232bf154038b2d831c41434b82528776fc6e485d",
+    "normalized_text_sha256": "9074d3a511f1d5bda65c5cc7c289ebd00ea9aaa79b68dc32fb0a47aa051458b9",
+    "affiliation_offsets": [
+      1416,
+      1473
+    ],
+    "location_offsets": [
+      1454,
+      1487
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "728",
+    "name": "Jack Kilby",
+    "year": "2000",
+    "category": "Physics",
+    "org": "Texas Instruments",
+    "city": "Dallas, TX",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2000/kilby/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Texas Instruments",
+    "location_span": "Texas Instruments, Dallas, TX",
+    "page_sha256": "d295877b8b6a149f7f4a65ea0b58e13d757e6f480801997f5eb1dd93cfbb74b2",
+    "normalized_text_sha256": "a992ea2eee218bd507c91052170de5843113ae00bdaf992b0886cfff100c0a30",
+    "affiliation_offsets": [
+      1422,
+      1477
+    ],
+    "location_offsets": [
+      1460,
+      1489
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "723",
+    "name": "Paul Greengard",
+    "year": "2000",
+    "category": "Physiology or Medicine",
+    "org": "Rockefeller University",
+    "city": "New York, NY",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2000/greengard/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Rockefeller University",
+    "location_span": "Rockefeller University, New York, NY",
+    "page_sha256": "f6f8a03f98b987873a1ef13c326da91ad3e10cd4f526ed00be81bde2a2ec31ac",
+    "normalized_text_sha256": "2f8337ef0f67d2f7cc618b00acd74bc120baf316e7f9a850361fc7db5817d2e4",
+    "affiliation_offsets": [
+      1392,
+      1452
+    ],
+    "location_offsets": [
+      1430,
+      1466
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "726",
+    "name": "Zhores Alferov",
+    "year": "2000",
+    "category": "Physics",
+    "org": "A.F. Ioffe Physico-Technical Institute",
+    "city": "St. Petersburg",
+    "country": "Russia",
+    "url": "https://www.nobelprize.org/prizes/physics/2000/alferov/facts/",
+    "affiliation_span": "Affiliation at the time of the award: A.F. Ioffe Physico-Technical Institute",
+    "location_span": "A.F. Ioffe Physico-Technical Institute, St. Petersburg",
+    "page_sha256": "297010bce4b1817e7dbd987a7dfc12ddd28ddcf2554002a9caf50055ff0adaca",
+    "normalized_text_sha256": "3dfa8d7071e686958f83108c52c9db40f56aedaa07452eda65d9487af83b1065",
+    "affiliation_offsets": [
+      1488,
+      1564
+    ],
+    "location_offsets": [
+      1526,
+      1580
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "740",
+    "name": "Carl Wieman",
+    "year": "2001",
+    "category": "Physics",
+    "org": "University of Colorado, JILA",
+    "city": "Boulder, CO",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2001/wieman/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Colorado, JILA",
+    "location_span": "University of Colorado, JILA, Boulder, CO",
+    "page_sha256": "67daa8b4269807cdbec5857b7fb78b27ef637d40be054a7e0becc897a2a52a98",
+    "normalized_text_sha256": "e7b9f4c3d727552341d7327b9b44938c275df56cd2c0eab9d167d751cdb256b6",
+    "affiliation_offsets": [
+      1405,
+      1471
+    ],
+    "location_offsets": [
+      1443,
+      1484
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "738",
+    "name": "Eric Cornell",
+    "year": "2001",
+    "category": "Physics",
+    "org": "University of Colorado, JILA",
+    "city": "Boulder, CO",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2001/cornell/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Colorado, JILA",
+    "location_span": "University of Colorado, JILA, Boulder, CO",
+    "page_sha256": "da763fc852922b6842e3a213bf0d55bd3490a9085e80b259609c0c2ddac63a5e",
+    "normalized_text_sha256": "18d0b5b6dddab72e4e00a61ecf5e948a610d464a6deae463b8f0bf9e349a6657",
+    "affiliation_offsets": [
+      1378,
+      1444
+    ],
+    "location_offsets": [
+      1416,
+      1457
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "746",
+    "name": "Joseph E. Stiglitz",
+    "year": "2001",
+    "category": "Economic Sciences",
+    "org": "Columbia University",
+    "city": "New York, NY",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2001/stiglitz/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Columbia University",
+    "location_span": "Columbia University, New York, NY",
+    "page_sha256": "b2346793d57d2e5910fbf49bbb2327b30251127ddbcb8b4ed7e9ffa43d531cc1",
+    "normalized_text_sha256": "50fe1af7b467b1b9334b049a7f5d370aa40395b0ff3e3877dad18db8c780c3da",
+    "affiliation_offsets": [
+      1451,
+      1508
+    ],
+    "location_offsets": [
+      1489,
+      1522
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "743",
+    "name": "K. Barry Sharpless",
+    "year": "2001",
+    "category": "Chemistry",
+    "org": "The Scripps Research Institute",
+    "city": "La Jolla, CA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2001/sharpless/facts/",
+    "affiliation_span": "Affiliation at the time of the award: The Scripps Research Institute",
+    "location_span": "The Scripps Research Institute, La Jolla, CA",
+    "page_sha256": "b9ece3148cd2ace7bef30957fcaa58ef94856e16359bd7762a8c6a6c3449d78c",
+    "normalized_text_sha256": "c0cf4441c43c4aade231e09bd566a37b69f3946ae25467ab562c9805923bf711",
+    "affiliation_offsets": [
+      1500,
+      1568
+    ],
+    "location_offsets": [
+      1538,
+      1582
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "735",
+    "name": "Leland Hartwell",
+    "year": "2001",
+    "category": "Physiology or Medicine",
+    "org": "Fred Hutchinson Cancer Research Center",
+    "city": "Seattle, WA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2001/hartwell/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Fred Hutchinson Cancer Research Center",
+    "location_span": "Fred Hutchinson Cancer Research Center, Seattle, WA",
+    "page_sha256": "4f8f7e6a3098dfca00e2c6648cefbe1f68cf601241ef161f98a9e30975b61c49",
+    "normalized_text_sha256": "3ec70119ee19bf03141a1a7a9aa28d111683334ca0e62e5c6db38fff77ab75ea",
+    "affiliation_offsets": [
+      1385,
+      1461
+    ],
+    "location_offsets": [
+      1423,
+      1474
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "737",
+    "name": "Sir Paul Nurse",
+    "year": "2001",
+    "category": "Physiology or Medicine",
+    "org": "Imperial Cancer Research Fund",
+    "city": "London",
+    "country": "United Kingdom",
+    "url": "https://www.nobelprize.org/prizes/medicine/2001/nurse/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Imperial Cancer Research Fund",
+    "location_span": "Imperial Cancer Research Fund, London",
+    "page_sha256": "c6f71c8ce7111f9fdde3b0da871e94fac1c6c2ac6ec407703739757716b3b48a",
+    "normalized_text_sha256": "730d0380b8fa3255d2baec91bacfdb4571b0ea4d2b67cdee1f9a6bc6aa1e5d70",
+    "affiliation_offsets": [
+      1365,
+      1432
+    ],
+    "location_offsets": [
+      1403,
+      1440
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "736",
+    "name": "Tim Hunt",
+    "year": "2001",
+    "category": "Physiology or Medicine",
+    "org": "Imperial Cancer Research Fund",
+    "city": "London",
+    "country": "United Kingdom",
+    "url": "https://www.nobelprize.org/prizes/medicine/2001/hunt/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Imperial Cancer Research Fund",
+    "location_span": "Imperial Cancer Research Fund, London",
+    "page_sha256": "84dcdd26eb486307fd027585c401f15fc1b1ab7d385a6680622bff869399ea95",
+    "normalized_text_sha256": "8a1ae8650ed9b82e7a248357b63c4b2b6d96fb280d5468036e8648d4b69ab0cb",
+    "affiliation_offsets": [
+      1325,
+      1392
+    ],
+    "location_offsets": [
+      1363,
+      1400
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "739",
+    "name": "Wolfgang Ketterle",
+    "year": "2001",
+    "category": "Physics",
+    "org": "Massachusetts Institute of Technology (MIT)",
+    "city": "Cambridge, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2001/ketterle/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Massachusetts Institute of Technology (MIT)",
+    "location_span": "Massachusetts Institute of Technology (MIT), Cambridge, MA",
+    "page_sha256": "113e426d384ddab476d6285644b6d1ceecb1ed7c66c07f23b8f75b726e752f24",
+    "normalized_text_sha256": "5e03d6961d022d265794d7f558d283f093d56be22c6cf4eb25354aa1fca36940",
+    "affiliation_offsets": [
+      1416,
+      1497
+    ],
+    "location_offsets": [
+      1454,
+      1512
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "751",
+    "name": "H. Robert Horvitz",
+    "year": "2002",
+    "category": "Physiology or Medicine",
+    "org": "Massachusetts Institute of Technology (MIT)",
+    "city": "Cambridge, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2002/horvitz/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Massachusetts Institute of Technology (MIT)",
+    "location_span": "Massachusetts Institute of Technology (MIT), Cambridge, MA",
+    "page_sha256": "4ff82e77e07d7121eb541662c7cd611011cd33441bcabf17fd563f5a084d3ac2",
+    "normalized_text_sha256": "bd7d7d9040fe75d3803b3b3784a80a9286a4b09dfb98884e470c71a7a82a8d63",
+    "affiliation_offsets": [
+      1380,
+      1461
+    ],
+    "location_offsets": [
+      1418,
+      1476
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "756",
+    "name": "John B. Fenn",
+    "year": "2002",
+    "category": "Chemistry",
+    "org": "Virginia Commonwealth University",
+    "city": "Richmond, VA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2002/fenn/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Virginia Commonwealth University",
+    "location_span": "Virginia Commonwealth University, Richmond, VA",
+    "page_sha256": "13f4940cd5b71cfa262c6421a40c61eafe4699541701a101f4270d0e7bd1548e",
+    "normalized_text_sha256": "8766e2bab87bad6f8f9304bc6a563b66e68b6d97261330e10a69f1901bb6e512",
+    "affiliation_offsets": [
+      1440,
+      1510
+    ],
+    "location_offsets": [
+      1478,
+      1524
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "752",
+    "name": "John E. Sulston",
+    "year": "2002",
+    "category": "Physiology or Medicine",
+    "org": "The Wellcome Trust Sanger Institute",
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "url": "https://www.nobelprize.org/prizes/medicine/2002/sulston/facts/",
+    "affiliation_span": "Affiliation at the time of the award: The Wellcome Trust Sanger Institute",
+    "location_span": "The Wellcome Trust Sanger Institute, Cambridge",
+    "page_sha256": "2107a6bfbcc8dc9c95c707d9322db209218478ef108eefd6cb912622ad15b848",
+    "normalized_text_sha256": "8b41e3e70d96bde1bde6734012545f5a6f4e961d95fe69e47c5181d01e6c6efa",
+    "affiliation_offsets": [
+      1413,
+      1486
+    ],
+    "location_offsets": [
+      1451,
+      1497
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "757",
+    "name": "Koichi Tanaka",
+    "year": "2002",
+    "category": "Chemistry",
+    "org": "Shimadzu Corp.",
+    "city": "Kyoto",
+    "country": "Japan",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2002/tanaka/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Shimadzu Corp.",
+    "location_span": "Shimadzu Corp., Kyoto",
+    "page_sha256": "d328630787c975dedc2656d45b2ab7cde0e75085666e578c506bba5cee632338",
+    "normalized_text_sha256": "2346c9e56e53d65c45bfcd06c56ec7cd1c36d91dd2a83da406030ea6dab8c855",
+    "affiliation_offsets": [
+      1343,
+      1395
+    ],
+    "location_offsets": [
+      1381,
+      1402
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "753",
+    "name": "Raymond Davis Jr.",
+    "year": "2002",
+    "category": "Physics",
+    "org": "University of Pennsylvania",
+    "city": "Philadelphia, PA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2002/davis/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Pennsylvania",
+    "location_span": "University of Pennsylvania, Philadelphia, PA",
+    "page_sha256": "7218482f851aa1b72c1cc2ce117ea80a4905145c52380975598ddedfaacf5056",
+    "normalized_text_sha256": "8940bc4f64da732827ccbea4aecba2113ef033debb6c34fc4076c396aae957f6",
+    "affiliation_offsets": [
+      1443,
+      1507
+    ],
+    "location_offsets": [
+      1481,
+      1525
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "755",
+    "name": "Riccardo Giacconi",
+    "year": "2002",
+    "category": "Physics",
+    "org": "Associated Universities Inc.",
+    "city": "Washington, D.C.",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2002/giacconi/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Associated Universities Inc.",
+    "location_span": "Associated Universities Inc., Washington, D.C.",
+    "page_sha256": "509218b30d304a29b061c7df1fefa082da5b0d3ca586d3285c21b4404e8fce3e",
+    "normalized_text_sha256": "2ae9ce88cd6049a5cbd5ef72546cd7e5299f34aa93f5162ebe24bdd36de81a32",
+    "affiliation_offsets": [
+      1506,
+      1572
+    ],
+    "location_offsets": [
+      1544,
+      1590
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "750",
+    "name": "Sydney Brenner",
+    "year": "2002",
+    "category": "Physiology or Medicine",
+    "org": "The Molecular Sciences Institute",
+    "city": "Berkeley, CA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2002/brenner/facts/",
+    "affiliation_span": "Affiliation at the time of the award: The Molecular Sciences Institute",
+    "location_span": "The Molecular Sciences Institute, Berkeley, CA",
+    "page_sha256": "9c139572018cbbc69f4df0372187b935f4d95438856e636bc5218e5e0520f0de",
+    "normalized_text_sha256": "dac43492377142b888b626dc4c31c59ba45056231a3ec80a1a38b4997bcf92b3",
+    "affiliation_offsets": [
+      1413,
+      1483
+    ],
+    "location_offsets": [
+      1451,
+      1497
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "760",
+    "name": "Vernon L. Smith",
+    "year": "2002",
+    "category": "Economic Sciences",
+    "org": "George Mason University",
+    "city": "Fairfax, VA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2002/smith/facts/",
+    "affiliation_span": "Affiliation at the time of the award: George Mason University",
+    "location_span": "George Mason University, Fairfax, VA",
+    "page_sha256": "7ecbdc719387d310c91c3468575e97385bcaaba9dbe37587e6c7b7c146d6f553",
+    "normalized_text_sha256": "abf2df061b4886032a547ad1b965b5cfd3ed305ae46cd39c36c3dc261ed74696",
+    "affiliation_offsets": [
+      1429,
+      1490
+    ],
+    "location_offsets": [
+      1467,
+      1503
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "769",
+    "name": "Peter Agre",
+    "year": "2003",
+    "category": "Chemistry",
+    "org": "Johns Hopkins University School of Medicine",
+    "city": "Baltimore, MD",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2003/agre/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Johns Hopkins University School of Medicine",
+    "location_span": "Johns Hopkins University School of Medicine, Baltimore, MD",
+    "page_sha256": "3d6f8df9b235014c07a9db563b42898c383eeab090af5509cb92d4da42396c53",
+    "normalized_text_sha256": "1f33522b00eac285747d8d06e4337d876dbb853b735f9f76ded3afac0e17ac95",
+    "affiliation_offsets": [
+      1417,
+      1498
+    ],
+    "location_offsets": [
+      1455,
+      1513
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "767",
+    "name": "Vitaly L. Ginzburg",
+    "year": "2003",
+    "category": "Physics",
+    "org": "P.N. Lebedev Physical Institute",
+    "city": "Moscow",
+    "country": "Russia",
+    "url": "https://www.nobelprize.org/prizes/physics/2003/ginzburg/facts/",
+    "affiliation_span": "Affiliation at the time of the award: P.N. Lebedev Physical Institute",
+    "location_span": "P.N. Lebedev Physical Institute, Moscow",
+    "page_sha256": "c9b4a6e7d689129b575e241f18bb089a8bd0cf99af72973a01832f91bbb71510",
+    "normalized_text_sha256": "504e0c35b494c17783187368d1d3d527e4cac151634649de4c11aa670eb22888",
+    "affiliation_offsets": [
+      1447,
+      1516
+    ],
+    "location_offsets": [
+      1485,
+      1524
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "779",
+    "name": "Aaron Ciechanover",
+    "year": "2004",
+    "category": "Chemistry",
+    "org": "Technion - Israel Institute of Technology",
+    "city": "Haifa",
+    "country": "Israel",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2004/ciechanover/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Technion - Israel Institute of Technology",
+    "location_span": "Technion - Israel Institute of Technology, Haifa",
+    "page_sha256": "47ba48a9b17e689f9ef4fd74f6198d16d9f31be721786c40b54e9c54726e609f",
+    "normalized_text_sha256": "034e38a5135ce8158527cae99c3ef25fb5118c2ad47f9693f97f65db9812a204",
+    "affiliation_offsets": [
+      1473,
+      1552
+    ],
+    "location_offsets": [
+      1511,
+      1559
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "780",
+    "name": "Avram Hershko",
+    "year": "2004",
+    "category": "Chemistry",
+    "org": "Technion - Israel Institute of Technology",
+    "city": "Haifa",
+    "country": "Israel",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2004/hershko/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Technion - Israel Institute of Technology",
+    "location_span": "Technion - Israel Institute of Technology, Haifa",
+    "page_sha256": "221b99dad83b75285215e778696c85bfd6ace69f1cf3734daf3358a32d580f55",
+    "normalized_text_sha256": "82731edd50bf2b39042ac0e0a7dfd2adb5e5be337bab133e04751a411eb5044f",
+    "affiliation_offsets": [
+      1421,
+      1500
+    ],
+    "location_offsets": [
+      1459,
+      1507
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "776",
+    "name": "David J. Gross",
+    "year": "2004",
+    "category": "Physics",
+    "org": "University of California, Kavli Institute for Theoretical Physics",
+    "city": "Santa Barbara, CA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2004/gross/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of California, Kavli Institute for Theoretical Physics",
+    "location_span": "University of California, Kavli Institute for Theoretical Physics, Santa Barbara, CA",
+    "page_sha256": "785dfb59b3ed3b7e945209aa6cedc758b47a5219a0c2f95e157e5713c9c83dbf",
+    "normalized_text_sha256": "ac53dc599d98b77413dd1105d5f5aa49ade88ce136a3f9508d9335faa2797803",
+    "affiliation_offsets": [
+      1458,
+      1561
+    ],
+    "location_offsets": [
+      1496,
+      1580
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "778",
+    "name": "Frank Wilczek",
+    "year": "2004",
+    "category": "Physics",
+    "org": "Massachusetts Institute of Technology (MIT)",
+    "city": "Cambridge, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2004/wilczek/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Massachusetts Institute of Technology (MIT)",
+    "location_span": "Massachusetts Institute of Technology (MIT), Cambridge, MA",
+    "page_sha256": "e28965595df0779f8ee062ad816892eacdf34c9e9111b8e4984215f942225640",
+    "normalized_text_sha256": "9fea65a8bfc606374f14a4db7df6e4a4fab83dd391e3c9c14a194d32588089a3",
+    "affiliation_offsets": [
+      1432,
+      1513
+    ],
+    "location_offsets": [
+      1470,
+      1528
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "777",
+    "name": "H. David Politzer",
+    "year": "2004",
+    "category": "Physics",
+    "org": "California Institute of Technology (Caltech)",
+    "city": "Pasadena, CA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2004/politzer/facts/",
+    "affiliation_span": "Affiliation at the time of the award: California Institute of Technology (Caltech)",
+    "location_span": "California Institute of Technology (Caltech), Pasadena, CA",
+    "page_sha256": "b9550b948b7f63bf7eab6e8089c13fb1c1bd8c670966bf66b39385f97c534ffc",
+    "normalized_text_sha256": "916fb58ce1819226a4ac377ae0bf26c5339a07e169b05de58b371b8e99b5de34",
+    "affiliation_offsets": [
+      1378,
+      1460
+    ],
+    "location_offsets": [
+      1416,
+      1474
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "775",
+    "name": "Linda B. Buck",
+    "year": "2004",
+    "category": "Physiology or Medicine",
+    "org": "Fred Hutchinson Cancer Research Center",
+    "city": "Seattle, WA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2004/buck/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Fred Hutchinson Cancer Research Center",
+    "location_span": "Fred Hutchinson Cancer Research Center, Seattle, WA",
+    "page_sha256": "efe570d476ff4b877faa8878f1c591664e06750d1583fff2ed6f2884359e8edc",
+    "normalized_text_sha256": "2153bafbf7bde07f30a3f3ebb8cc5c1318b02e16d5c59483eec0c0025b1c80c0",
+    "affiliation_offsets": [
+      1354,
+      1430
+    ],
+    "location_offsets": [
+      1392,
+      1443
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "774",
+    "name": "Richard Axel",
+    "year": "2004",
+    "category": "Physiology or Medicine",
+    "org": "Columbia University",
+    "city": "New York, NY",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2004/axel/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Columbia University",
+    "location_span": "Columbia University, New York, NY",
+    "page_sha256": "b3b2c8b9032e0b4b113e78aa2278716b523a6744966b9bb7e2141ed9a8731d88",
+    "normalized_text_sha256": "464adc4dba41311aff8375ee2e9719020b7ebeb4f024631b661fea64c910c39f",
+    "affiliation_offsets": [
+      1348,
+      1405
+    ],
+    "location_offsets": [
+      1386,
+      1419
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "796",
+    "name": "Richard R. Schrock",
+    "year": "2005",
+    "category": "Chemistry",
+    "org": "Massachusetts Institute of Technology (MIT)",
+    "city": "Cambridge, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2005/schrock/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Massachusetts Institute of Technology (MIT)",
+    "location_span": "Massachusetts Institute of Technology (MIT), Cambridge, MA",
+    "page_sha256": "63514716aadda278cb27fb4ed3b03eed4a97b4bef11bb73357b66d5998bc183d",
+    "normalized_text_sha256": "7643e77d5a87fb9cdbd41682d1f55e2cc6ea5537b48018e3605c48b09fd889be",
+    "affiliation_offsets": [
+      1415,
+      1496
+    ],
+    "location_offsets": [
+      1453,
+      1511
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "795",
+    "name": "Robert H. Grubbs",
+    "year": "2005",
+    "category": "Chemistry",
+    "org": "California Institute of Technology (Caltech)",
+    "city": "Pasadena, CA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2005/grubbs/facts/",
+    "affiliation_span": "Affiliation at the time of the award: California Institute of Technology (Caltech)",
+    "location_span": "California Institute of Technology (Caltech), Pasadena, CA",
+    "page_sha256": "38ef295530437d6f3fa132c7df57df0a6322576686ca08a27889f5a4ac2df5d6",
+    "normalized_text_sha256": "08b4e54d5838e81a15360c4c8803a77982d4ebdccdb17630aebda03dfc74cc07",
+    "affiliation_offsets": [
+      1479,
+      1561
+    ],
+    "location_offsets": [
+      1517,
+      1575
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "791",
+    "name": "Roy J. Glauber",
+    "year": "2005",
+    "category": "Physics",
+    "org": "Harvard University",
+    "city": "Cambridge, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2005/glauber/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Harvard University",
+    "location_span": "Harvard University, Cambridge, MA",
+    "page_sha256": "981c109ae599b7ed7dc7e4ea08ef9b3bcf3f50b8b4336166cd5c17377e016880",
+    "normalized_text_sha256": "4d7b566e87e78faa16c496a756913717e1c137f0a3fb34c58dfeaeccac3abd47",
+    "affiliation_offsets": [
+      1438,
+      1494
+    ],
+    "location_offsets": [
+      1476,
+      1509
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "800",
+    "name": "Thomas C. Schelling",
+    "year": "2005",
+    "category": "Economic Sciences",
+    "org": "University of Maryland, Department of Economics and School of Public Policy",
+    "city": "College Park, MD",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2005/schelling/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Maryland, Department of Economics and School of Public Policy",
+    "location_span": "University of Maryland, Department of Economics and School of Public Policy, College Park, MD",
+    "page_sha256": "3ce0ce392d6caf6e8c6f9f473c91b45a2294f4dc45e9b3156befb9ddcac21ac4",
+    "normalized_text_sha256": "7d95aecd10fa64eb0c8da67c8055d3c8ec0ef419a12e34720b3e8159673aee82",
+    "affiliation_offsets": [
+      1472,
+      1585
+    ],
+    "location_offsets": [
+      1510,
+      1603
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "794",
+    "name": "Yves Chauvin",
+    "year": "2005",
+    "category": "Chemistry",
+    "org": "Institut Français du Pétrole",
+    "city": "Rueil-Malmaison",
+    "country": "France",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2005/chauvin/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Institut Français du Pétrole",
+    "location_span": "Institut Français du Pétrole, Rueil-Malmaison",
+    "page_sha256": "e24d4306be5bfe666385c08d450a53950aaa0b9c33e01f533a4e1cf26b1a9a6f",
+    "normalized_text_sha256": "da5f676e79e65e55f8c632b0f94a9e661fdc7da50f2bcda87326fc1addb5f61c",
+    "affiliation_offsets": [
+      1427,
+      1493
+    ],
+    "location_offsets": [
+      1465,
+      1510
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "803",
+    "name": "Craig C. Mello",
+    "year": "2006",
+    "category": "Physiology or Medicine",
+    "org": "University of Massachusetts Medical School",
+    "city": "Worcester, MA",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/medicine/2006/mello/facts/",
+    "affiliation_span": "Affiliation at the time of the award: University of Massachusetts Medical School",
+    "location_span": "University of Massachusetts Medical School, Worcester, MA",
+    "page_sha256": "222681fa47e22296cf81d5d883f288dc267ebfa068f5af9b341d3e623572aae3",
+    "normalized_text_sha256": "e008507e23bb1c609b9c1b08114bff707bd63206c07886f2463f1cbd07469876",
+    "affiliation_offsets": [
+      1439,
+      1519
+    ],
+    "location_offsets": [
+      1477,
+      1534
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "807",
+    "name": "Edmund S. Phelps",
+    "year": "2006",
+    "category": "Economic Sciences",
+    "org": "Columbia University",
+    "city": "New York, NY",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2006/phelps/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Columbia University",
+    "location_span": "Columbia University, New York, NY",
+    "page_sha256": "c6e82d0664b5f71218395a0f479bea0e3b09f8f87e5e380a3e2b9546ee63171c",
+    "normalized_text_sha256": "eff09075a240af852d6fd2728220b4c41508a099915c9c9232ef891b1cb60ce8",
+    "affiliation_offsets": [
+      1431,
+      1488
+    ],
+    "location_offsets": [
+      1469,
+      1502
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "804",
+    "name": "John C. Mather",
+    "year": "2006",
+    "category": "Physics",
+    "org": "NASA Goddard Space Flight Center",
+    "city": "Greenbelt, MD",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/physics/2006/mather/facts/",
+    "affiliation_span": "Affiliation at the time of the award: NASA Goddard Space Flight Center",
+    "location_span": "NASA Goddard Space Flight Center, Greenbelt, MD",
+    "page_sha256": "08f9ac95b2638b83c7362e8ee61f5499840eec4d84c296de05334377bd73c9f9",
+    "normalized_text_sha256": "4b1d177fd54e872c4a49517f63d5bf77c73fcd9fd3b3c6eb6e8098cb54885978",
+    "affiliation_offsets": [
+      1404,
+      1474
+    ],
+    "location_offsets": [
+      1442,
+      1489
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  },
+  {
+    "id": "821",
+    "name": "Eric S. Maskin",
+    "year": "2007",
+    "category": "Economic Sciences",
+    "org": "Institute for Advanced Study",
+    "city": "Princeton, NJ",
+    "country": "USA",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2007/maskin/facts/",
+    "affiliation_span": "Affiliation at the time of the award: Institute for Advanced Study",
+    "location_span": "Institute for Advanced Study, Princeton, NJ",
+    "page_sha256": "705926540147720dad39785465e5a88425e649285bd91a06bfc24b46a07a41e8",
+    "normalized_text_sha256": "2f871a644a9ea9eedaa72b6415897556cfc0f54f8325af57f774f8d22c317a69",
+    "affiliation_offsets": [
+      1520,
+      1586
+    ],
+    "location_offsets": [
+      1558,
+      1601
+    ],
+    "audit_method": "official API record cross-checked against official facts-page text; assistant-reviewed table",
+    "human_audited": false
+  }
+]

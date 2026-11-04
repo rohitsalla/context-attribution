@@ -8,7 +8,10 @@ from .backend import summary_prompt, answer_prompt
 
 def sentences(summary):
     # Keep trailing source annotations attached to their preceding sentence.
-    return re.findall(r"[^.!?]+[.!?](?:\s*\[[^\]]+\])?|[^.!?]+$", summary.strip())
+    protected=re.sub(r'\b(?:[A-Z]|St|Dr|Mr|Mrs|Prof|Jr|Sr|Corp|Inc)\.',
+                     lambda m:m.group().replace('.','\ue000'),summary.strip())
+    return [p.replace('\ue000','.').strip() for p in
+            re.findall(r"[^.!?]+[.!?](?:\s*\[[^\]]+\])?|[^.!?]+$",protected) if p.strip()]
 
 
 def logit_from_logprob(logp):
