@@ -83,9 +83,9 @@ The local scorer is a **ContextCite-style approximation**, not the official libr
 
 ## Remaining research work
 
-1. Complete the pinned 7B model pilot; verify fixed-span scoring independently and inspect summaries/answers. Analyze the smaller-model MLX smoke test separately, including its 8-bit quantization and hardware differences.
-2. Add real-model irrelevant/misleading/duplicate stress-test runs; current versions of these controls are software tests only. Extend paired stochastic replication beyond two repeats and estimate uncertainty in intervention effects before interpreting them.
+1. Finish and analyze the expanded 7B study. The legacy 40-condition pilot completed; the full-study likelihood preflight passed its independent masked-label check. Analyze the smaller-model MLX runs separately, including their quantization and hardware differences.
+2. Interpret the launched real-model irrelevant/misleading/duplicate controls and five-repeat stochastic subset. Assess uncertainty before interpreting stochastic effects.
 3. Compare the official ContextCite implementation, add semantic similarity, and freeze normalization, regularization, and sentence selection on development data.
-4. Audit and freeze the 120-item dataset (80 fictional, 40 natural-text), preserving the proposed 40/80 family-disjoint split. No natural-text examples have been collected or audited yet.
-5. Add paraphrase and consistent fact-replacement subsets, 512-token summaries, end-to-end latency measurements, paired method-difference confidence intervals, and failure analysis. The current CLI generates pilot fixtures only; external benchmark loading is still to implement.
+4. Complete an independent human audit and broaden the short facts-page subset to long-form natural text. The frozen dataset already has 120 items and a 40/80 family-disjoint split; human review is explicitly not claimed.
+5. Analyze paraphrase/replacement stress tests, all three summary caps, actual online execution cost, paired method differences, and failures. The CLI accepts frozen JSONL datasets through `--dataset`.
 6. Expand only after real-model effects exceed replay variation. A negative result is valid.
