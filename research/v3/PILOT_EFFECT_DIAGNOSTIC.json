@@ -1,0 +1,93 @@
+{
+  "scope": "eight-question adaptive development; descriptive only",
+  "formula": "sum_question,sum_source |raw_effect/n_target - compressed_effect/n_target| / sum |raw_effect/n_target|",
+  "zero_effect_predictor_pooled_nmae": 1.0,
+  "results": [
+    {
+      "profile": "profile0",
+      "method": "global",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 4.083557712960235,
+      "reference_l1_mean_logprob": 45.590570472033846,
+      "raw_top1_hits": 3
+    },
+    {
+      "profile": "profile0",
+      "method": "source",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 1.4536814947512773,
+      "reference_l1_mean_logprob": 45.590570472033846,
+      "raw_top1_hits": 3
+    },
+    {
+      "profile": "profile0",
+      "method": "lexical",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 1.0885202106965812,
+      "reference_l1_mean_logprob": 45.590570472033846,
+      "raw_top1_hits": 5
+    },
+    {
+      "profile": "profile1",
+      "method": "global",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 4.634762683515206,
+      "reference_l1_mean_logprob": 34.61905523734833,
+      "raw_top1_hits": 2
+    },
+    {
+      "profile": "profile1",
+      "method": "source",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 0.8000316683895652,
+      "reference_l1_mean_logprob": 34.61905523734833,
+      "raw_top1_hits": 3
+    },
+    {
+      "profile": "profile1",
+      "method": "lexical",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 0.8126336598084578,
+      "reference_l1_mean_logprob": 34.61905523734833,
+      "raw_top1_hits": 7
+    },
+    {
+      "profile": "profile2",
+      "method": "global",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 2.2557915590653668,
+      "reference_l1_mean_logprob": 42.0451317138762,
+      "raw_top1_hits": 1
+    },
+    {
+      "profile": "profile2",
+      "method": "source",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 1.4771036156990736,
+      "reference_l1_mean_logprob": 42.0451317138762,
+      "raw_top1_hits": 5
+    },
+    {
+      "profile": "profile2",
+      "method": "lexical",
+      "budget": 512,
+      "n": 8,
+      "pooled_nmae": 1.007018724538091,
+      "reference_l1_mean_logprob": 42.0451317138762,
+      "raw_top1_hits": 6
+    }
+  ],
+  "trace_sha256": {
+    "profile0": "e5cd0d5d3edb4bd1c5fc33218fa147ad7a400a3d5cabd10c79d8d6d2e53c251b",
+    "profile1": "6bd9fa1b07065a7ae101d8119b574c3d8b676d4a33e6b409ef9ff15307629682",
+    "profile2": "f2cdbd40f91203e9faf85d3db22dbd2b45d9205846a872f6309cb3fc63f2040b"
+  }
+}

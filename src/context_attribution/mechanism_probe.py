@@ -10,7 +10,7 @@ import statistics as st
 from .v2.hf import HFModel,AbstractiveCodec
 from .v2.memory import Contract,ExtractiveCodec,Source,digest
 from .v2.metrics import qa,effect_comparison
-from .v2.run import raw_reference
+from .v2.run import raw_reference,raw_memory
 
 
 def alias_item(item):
@@ -66,8 +66,10 @@ def main():
     registry=json.loads((args.root/'research/v2/models.json').read_text());paths=json.loads(args.paths.read_text())
     answerer=HFModel(paths['llama8'],registry['llama8']['revision'],model_id=registry['llama8']['model_id'])
     compressor=HFModel(paths['qwen15'],registry['qwen15']['revision'],model_id=registry['qwen15']['model_id'])
+    for model in [answerer,compressor]:model.model.generation_config.repetition_penalty=1.0
     manifest={'type':'exploratory mechanism probe, no general efficacy claim','limit':args.limit,'budget':512,
               'runtime':{'answerer':answerer.runtime(),'compressor':compressor.runtime()},
+              'generation_policy':{'do_sample':False,'repetition_penalty':1.0,'max_answer_tokens':64},
               'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'data_sha256':hashlib.sha256((args.root/'data/v2-hotpot/dev.jsonl').read_bytes()).hexdigest()}
     (args.output/'manifest.json').write_text(json.dumps(manifest,indent=2))
@@ -77,7 +79,14 @@ def main():
         for original in items:
             for variant,item in [('original',original),('aliases',alias_item(original))]:
                 sources=[Source(s['id'],s['title'],s['text']) for s in item['sources']]
-                raw=raw_reference(item,answerer);raw['variant']=variant;save(raw)
+                raw=raw_reference(item,answerer);raw['variant']=variant
+                most_influential=max(raw['effects'],key=lambda sid:abs(raw['effects'][sid]))
+                independent=sorted([s.sid for s in sources if s.sid!=most_influential],key=lambda sid:digest([item['id'],sid,'branch-probe']))[0]
+                selected=[most_influential,independent];raw_branches={}
+                for sid in selected:
+                    kept=[s for s in sources if s.sid!=sid]
+                    raw_branches[sid]=answerer.generate(answerer.qa_ids(item['question'],raw_memory(answerer.tokenizer,kept)))
+                raw['branch_answers']=raw_branches;save(raw)
                 probes={}
                 for name,model in [('answerer',answerer),('compressor',compressor)]:
                     answer=model.generate(model.chat_ids('Answer with a short answer only.\nQuestion: '+item['question']))
@@ -92,17 +101,21 @@ def main():
                     factual=policy.build(sources,codec);target=raw['answer']['tokens']
                     answer=answerer.generate(answerer.qa_ids(item['question'],factual.tokens))
                     base=answerer.score(answerer.qa_ids(item['question'],factual.tokens),target)
-                    effects={};deleted={}
+                    effects={};deleted={};branches={}
                     for source in sources:
                         changed=policy.build([s for s in sources if s.sid!=source.sid],codec,factual=factual)
                         effects[source.sid]=base-answerer.score(answerer.qa_ids(item['question'],changed.tokens),target)
                         deleted[source.sid]=answerer.tokenizer.decode(changed.tokens)
+                        if source.sid in selected:branches[source.sid]=answerer.generate(answerer.qa_ids(item['question'],changed.tokens))
                     row={'item_id':item['id'],'origin':original['id'],'variant':variant,'method':method,
                          'answer':answer,'qa':qa(answer['text'],item['gold']),'raw_qa':raw['qa'],
                          'memory_text':answerer.tokenizer.decode(factual.tokens),'memory_positions':len(factual.tokens),
                          'raw_effects':raw['effects'],'common_target_effects':effects,'common_target_tokens':target,
                          'comparison':effect_comparison(raw['effects'],effects),'deleted_memory_text':deleted,
                          'knowledge_probes':probes,'transformation':item.get('transformation')}
+                    row.update({'branch_answers':branches,'raw_branch_answers':raw_branches,
+                                'branch_selection':{'raw_max_magnitude':most_influential,'hash_selected_control':independent},
+                                'branch_scope':'Diagnostic generations, not charged as production attribution cost. Original gold is not a new gold label for evidence-deleted inputs.'})
                     save(row);print(original['id'],variant,method,'F1',row['qa']['f1'],flush=True)
     (args.output/'completed.json').write_text(json.dumps({'complete':True,'original_questions':len(items),'conditions':len(items)*10}))
     summarize(args.output)
