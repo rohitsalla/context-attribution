@@ -14,6 +14,8 @@ V2 includes revision-pinned HotpotQA train/dev/locked-test subsets, global/sourc
 
 The first completed Qwen/Llama development profiles show exact sampled replay but no demonstrated win for source-local abstractive compression over lexical selection. See the [honest pilot review](research/v3/PILOT_REVIEW.md) and [follow-up protocol](research/v3/FOLLOWUP_PROTOCOL.md): 96-question cheap controls, held-out development evaluation of the optimization canaries, and matched factual/unpaired/paired objectives across three seeds. V3 code resides separately so the running V2 source remains unchanged. The locked test is still disabled.
 
+**V3 is complete and does not establish a paired-effect training win.** Its independently repeated warm-ups diverged despite matching initial parameters, so the objective comparison is confounded. Expanded 96-question controls also overturn the optimistic eight-case lexical QA impression. See the [completed review](research/v4/RESULTS_REVIEW.md). The [V4 protocol](research/v4/PROTOCOL.md) repairs controls by restoring a single actual warm-up/optimizer/RNG state, tests an exact lexical identity with learned residual edits, and broadens evidence-versus-influence analysis to pinned MuSiQue, stronger extraction and a clearly labeled gold-support oracle. All of this remains development, not final paper evidence.
+
 ## Run the infrastructure validation
 
 ```sh

@@ -1,0 +1,15 @@
+{
+  "dataset": "MuSiQue-Ans v1.0, revision-pinned HF mirror",
+  "hf_dataset": "dgslibisey/MuSiQue",
+  "revision": "c8f4f8c9465fb69d31a8eae894c3fd509c4ca321",
+  "official_repository": "https://github.com/StonyBrookNLP/musique",
+  "license": "CC-BY-4.0, official repository",
+  "selection": "32 answerable questions per 2/3/4-hop stratum, fixed SHA256 ID order; official development split",
+  "raw_sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b",
+  "dev_sha256": "69d6b57eedb4f253b86c1235946388a1d3f0730e81e885d51727fcaa73c977c3",
+  "n": 96,
+  "raw_rows": 2417,
+  "official_zip_byte_equivalence_verified": false,
+  "scope": "second exploratory development benchmark; not final confirmation; no model selection",
+  "gold_support_use": "evaluation slices and clearly marked oracle comparator only"
+}
