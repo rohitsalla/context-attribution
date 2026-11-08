@@ -62,6 +62,9 @@ def main():
             'no_context_f1':st.mean(r['no_context']['qa']['f1'] for r in raw.values())}
     for folder in sorted(args.v3.glob('*')):
         if not folder.is_dir():continue
+        if folder.name=='canary_eval':
+            report['v3'][folder.name]={'scope':'debugging only; inherited repetition-penalty mismatch; excluded from efficacy'}
+            continue
         complete=(folder/'completed.json').exists()
         if folder.name.startswith('cheap_profile'):
             values=rows(folder/'traces.jsonl');report['v3'][folder.name]={'complete':complete,'records':len(values)};continue

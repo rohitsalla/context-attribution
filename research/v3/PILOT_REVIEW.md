@@ -16,6 +16,12 @@ These are development observations. Eight-question pilot means are unstable; the
 | profile1 | group4 | 512 | 37.5 | 2.810 | 12.91 |
 | profile1 | lead | 512 | 62.5 | 1.245 | 0.50 |
 | profile1 | lexical | 512 | 88.6 | 0.573 | 0.53 |
+| profile2 | raw | full | 68.3 | 0 | 1 |
+| profile2 | global | 512 | 50.0 | 4.892 | 19.17 |
+| profile2 | source | 512 | 40.7 | 3.010 | 5.92 |
+| profile2 | group4 | 512 | 42.4 | 5.724 | 12.87 |
+| profile2 | lead | 512 | 50.0 | 2.408 | 0.52 |
+| profile2 | lexical | 512 | 79.6 | 2.027 | 0.45 |
 
 ## Interpretation
 

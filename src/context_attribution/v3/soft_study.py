@@ -178,10 +178,14 @@ def main():
     registry=json.loads((args.root/'research/v2/models.json').read_text());paths=json.loads(args.paths.read_text())
     decoder=HFModel(paths['qwen7'],registry['qwen7']['revision'],model_id=registry['qwen7']['model_id'])
     encoder=HFModel(paths['qwen15'],registry['qwen15']['revision'],model_id=registry['qwen15']['model_id'])
+    # With inputs_embeds, token-based repetition penalties cannot inspect the
+    # soft prompt. Disable them for ALL raw, lexical and soft generations.
+    decoder.model.generation_config.repetition_penalty=1.0
     dev=read_items(args.root/'data/v2-hotpot/dev.jsonl','dev',args.dev_limit)
     torch.manual_seed(args.seed);study=Study(decoder,encoder,8 if args.mode=='canaries' else args.slots)
     manifest={k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
     manifest.update({'runtime':{'answerer':decoder.runtime(),'encoder':encoder.runtime()},
+       'generation_policy':{'do_sample':False,'repetition_penalty':1.0,'max_new_tokens':64},
        'source_sha256':{str(f.relative_to(args.root)):hashlib.sha256(f.read_bytes()).hexdigest()
                         for folder in ['v2','v3'] for f in (args.root/'src/context_attribution'/folder).glob('*.py')},
        'data_sha256':{name:hashlib.sha256((args.root/'data/v2-hotpot'/name).read_bytes()).hexdigest() for name in ['train.jsonl','dev.jsonl']},
