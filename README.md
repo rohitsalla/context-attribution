@@ -6,6 +6,12 @@ The expanded study is specified in [FULL_RUN_PROTOCOL.md](FULL_RUN_PROTOCOL.md).
 
 **The study is complete.** See [RESULTS.md](RESULTS.md) and `study_results.json` for verified results. Local ranking misses consequential replay effects, but an efficiency advantage over cheap source-ID tracing was not established. The summary caps were nonbinding and produced identical main outcomes.
 
+## V2: intervention-faithful memory compression
+
+The new research direction asks whether compact memory can preserve the raw-context model's source-intervention effects while retaining answer quality. See the [development protocol](research/v2/PROTOCOL.md), [related-work audit](research/v2/RELATED_WORK.md), [theory and its assumptions](research/v2/THEORY.md), and [provisional paper outline](research/v2/PAPER_OUTLINE.md). These documents distinguish established ideas from the proposed paired-effect training objective. The elementary incremental-replay property alone is not a paper-level novelty claim.
+
+V2 includes revision-pinned HotpotQA train/dev/locked-test subsets, global/source/grouped and extractive hard-memory baselines, exact token-space replay receipts, common-target intervention measurements, and a trainable source-local soft-memory module. The first HF development matrix uses Qwen2.5-7B, Llama-3.1-8B, and Mistral-7B-v0.3 with Qwen2.5-1.5B compression, plus a Qwen self-compression control. Matched factual-only and paired-effect training canaries verify actual gradients; they do not establish generalization. [Model revisions](research/v2/models.json) and [execution instructions](research/v2/RUNNING.md) are public. Official attribution baselines, larger learning comparisons, and independent evaluation remain required before a strong paper claim.
+
 ## Run the infrastructure validation
 
 ```sh

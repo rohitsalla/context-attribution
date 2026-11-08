@@ -1,0 +1,6 @@
+{
+  "qwen15": {"model_id":"Qwen/Qwen2.5-1.5B-Instruct","revision":"989aa7980e4cf806f80c7fef2b1adb7bc71aa306","card":"https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct","role":"compressor and frozen feature encoder"},
+  "qwen7": {"model_id":"Qwen/Qwen2.5-7B-Instruct","revision":"a09a35458c702b33eeacc393d103063234e8bc28","card":"https://huggingface.co/Qwen/Qwen2.5-7B-Instruct","role":"answerer and self-compression control"},
+  "llama8": {"model_id":"meta-llama/Llama-3.1-8B-Instruct","revision":"0e9e39f249a16976918f6564b8830bc894c89659","card":"https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct","role":"answerer, existing licensed checkpoint"},
+  "mistral7": {"model_id":"mistralai/Mistral-7B-Instruct-v0.3","revision":"c170c708c41dac9275d15a8fff4eca08d52bab71","card":"https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3","role":"answerer"}
+}

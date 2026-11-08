@@ -16,3 +16,5 @@ models/
 *.pth
 *.ckpt
 data/source-cache/
+data/v2-cache/
+research/v2/cache/

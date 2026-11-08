@@ -1,0 +1,32 @@
+{
+  "dataset": "hotpotqa/hotpot_qa",
+  "revision": "1908d6afbbead072334abe2965f91bd2709910ab",
+  "license": "CC-BY-SA-4.0 as reported by the HF dataset card",
+  "source": "https://huggingface.co/datasets/hotpotqa/hotpot_qa",
+  "train_rows": 512,
+  "dev_rows": 96,
+  "locked_test_rows": 400,
+  "files": {
+    "locked_test.jsonl": "75598f99e35a5def46c440b42fc2c5168541dd751265d3d3e9f79964991cad5a",
+    "train.jsonl": "b6ad6a29857a6d210e02d6d8a25277954a61f549ca91aaaa9c569c7fdee57859",
+    "dev.jsonl": "7b7640e3360e9ec5c286510be40a331fe08db1ad46c4990d548ab26116725a63"
+  },
+  "test_model_evaluations_authorized": false,
+  "selection": "SHA256 ID order; train uses the first pinned train shard, test uses official validation",
+  "source_parquet_sha256": {
+    "hotpot_train_pinned.parquet": "76d3bb3048a7cc73c1958107c0c5872a00d7e7d00c105b81e92f6769e7822e68",
+    "hotpot_validation_pinned.parquet": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6"
+  },
+  "train_test_shared_document_titles": 91,
+  "annotation_issue_rows": {
+    "train": 1,
+    "dev": 0,
+    "locked_test": 0
+  },
+  "notes": [
+    "Question IDs are disjoint. Retrieval-corpus document overlap is reported, not hidden.",
+    "The original paragraph list is preserved, including duplicate titles and variable source counts.",
+    "Out-of-range source annotations are flagged, not silently repaired or used as gold source labels.",
+    "The locked test split must not be run until development gates are met."
+  ]
+}
