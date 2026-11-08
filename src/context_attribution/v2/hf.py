@@ -14,6 +14,16 @@ class HFModel:
                         torch_dtype=torch.bfloat16,local_files_only=True).to(device).eval()
         self.calls=[]
 
+    def runtime(self):
+        import platform
+        import transformers
+        return {'model_id':self.model_id,'revision':self.revision,
+                'python':platform.python_version(),'torch':self.torch.__version__,
+                'transformers':transformers.__version__,'cuda':self.torch.version.cuda,
+                'device':self.device,'gpu':self.torch.cuda.get_device_name() if self.device.startswith('cuda') else None,
+                'dtype':str(next(self.model.parameters()).dtype),
+                'attention_implementation':getattr(self.model.config,'_attn_implementation',None)}
+
     def _sync(self):
         if self.device.startswith('cuda'):self.torch.cuda.synchronize()
 

@@ -97,6 +97,7 @@ def main():
         'source_sha256':{f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in Path(__file__).parent.glob('*.py')},
         'dataset_sha256':hashlib.sha256(args.dataset.read_bytes()).hexdigest(),
         'answerer_revision':args.revision,'encoder_revision':args.encoder_revision,
+        'runtime':{'answerer':decoder.runtime(),'encoder':encoder.runtime()},
         'note':'Gold answers and paired raw-context teacher scores are training-only supervision. No dev/test efficacy is claimed.'}
     (args.output/'summary.json').write_text(json.dumps(summary,indent=2))
     (args.output/'training.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in trace))

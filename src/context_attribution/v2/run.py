@@ -156,9 +156,13 @@ def main():
     answerer=HFModel(args.model,args.revision,model_id=args.model_id)
     compressor=(answerer if args.model_id==args.compressor_id and args.revision==args.compressor_revision else
                 HFModel(args.compressor,args.compressor_revision,model_id=args.compressor_id))
+    runtime={'answerer':answerer.runtime(),'compressor':compressor.runtime()}
+    with (args.output/'runtime_history.jsonl').open('a') as history:
+        history.write(json.dumps(runtime)+'\n')
     mf.write_text(json.dumps(fingerprint,indent=2))
     with trace.open('a') as handle:
         def save(row):
+            row['runtime']=runtime
             handle.write(json.dumps(row,allow_nan=False)+'\n');handle.flush();os.fsync(handle.fileno())
             print(row['item_id'],row['method'],row['budget'],'F1',row['qa']['f1'],flush=True)
         for item in items:
