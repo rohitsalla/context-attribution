@@ -7,12 +7,14 @@ All V3 jobs completed with exit code zero. The result review is in `RESULTS_REVI
 | Stage | Job | State at this update |
 |---|---|---|
 | Exact-state, repeated-gradient and lexical-identity smoke | 8548538, task 0 | Completed, exit 0, 33 seconds |
-| Evidence/oracle studies and stronger 7B compressor controls | 8548542, tasks 5–13, concurrency 1 | Task 5 running on H200; remaining tasks queued |
-| Exact-state pure-soft audit and three anchored seeds | 8548544, tasks 1–4, concurrency 1 | Queued after the evidence array |
-| CPU aggregation | 8548545 | Queued after the learning array |
+| First Qwen/Hotpot evidence/oracle study | 8548542, task 5 | Completed: all 384 records |
+| Three anchored seeds and exact-state pure-soft audit | 8548544, tasks 2–4 then 1, concurrency 1 | Task 2 running on H200; remaining tasks queued |
+| Positional intervention diagnostic | 8548641 | Queued after learning, ten-minute cap |
+| Remaining evidence/oracle and stronger compressor studies | 8548542, tasks 6–13 | Queued after position diagnostic |
+| CPU aggregation | 8548545 | Queued after the remaining evidence array |
 
 Frozen runtime source is commit `d20dd98`. All 29 tests pass locally and in ARC's actual environment. On the real-HF smoke, same-state gradient hashes agree, source-local cached/cold embeddings agree, initial lexical inputs are exactly identical, and branch start hashes agree for pool parameters, full AdamW state, CPU RNG and CUDA RNG. These are implementation checks on two examples/two updates, not efficacy results.
 
-The first full Hotpot/Qwen evidence task is writing raw, equal-source lexical, global lexical and explicitly annotation-informed oracle outputs. All 96-question MuSiQue and Hotpot tasks, and the learning comparisons, remain exploratory development. A limited cross-benchmark audit found zero exact case-folded question matches with the Hotpot train/dev subset and 11 shared document titles; this is not a pretraining-contamination test or a claim of corpus independence.
+The first full Hotpot/Qwen evidence task is complete; see `INTERIM_REVIEW.md`. The repaired anchored comparison has not completed, so no efficacy judgment is available yet. Its shared warm-up and first branch checkpoint have been written. The other model/MuSiQue and learning tasks remain exploratory development. A limited cross-benchmark audit found zero exact case-folded question matches with the Hotpot train/dev subset and 11 shared document titles; this is not a pretraining-contamination test or a claim of corpus independence.
 
-The dependency chain allows at most one GPU. The maximum new allocation is 5.5 GPU-hours (five-minute smoke plus thirteen 25-minute tasks). Timeouts stay visible as incomplete studies. CPU aggregation runs automatically after the arrays finish; no locked-test example is loaded. The full runtime, model/data/source hashes, traces and checkpoint receipts stay with the ARC outputs.
+The standalone position probe is separately frozen at commit `04a7e48` and leaves the active V4 runtime unchanged. The new positional-index test passes locally (30 tests total); the original 29 core tests also passed on ARC. The dependency chain allows at most one GPU. The maximum allocation is now 5 hours 40 minutes, including the ten-minute position probe. Timeouts stay visible as incomplete studies. CPU aggregation runs automatically after the arrays finish; no locked-test example is loaded. The full runtime, model/data/source hashes, traces and checkpoint receipts stay with the ARC outputs.
