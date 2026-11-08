@@ -1,0 +1,7 @@
+{
+  "scope": "limited exact-string overlap audit; not a pretraining contamination test",
+  "hotpot_train_and_dev_questions": 608,
+  "musique_development_questions": 96,
+  "exact_casefold_question_overlap": 0,
+  "shared_document_titles": 11
+}
