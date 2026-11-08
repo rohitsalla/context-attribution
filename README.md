@@ -4,6 +4,8 @@ Research code for tracing source influence through a summarize-then-answer pipel
 
 The expanded study is specified in [FULL_RUN_PROTOCOL.md](FULL_RUN_PROTOCOL.md). Its frozen dataset contains 80 fictional questions and 40 assistant-checked official facts-page examples, with a 40/80 development/test split. The natural subset is not a completed human audit or a long-form prose benchmark. Source URLs and provenance checks are in `data/main-v1/natural_audit.json`.
 
+**The study is complete.** See [RESULTS.md](RESULTS.md) and `study_results.json` for verified results. Local ranking misses consequential replay effects, but an efficiency advantage over cheap source-ID tracing was not established. The summary caps were nonbinding and produced identical main outcomes.
+
 ## Run the infrastructure validation
 
 ```sh
@@ -83,9 +85,9 @@ The local scorer is a **ContextCite-style approximation**, not the official libr
 
 ## Remaining research work
 
-1. Finish and analyze the expanded 7B study. The legacy 40-condition pilot completed; the full-study likelihood preflight passed its independent masked-label check. Analyze the smaller-model MLX runs separately, including their quantization and hardware differences.
-2. Interpret the launched real-model irrelevant/misleading/duplicate controls and five-repeat stochastic subset. Assess uncertainty before interpreting stochastic effects.
+1. Independently review the completed study's failure traces and scoring implementation. Keep the smaller-model MLX results separate, including their quantization and hardware differences.
+2. Extend stochastic replication beyond the exploratory five-repeat subset and assess noise calibration before generalizing the effects.
 3. Compare the official ContextCite implementation, add semantic similarity, and freeze normalization, regularization, and sentence selection on development data.
 4. Complete an independent human audit and broaden the short facts-page subset to long-form natural text. The frozen dataset already has 120 items and a 40/80 family-disjoint split; human review is explicitly not claimed.
-5. Analyze paraphrase/replacement stress tests, all three summary caps, actual online execution cost, paired method differences, and failures. The CLI accepts frozen JSONL datasets through `--dataset`.
+5. Test genuinely binding summary budgets. The completed 128/256/512-cap comparison produced identical main outcomes and cannot establish compression sensitivity. Preserve the cheap baselines and complete cost accounting in any follow-up.
 6. Expand only after real-model effects exceed replay variation. A negative result is valid.

@@ -1,0 +1,183 @@
+{
+  "complete": true,
+  "source_commit": "40c5476bee6d1635fbb9fa7fbe2700651b9830ac",
+  "counts": {
+    "main-128": {
+      "completed": 120,
+      "expected": 120,
+      "complete": true
+    },
+    "main-256": {
+      "completed": 120,
+      "expected": 120,
+      "complete": true
+    },
+    "main-512": {
+      "completed": 120,
+      "expected": 120,
+      "complete": true
+    },
+    "stress": {
+      "completed": 180,
+      "expected": 180,
+      "complete": true
+    },
+    "stochastic": {
+      "completed": 8,
+      "expected": 8,
+      "complete": true
+    },
+    "online": {
+      "completed": 12,
+      "expected": 12,
+      "complete": true
+    }
+  },
+  "bootstrap_seed": 20261108,
+  "bootstrap_draws": 20000,
+  "bootstrap_unit": "base question",
+  "main_results": {
+    "all": {
+      "n": 120,
+      "accuracy": 0.7666666666666667,
+      "discovery": {
+        "recursive_surrogate": {
+          "1": 0.5166666666666667,
+          "2": 0.7416666666666667,
+          "3": 0.8333333333333334
+        },
+        "source_id": {
+          "1": 0.475,
+          "2": 0.7333333333333333,
+          "3": 0.8166666666666667
+        },
+        "random_exact_expectation": {
+          "1": 0.17361111111111108,
+          "2": 0.3444444444444444,
+          "3": 0.5125
+        }
+      },
+      "paired_gain_over_source_id_95ci": [
+        -0.008333333333333333,
+        0.09166666666666666
+      ]
+    },
+    "test": {
+      "n": 80,
+      "accuracy": 0.7125,
+      "discovery": {
+        "recursive_surrogate": {
+          "1": 0.4,
+          "2": 0.6875,
+          "3": 0.7875
+        },
+        "source_id": {
+          "1": 0.3375,
+          "2": 0.625,
+          "3": 0.7375
+        },
+        "random_exact_expectation": {
+          "1": 0.17708333333333334,
+          "2": 0.35,
+          "3": 0.51875
+        }
+      },
+      "paired_gain_over_source_id_95ci": [
+        -0.0125,
+        0.1375
+      ]
+    }
+  },
+  "online_results": [
+    {
+      "method": "recursive_surrogate",
+      "budget": 1,
+      "n": 12,
+      "hit_rate": 0.5833333333333334,
+      "mean_time_ratio_to_full_replay": 0.7030442139120869
+    },
+    {
+      "method": "recursive_surrogate",
+      "budget": 2,
+      "n": 12,
+      "hit_rate": 0.75,
+      "mean_time_ratio_to_full_replay": 0.8828021620446828
+    },
+    {
+      "method": "recursive_surrogate",
+      "budget": 3,
+      "n": 12,
+      "hit_rate": 0.9166666666666666,
+      "mean_time_ratio_to_full_replay": 1.0300014076722712
+    },
+    {
+      "method": "source_id",
+      "budget": 1,
+      "n": 12,
+      "hit_rate": 0.5833333333333334,
+      "mean_time_ratio_to_full_replay": 0.22020381483704446
+    },
+    {
+      "method": "source_id",
+      "budget": 2,
+      "n": 12,
+      "hit_rate": 0.8333333333333334,
+      "mean_time_ratio_to_full_replay": 0.3784494980143165
+    },
+    {
+      "method": "source_id",
+      "budget": 3,
+      "n": 12,
+      "hit_rate": 0.9166666666666666,
+      "mean_time_ratio_to_full_replay": 0.5429100001305299
+    },
+    {
+      "method": "lexical",
+      "budget": 1,
+      "n": 12,
+      "hit_rate": 0.3333333333333333,
+      "mean_time_ratio_to_full_replay": 0.19528864331395157
+    },
+    {
+      "method": "lexical",
+      "budget": 2,
+      "n": 12,
+      "hit_rate": 0.5,
+      "mean_time_ratio_to_full_replay": 0.34550100909233605
+    },
+    {
+      "method": "lexical",
+      "budget": 3,
+      "n": 12,
+      "hit_rate": 0.8333333333333334,
+      "mean_time_ratio_to_full_replay": 0.5128586910144812
+    },
+    {
+      "method": "random",
+      "budget": 1,
+      "n": 12,
+      "hit_rate": 0.0,
+      "mean_time_ratio_to_full_replay": 0.15544856510596053
+    },
+    {
+      "method": "random",
+      "budget": 2,
+      "n": 12,
+      "hit_rate": 0.6666666666666666,
+      "mean_time_ratio_to_full_replay": 0.3891396251276114
+    },
+    {
+      "method": "random",
+      "budget": 3,
+      "n": 12,
+      "hit_rate": 0.75,
+      "mean_time_ratio_to_full_replay": 0.5324009038595154
+    }
+  ],
+  "human_audit_claimed": false,
+  "identical_original_summaries_across_caps": true,
+  "identical_effects_across_caps": true,
+  "identical_original_answers_across_caps": true,
+  "mean_original_summary_tokens": 30.5,
+  "scope": "Frozen 120-item exploratory set: 80 fictional, 40 assistant-checked facts-page excerpts; no human audit or long-form prose benchmark."
+}

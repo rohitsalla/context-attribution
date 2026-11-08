@@ -11,7 +11,7 @@ def analyze(root):
     output = {"backend": manifest['backend_name'], "research_evidence": manifest['research_evidence'],
               "completed_conditions": len(rows), "completed_items": len(set(r['item_id'] for r in rows)),
               "caps": [], "counterexamples": [],
-              "caveats": ["Exploratory single-template fictional pilot, not a generalization benchmark.",
+              "caveats": ["Exploratory evaluation; consult the frozen dataset manifest for template scope and audit status.",
                           "Sparse-surrogate approximation, not official ContextCite.",
                           "Costs estimated from shared offline traces; no production latency claim."]}
     rng = np.random.default_rng(819)
