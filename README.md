@@ -12,6 +12,8 @@ The new research direction asks whether compact memory can preserve the raw-cont
 
 V2 includes revision-pinned HotpotQA train/dev/locked-test subsets, global/source/grouped and extractive hard-memory baselines, exact token-space replay receipts, common-target intervention measurements, and a trainable source-local soft-memory module. The first HF development matrix uses Qwen2.5-7B, Llama-3.1-8B, and Mistral-7B-v0.3 with Qwen2.5-1.5B compression, plus a Qwen self-compression control. Matched factual-only and paired-effect training canaries verify actual gradients; they do not establish generalization. [Model revisions](research/v2/models.json) and [execution instructions](research/v2/RUNNING.md) are public. Official attribution baselines, larger learning comparisons, and independent evaluation remain required before a strong paper claim.
 
+The first completed Qwen/Llama development profiles show exact sampled replay but no demonstrated win for source-local abstractive compression over lexical selection. See the [honest pilot review](research/v3/PILOT_REVIEW.md) and [follow-up protocol](research/v3/FOLLOWUP_PROTOCOL.md): 96-question cheap controls, held-out development evaluation of the optimization canaries, and matched factual/unpaired/paired objectives across three seeds. V3 code resides separately so the running V2 source remains unchanged. The locked test is still disabled.
+
 ## Run the infrastructure validation
 
 ```sh
