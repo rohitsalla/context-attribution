@@ -35,3 +35,7 @@ Simple cache commutation, attention pooling, residual edits, counterfactual dist
 ## CPU validation while the GPU queue is blocked
 
 Run the single worst selected numerical failure in FP32 on a scheduled CPU compute node, with the same 2D/4D mask checks. This uses no GPU and leaves the full CUDA precision diagnostic unchanged. A CPU pass is a semantic cross-check, not a certificate of GPU numerical behavior or a population result. The separate output/source hashes identify this debugging scope.
+
+## While the FP32 queue is pending
+
+The CPU ownership audit exactly reconstructs all six completed BF16 global-extraction studies. On MuSiQue, sources with no selected factual tokens hold 35–40% of raw influence magnitude, and 12–17% of compressed-pipeline influence magnitude is attached to these sources. This motivates a candidate separation of omitted content and selection-policy changes, rather than another paired-learning grid. These are prior BF16 diagnostics, not new FP32 evidence or proof that freezing improves fidelity. See `SELECTION_COVERAGE.md` and `SELECTION_HYPOTHESIS.md`. The four FP32 studies remain queued; do not claim this candidate is established before their results.
