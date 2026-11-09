@@ -1,0 +1,17 @@
+{
+  "scope": "post-hoc secondary Qwen Hotpot contrast; unadjusted exploratory question interval",
+  "mae": {
+    "mean": -0.17901513918384127,
+    "question_bootstrap_95": [
+      -0.3420029912114148,
+      -0.026415293631401538
+    ]
+  },
+  "qa": {
+    "mean": 0.014319539791507756,
+    "question_bootstrap_95": [
+      -0.06367844997457411,
+      0.09048913043478259
+    ]
+  }
+}

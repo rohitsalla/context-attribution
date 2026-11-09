@@ -1,0 +1,209 @@
+{
+  "scope": "adaptive development; two planned contrasts per study; unadjusted exploratory question intervals",
+  "studies": {
+    "hotpot_qwen7": {
+      "complete": true,
+      "available_rows": 576,
+      "trace_sha256": "dacd17637cafe9525aa89dfc35d3ab837f48d07a87c179e44286a74862605385",
+      "methods": {
+        "raw": {
+          "n": 96,
+          "f1": 0.5892517752715121,
+          "mean_positions": 1465.5208333333333,
+          "mean_question_mae": 0.0,
+          "pooled_nmae": 0.0,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 1
+        },
+        "global_128_recomputed": {
+          "n": 96,
+          "f1": 0.43588184476342373,
+          "mean_positions": 122.3125,
+          "mean_question_mae": 1.255257752063983,
+          "pooled_nmae": 2.1056975592439047,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.5104166666666666
+        },
+        "global_256_recomputed": {
+          "n": 96,
+          "f1": 0.4811011904761905,
+          "mean_positions": 250.11458333333334,
+          "mean_question_mae": 1.0505646188872582,
+          "pooled_nmae": 1.7623243912905495,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.5
+        },
+        "global_512_recomputed": {
+          "n": 96,
+          "f1": 0.5786915204678362,
+          "mean_positions": 506.2291666666667,
+          "mean_question_mae": 0.6644749851545934,
+          "pooled_nmae": 1.1146582063468808,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.625
+        },
+        "global_1024_recomputed": {
+          "n": 96,
+          "f1": 0.593011060259344,
+          "mean_positions": 1017.0729166666666,
+          "mean_question_mae": 0.48545984597075204,
+          "pooled_nmae": 0.8143599281428133,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.7604166666666666
+        },
+        "global_512_frozen": {
+          "n": 96,
+          "f1": 0.5786915204678362,
+          "mean_positions": 506.2291666666667,
+          "mean_question_mae": 0.5572877518404934,
+          "pooled_nmae": 0.9348513936022563,
+          "raw_effect_l1": 572.2794504326259,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.6979166666666666
+        }
+      },
+      "contrasts": {
+        "global_1024_recomputed-minus-global_128_recomputed": {
+          "all": {
+            "n": 96,
+            "mae": {
+              "mean": -0.7697979060932308,
+              "question_bootstrap_95": [
+                -1.0847422627689662,
+                -0.481559673158446
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.1571292154959203,
+              "question_bootstrap_95": [
+                0.06044334939786885,
+                0.2539885662979911
+              ]
+            }
+          },
+          "same_normalized_factual_answer": {
+            "n": 50,
+            "mae": {
+              "mean": -0.49840398407374004,
+              "question_bootstrap_95": [
+                -0.915491256594342,
+                -0.16696594396762013
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "both_exactly_correct": {
+            "n": 32,
+            "mae": {
+              "mean": -0.5423400433817512,
+              "question_bootstrap_95": [
+                -1.1162285873774305,
+                -0.1349795755264435
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "global_512_frozen-minus-global_512_recomputed": {
+          "all": {
+            "n": 96,
+            "mae": {
+              "mean": -0.10718723331409992,
+              "question_bootstrap_95": [
+                -0.21980823583845396,
+                0.004940500682035593
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "same_normalized_factual_answer": {
+            "n": 96,
+            "mae": {
+              "mean": -0.10718723331409992,
+              "question_bootstrap_95": [
+                -0.21980823583845396,
+                0.004940500682035593
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "both_exactly_correct": {
+            "n": 50,
+            "mae": {
+              "mean": -0.07615454023984453,
+              "question_bootstrap_95": [
+                -0.2312667431142794,
+                0.050753340145133864
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "selection_policy_diagnostic": {
+        "mean_question_absolute_dynamic_minus_frozen_effect": {
+          "mean": 0.45873355424583445,
+          "question_bootstrap_95": [
+            0.3282970958488972,
+            0.6000430311557042
+          ]
+        },
+        "summed_absolute_frozen_effect": 703.0216482440636,
+        "summed_absolute_policy_difference": 440.3842120760012,
+        "summed_absolute_recomputed_effect": 805.3664384537226,
+        "n_unrepresented_source_deletions": 227,
+        "raw_l1_unrepresented_fraction": 0.055316982484820504,
+        "n_both_effects_above_0_001": 501,
+        "n_sign_disagreements_in_that_subset": 115,
+        "interpretation": "dynamic = frozen + policy difference; magnitude ratios need not sum to one due to cancellation. Factual QA is identical; intervened lengths are not matched. This does not isolate IDF, refill, layout or unique causal mediation."
+      }
+    },
+    "hotpot_llama8": {
+      "complete": false,
+      "available_rows": 0
+    },
+    "musique_qwen7": {
+      "complete": false,
+      "available_rows": 0
+    },
+    "musique_llama8": {
+      "complete": false,
+      "available_rows": 0
+    }
+  }
+}

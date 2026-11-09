@@ -1,0 +1,201 @@
+{
+  "scope": "post-hoc adaptive diagnostic on completed development studies; uses raw-effect labels from other dev questions, not a deployable baseline",
+  "fit": "nonnegative scalar minimizing mean per-question L1 effect error on four hash folds, evaluated on the fifth",
+  "fold_rule": "SHA256(effect-amplitude-cv-v1: + question_id), first eight bytes big-endian modulo five",
+  "limitations": "effect rescaling is not temperature calibration or a normalized answering distribution. Positive scales retain rankings. Bootstrap conditions on fitted CV scales and is not uncertainty for the full fitting procedure.",
+  "studies": {
+    "hotpot_qwen7": {
+      "n": 96,
+      "trace_sha256": "dacd17637cafe9525aa89dfc35d3ab837f48d07a87c179e44286a74862605385",
+      "methods": {
+        "global_1024_recomputed": {
+          "pooled_nmae_after_cross_fitting": 0.7469990274460316,
+          "mean_question_mae_after_cross_fitting": 0.44530436760470943,
+          "fold_fits": [
+            {
+              "held_out_fold": 0,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.6831735466526571
+            },
+            {
+              "held_out_fold": 1,
+              "n_train": 81,
+              "n_test": 15,
+              "scale": 0.6831735466526571
+            },
+            {
+              "held_out_fold": 2,
+              "n_train": 79,
+              "n_test": 17,
+              "scale": 0.7909863241959317
+            },
+            {
+              "held_out_fold": 3,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.6556161862759375
+            },
+            {
+              "held_out_fold": 4,
+              "n_train": 74,
+              "n_test": 22,
+              "scale": 0.6685991135142586
+            }
+          ]
+        },
+        "global_128_recomputed": {
+          "pooled_nmae_after_cross_fitting": 1.0003262653299,
+          "mean_question_mae_after_cross_fitting": 0.5963189222669963,
+          "fold_fits": [
+            {
+              "held_out_fold": 0,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.0001745552106427444
+            },
+            {
+              "held_out_fold": 1,
+              "n_train": 81,
+              "n_test": 15,
+              "scale": 0.0022682899245784582
+            },
+            {
+              "held_out_fold": 2,
+              "n_train": 79,
+              "n_test": 17,
+              "scale": 0.001844371703852382
+            },
+            {
+              "held_out_fold": 3,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.0020763384665608716
+            },
+            {
+              "held_out_fold": 4,
+              "n_train": 74,
+              "n_test": 22,
+              "scale": 0.0031903714163084938
+            }
+          ]
+        },
+        "global_256_recomputed": {
+          "pooled_nmae_after_cross_fitting": 1.0012664685541963,
+          "mean_question_mae_after_cross_fitting": 0.5968794003758453,
+          "fold_fits": [
+            {
+              "held_out_fold": 0,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.0014083989461877817
+            },
+            {
+              "held_out_fold": 1,
+              "n_train": 81,
+              "n_test": 15,
+              "scale": 0.0029585378265677108
+            },
+            {
+              "held_out_fold": 2,
+              "n_train": 79,
+              "n_test": 17,
+              "scale": 0.0007021871836565647
+            },
+            {
+              "held_out_fold": 3,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.0029585378265677108
+            },
+            {
+              "held_out_fold": 4,
+              "n_train": 74,
+              "n_test": 22,
+              "scale": 0.010805607304900051
+            }
+          ]
+        },
+        "global_512_frozen": {
+          "pooled_nmae_after_cross_fitting": 0.8500128549942428,
+          "mean_question_mae_after_cross_fitting": 0.5067134265799715,
+          "fold_fits": [
+            {
+              "held_out_fold": 0,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.5630685702314363
+            },
+            {
+              "held_out_fold": 1,
+              "n_train": 81,
+              "n_test": 15,
+              "scale": 0.5885644477198874
+            },
+            {
+              "held_out_fold": 2,
+              "n_train": 79,
+              "n_test": 17,
+              "scale": 0.6926476284487026
+            },
+            {
+              "held_out_fold": 3,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.5027330343362169
+            },
+            {
+              "held_out_fold": 4,
+              "n_train": 74,
+              "n_test": 22,
+              "scale": 0.6926476284487026
+            }
+          ]
+        },
+        "global_512_recomputed": {
+          "pooled_nmae_after_cross_fitting": 1.0097294751437969,
+          "mean_question_mae_after_cross_fitting": 0.6019244053342874,
+          "fold_fits": [
+            {
+              "held_out_fold": 0,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.5060201874892076
+            },
+            {
+              "held_out_fold": 1,
+              "n_train": 81,
+              "n_test": 15,
+              "scale": 0.5595864401036624
+            },
+            {
+              "held_out_fold": 2,
+              "n_train": 79,
+              "n_test": 17,
+              "scale": 0.27232372758959383
+            },
+            {
+              "held_out_fold": 3,
+              "n_train": 75,
+              "n_test": 21,
+              "scale": 0.13902456103178973
+            },
+            {
+              "held_out_fold": 4,
+              "n_train": 74,
+              "n_test": 22,
+              "scale": 0.6352178284128651
+            }
+          ]
+        }
+      },
+      "cross_fitted_1024_minus_128_mae": {
+        "mean": -0.1510145546622869,
+        "conditional_question_bootstrap_95": [
+          -0.23542358074048558,
+          -0.0674383016437252
+        ]
+      }
+    }
+  }
+}
