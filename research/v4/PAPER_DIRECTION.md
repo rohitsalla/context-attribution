@@ -9,11 +9,11 @@ Provisional question: **When can compressed context substitute for the original 
 - Stronger ordinary token allocation answers much better than the anchor under its same factual allowance. It has higher effect error at that allowance, so report the frontier rather than naming a blanket winner.
 - On Qwen/Hotpot, the same-runtime 353-to-506-position comparison reduces source-effect error by 30.3%; the mean QA change is small but uncertain. The unchanged-answer subset does not establish an independent budget effect. Replication remains necessary.
 - Gold-support oracles improve QA across all three Hotpot model families, but their raw-influence agreement differs by model and subgroup. Support labels are not causal truth; no universal evidence-quality/influence tradeoff is claimed.
-- A positional diagnostic exposed an implicit packed-mask implementation error and remaining numerical equivalence failures. These are failed controls requiring repair, not a positive positional mechanism result.
+- The selected CUDA precision check completed: FP32 greatly reduces error, but one of 30 checks fails the fixed equivalence gate. The full positional run correctly skipped. Pause the positional mechanism claim; see `REMAINING_RESULTS.md`.
 
 ## Primary experiments to complete
 
-MuSiQue has completed on all three families (see `MUSIQUE_RESULTS.md`); finish the remaining stronger 7B compressor comparisons already queued. Resolve numerical semantics using explicit masks and precision controls. Then evaluate a fuller memory-budget curve with raw passthrough as a verified endpoint, equivalent target spans, actual achieved positions and answer-correctness slices. These expansions are future work, not executed outcomes.
+MuSiQue and all three stronger 7B compressor comparisons have completed (see `MUSIQUE_RESULTS.md` and `REMAINING_RESULTS.md`). The generated summaries underfill their cap and do not recover raw effects. The next executable protocol is `FRONTIER_PROTOCOL.md`: four FP32 budget/selection studies on Qwen/Llama and Hotpot/MuSiQue, with a verified raw passthrough endpoint, fixed targets, actual achieved positions and answer-correctness slices. These new study outcomes are not available yet.
 
 Before attributing any modest gain to evidence-aware learning, include ordinary unpaired distillation, stronger global extraction, and calibration-only controls. Probability-based influence changes can reflect confidence calibration while greedy decisions stay fixed. That is a different declared answering distribution, not automatically a flaw in a probability estimand. Decision-level deletion responses and rank recovery should complement amplitude metrics; do not change the primary metric retrospectively to rescue a weak method.
 

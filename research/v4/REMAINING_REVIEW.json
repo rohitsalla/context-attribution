@@ -1,0 +1,131 @@
+{
+  "scope": "adaptive development; no locked test; intervals unadjusted for multiple comparisons",
+  "stronger_compressors": {
+    "qwen7": {
+      "complete": true,
+      "n": 32,
+      "trace_sha256": "e23cd0812de1dcc65f9425999409790806c77f2f2e787802941d83d563d07494",
+      "raw_f1": 0.69375,
+      "generated_f1": 0.6428571428571429,
+      "generated_minus_raw_f1": {
+        "mean": -0.050892857142857156,
+        "question_bootstrap_95": [
+          -0.21130952380952384,
+          0.11667038690476184
+        ]
+      },
+      "mean_positions": 45.40625,
+      "nominal_cap": 512,
+      "pooled_nmae_mean_token_logp": 2.566161354573431,
+      "pooled_nmae_summed_token_logp": 2.9226055736811407,
+      "mean_question_mae_mean_token_logp": 1.6149350129617666,
+      "cached_cold_checks": 64,
+      "all_checked_tokens_equal": true,
+      "max_checked_effect_error": 0.0,
+      "interpretation": "sampled own-pipeline replay is distinct from raw-reference transfer; achieved lengths far below cap; not an equal-achieved-budget comparison"
+    },
+    "llama8": {
+      "complete": true,
+      "n": 32,
+      "trace_sha256": "32bf87dafab9b840c0cd62da40517cedf20b529d6649694a5bde328cfd7c070a",
+      "raw_f1": 0.8203125,
+      "generated_f1": 0.6558779761904762,
+      "generated_minus_raw_f1": {
+        "mean": -0.1644345238095238,
+        "question_bootstrap_95": [
+          -0.34114583333333337,
+          0.017866443452380823
+        ]
+      },
+      "mean_positions": 44.125,
+      "nominal_cap": 512,
+      "pooled_nmae_mean_token_logp": 2.850272677700588,
+      "pooled_nmae_summed_token_logp": 2.9338109034242086,
+      "mean_question_mae_mean_token_logp": 1.1957386852753233,
+      "cached_cold_checks": 64,
+      "all_checked_tokens_equal": true,
+      "max_checked_effect_error": 0.0,
+      "interpretation": "sampled own-pipeline replay is distinct from raw-reference transfer; achieved lengths far below cap; not an equal-achieved-budget comparison"
+    },
+    "mistral7": {
+      "complete": true,
+      "n": 32,
+      "trace_sha256": "a5517464fbc3932a73cfda41ad80e13cc803afb7aeb4402fe9478b5fa544491c",
+      "raw_f1": 0.6355654761904762,
+      "generated_f1": 0.6462225274725275,
+      "generated_minus_raw_f1": {
+        "mean": 0.010657051282051293,
+        "question_bootstrap_95": [
+          -0.14783110119047618,
+          0.17436383928571403
+        ]
+      },
+      "mean_positions": 50.15625,
+      "nominal_cap": 512,
+      "pooled_nmae_mean_token_logp": 3.021557061804505,
+      "pooled_nmae_summed_token_logp": 2.3560603293704627,
+      "mean_question_mae_mean_token_logp": 1.0630843902890499,
+      "cached_cold_checks": 64,
+      "all_checked_tokens_equal": true,
+      "max_checked_effect_error": 0.0,
+      "interpretation": "sampled own-pipeline replay is distinct from raw-reference transfer; achieved lengths far below cap; not an equal-achieved-budget comparison"
+    }
+  },
+  "positional": {
+    "completed_selected_cuda": {
+      "complete": true,
+      "selected_questions": 15,
+      "scope": "post-hoc selected numerical failures and low-error controls; not population inference",
+      "by_precision": {
+        "bfloat16": {
+          "dense_sparse_2d_error": 0.7459674529335212,
+          "dense_sparse_4d_error": 0.7459674529335212,
+          "sparse_2d_4d_error": 0.0,
+          "dense_2d_4d_error": 0.0,
+          "all_4d_checks_within_1e_minus4": false
+        },
+        "float32": {
+          "dense_sparse_2d_error": 0.00016339026840928028,
+          "dense_sparse_4d_error": 0.00016339026840928028,
+          "sparse_2d_4d_error": 0.0,
+          "dense_2d_4d_error": 0.0,
+          "all_4d_checks_within_1e_minus4": false
+        }
+      },
+      "final_runtime": {
+        "model_id": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "python": "3.10.20",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.17.0",
+        "cuda": "12.8",
+        "device": "cuda",
+        "gpu": "NVIDIA H200",
+        "dtype": "torch.float32",
+        "attention_implementation": "sdpa"
+      }
+    },
+    "trace_sha256": "eea5055e641ffe6142007e0e21f83ecbe009a2076de9ebf2496163213c6bb9cb",
+    "full_fp32_status": {
+      "skipped": true,
+      "reason": "CUDA FP32 equivalence gate has not passed"
+    },
+    "selected_checks": {
+      "bfloat16": {
+        "n_source_checks": 30,
+        "median_error": 0.0038396703647757564,
+        "maximum_error": 0.7459674529335212,
+        "above_fixed_1e_minus4_gate": 18,
+        "all_2d_4d_identical": true
+      },
+      "float32": {
+        "n_source_checks": 30,
+        "median_error": 1.1660312945818707e-06,
+        "maximum_error": 0.00016339026840928028,
+        "above_fixed_1e_minus4_gate": 1,
+        "all_2d_4d_identical": true
+      }
+    },
+    "interpretation": "full positional aggregate remains unvalidated; do not relax the gate after seeing its failure"
+  }
+}

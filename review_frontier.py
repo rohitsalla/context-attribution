@@ -1,0 +1,68 @@
+"""Offline review; incomplete experiments cannot enter frontier comparisons."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import statistics as st
+import numpy as np
+from context_attribution.v2.metrics import normalize,effect_comparison
+
+
+def interval(values):
+    a=np.asarray(values,dtype=float);rng=np.random.default_rng(20261108)
+    return {'mean':float(a.mean()),'question_bootstrap_95':np.quantile(
+        a[rng.integers(len(a),size=(5000,len(a)))].mean(axis=1),[.025,.975]).tolist()}
+
+
+def mae(row):
+    return st.mean(abs(row['effects'][k]-v) for k,v in row['raw_effects'].items())
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);args=p.parse_args()
+    result={'scope':'adaptive development; two planned contrasts per study; unadjusted exploratory question intervals',
+            'studies':{}}
+    for name in ['hotpot_qwen7','hotpot_llama8','musique_qwen7','musique_llama8']:
+        folder=args.root/name;trace=folder/'traces.jsonl'
+        rows=[json.loads(s) for s in trace.read_text().splitlines()] if trace.exists() else []
+        status={'complete':(folder/'completed.json').exists(),'available_rows':len(rows)}
+        result['studies'][name]=status
+        if not status['complete']:continue
+        done=json.loads((folder/'completed.json').read_text());assert done['complete'] and done['n']==96
+        groups={method:{r['item_id']:r for r in rows if r['method']==method} for method in
+                ['raw','global_128_recomputed','global_256_recomputed','global_512_recomputed','global_1024_recomputed','global_512_frozen']}
+        ids=sorted(groups['raw']);assert len(ids)==96 and all(set(g)==set(ids) for g in groups.values())
+        for qid in ids:
+            ref=groups['raw'][qid]
+            assert ref['raw_identity_endpoint_error']<=1e-7
+            for group in groups.values():
+                r=group[qid];assert r['common_target_tokens']==ref['common_target_tokens']
+                assert r['raw_effects']==ref['raw_effects'] and r['same_shape_repeat_error']<=1e-7
+                assert r['effects'].keys()==r['raw_effects'].keys()
+            a,b=groups['global_512_frozen'][qid],groups['global_512_recomputed'][qid]
+            assert a['factual_memory_sha256']==b['factual_memory_sha256'] and a['answer']==b['answer']
+        status['trace_sha256']=hashlib.sha256(trace.read_bytes()).hexdigest();status['methods']={}
+        for method,group in groups.items():
+            values=list(group.values());den=sum(abs(v) for r in values for v in r['raw_effects'].values())
+            err=sum(abs(r['effects'][k]-v) for r in values for k,v in r['raw_effects'].items())
+            hits=[effect_comparison(r['raw_effects'],r['effects'])['top1_hit'] for r in values]
+            valid_hits=[h for h in hits if h is not None]
+            status['methods'][method]={'n':len(values),'f1':st.mean(r['qa']['f1'] for r in values),
+                'mean_positions':st.mean(r['memory_positions'] for r in values),
+                'mean_question_mae':st.mean(mae(r) for r in values),'pooled_nmae':err/max(den,1e-12),
+                'raw_effect_l1':den,'top_source_non_negligible_n':len(valid_hits),
+                'top_source_hit_rate':st.mean(valid_hits) if valid_hits else None}
+        status['contrasts']={}
+        for left,right in [('global_1024_recomputed','global_128_recomputed'),('global_512_frozen','global_512_recomputed')]:
+            a,b=groups[left],groups[right];cohorts={'all':ids,
+                'same_normalized_factual_answer':[q for q in ids if normalize(a[q]['answer']['text'])==normalize(b[q]['answer']['text'])],
+                'both_exactly_correct':[q for q in ids if a[q]['qa']['em']==b[q]['qa']['em']==1]}
+            status['contrasts'][left+'-minus-'+right]={slice_name:{'n':len(selected),
+                'mae':interval([mae(a[q])-mae(b[q]) for q in selected]),
+                'qa_f1':interval([a[q]['qa']['f1']-b[q]['qa']['f1'] for q in selected])}
+                for slice_name,selected in cohorts.items() if selected}
+    args.root.mkdir(parents=True,exist_ok=True)
+    (args.root/'review.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+
+
+if __name__=='__main__':main()
