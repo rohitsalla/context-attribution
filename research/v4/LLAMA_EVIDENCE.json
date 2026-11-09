@@ -1,0 +1,97 @@
+{
+  "scope": "one completed exploratory model/benchmark; no prevalence or generality claim",
+  "trace_sha256": "020f346d7710584558ac36cc5a5d699904c056dd54c98152c63ba8a5b5915893",
+  "methods": {
+    "raw": {
+      "n": 96,
+      "f1": 0.7099596766537556,
+      "mean_positions": 1403.1666666666667,
+      "pooled_nmae": 0.0
+    },
+    "local_lexical": {
+      "n": 96,
+      "f1": 0.5849258988487513,
+      "mean_positions": 507.4166666666667,
+      "pooled_nmae": 1.0554451026867895
+    },
+    "global_lexical": {
+      "n": 96,
+      "f1": 0.6373842592592592,
+      "mean_positions": 505.7395833333333,
+      "pooled_nmae": 1.0917366442559997
+    },
+    "oracle_full": {
+      "n": 96,
+      "f1": 0.7718696083505866,
+      "mean_positions": 98.10416666666667,
+      "pooled_nmae": 0.9361921496874871
+    }
+  },
+  "raw_reference_outside_support": {
+    "pooled_l1_fraction": 0.18241525550673282,
+    "interpretation": "outside annotated support is not equivalent to irrelevant; support-only memory has zero deletion effects for excluded sources",
+    "oracle_error_lower_bound_holds": true
+  },
+  "same_questions_all_three_exactly_correct": {
+    "n": 41,
+    "question_ids": [
+      "5a70fdcd5542994082a3e492",
+      "5a7522aa5542996c70cfae93",
+      "5a774ae655429966f1a36ce0",
+      "5a77d37d5542995d831812f7",
+      "5a7a61af55429941d65f25fb",
+      "5a7bf2755542990527d5542f",
+      "5a7c4df555429907fabeef58",
+      "5a7f414c55429930675136e1",
+      "5a82635c55429966c78a6a0a",
+      "5a8289d255429954d2e2eb67",
+      "5a8497715542991dd0999d38",
+      "5a8a30ad5542992d82986eec",
+      "5a8a6a405542996c9b8d5ed8",
+      "5a8ae7ef55429970aeb7032a",
+      "5a8c3fe75542995e66a47579",
+      "5a8c40b15542997f31a41e03",
+      "5a8c45595542997f31a41e11",
+      "5ab3f12f55429976abd1bcfe",
+      "5ab43ccd5542991779162c26",
+      "5ab6774255429954757d32cd",
+      "5ab9baee55429970cfb8eb88",
+      "5ac0a7b2554299012d1db613",
+      "5ac0bdb9554299012d1db625",
+      "5ac1b2ee5542994d76dccebb",
+      "5ac2432d5542996366519957",
+      "5ac3a5fe554299391541387f",
+      "5ac3d11a554299204fd21e86",
+      "5ac3fd5a5542997ea680c9a6",
+      "5adc1da755429944faac242c",
+      "5adc2dcc55429944faac244b",
+      "5add6db55542992ae4cec560",
+      "5ae0ac2255429945ae959410",
+      "5ae2c93d5542992decbdcda0",
+      "5ae40adf55429970de88d8ae",
+      "5ae41ec755429970de88d904",
+      "5ae4c0d155429960a22e01b2",
+      "5ae5288b5542993aec5ec16d",
+      "5ae5a69e554299546bf82f06",
+      "5ae6129255429929b0807ac0",
+      "5ae662155542992ae0d1630e",
+      "5ae6dd175542992ae0d1639d"
+    ],
+    "methods": {
+      "global_lexical": {
+        "pooled_nmae": 0.38876573683360455,
+        "rank_misses": 10
+      },
+      "oracle_full": {
+        "pooled_nmae": 0.6959261802073713,
+        "rank_misses": 18
+      }
+    },
+    "oracle_minus_global_mean_effect_mae": 0.09432841110743072,
+    "question_bootstrap_95": [
+      0.031946818632173385,
+      0.16517311488750372
+    ],
+    "selection": "post-outcome both-correct diagnostic, not population inference or causal effect of QA correctness"
+  }
+}
