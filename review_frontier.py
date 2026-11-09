@@ -28,10 +28,11 @@ def main():
         status={'complete':(folder/'completed.json').exists(),'available_rows':len(rows)}
         result['studies'][name]=status
         if not status['complete']:continue
-        done=json.loads((folder/'completed.json').read_text());assert done['complete'] and done['n']==96
+        expected=32 if name.startswith('musique_') else 96
+        done=json.loads((folder/'completed.json').read_text());assert done['complete'] and done['n']==expected
         groups={method:{r['item_id']:r for r in rows if r['method']==method} for method in
                 ['raw','global_128_recomputed','global_256_recomputed','global_512_recomputed','global_1024_recomputed','global_512_frozen']}
-        ids=sorted(groups['raw']);assert len(ids)==96 and all(set(g)==set(ids) for g in groups.values())
+        ids=sorted(groups['raw']);assert len(ids)==expected and all(set(g)==set(ids) for g in groups.values())
         for qid in ids:
             ref=groups['raw'][qid]
             assert ref['raw_identity_endpoint_error']<=1e-7
