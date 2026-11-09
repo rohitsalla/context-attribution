@@ -43,7 +43,7 @@ def main():
     with sdpa_kernel(SDPBackend.MATH),(args.output/'dev.jsonl').open('w') as handle:
         for item in items:
             ref=refs[item['id']];target=ref['answer']['tokens'];n=len(target)
-            if target!=literal[item['id']]['common_target_tokens']:raise ValueError('Fixed target mismatch')
+            if target!=literal[item['id']]['raw_answer']['tokens']:raise ValueError('Fixed target mismatch')
             sources=[Source(s['id'],s['title'],s['text']) for s in item['sources']]
             budget=literal[item['id']]['memory_positions']
             raw_base=model.score(model.qa_ids(item['question'],raw_memory(model.tokenizer,sources)),target)
