@@ -1,0 +1,368 @@
+{
+  "scope": "adaptive development; question-bootstrap intervals do not capture full seed uncertainty",
+  "completed_seeds": [
+    1729,
+    1730
+  ],
+  "expected_seeds": [
+    1729,
+    1730,
+    1731
+  ],
+  "exact_state_verified": true,
+  "means": {
+    "factual_0": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.4241859991859992,
+          "em": 0.375,
+          "singleton_mean_logprob_effect_mae": 0.8459036605436038,
+          "singleton_pooled_nmae": 1.3740889230624007,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.2021285877063794,
+          "joint_pooled_nmae": 1.0284324458238896,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.4083829365079365,
+          "em": 0.3541666666666667,
+          "singleton_mean_logprob_effect_mae": 0.9133736799622548,
+          "singleton_pooled_nmae": 1.4836874632346884,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.220952255154171,
+          "joint_pooled_nmae": 1.0445362724450031,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.4162844678469678,
+      "singleton_mae": 0.8796386702529293,
+      "singleton_pooled_nmae": 1.4288881931485444,
+      "joint_mae": 1.2115404214302752
+    },
+    "unpaired_0.1": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.4326884920634921,
+          "em": 0.3854166666666667,
+          "singleton_mean_logprob_effect_mae": 0.8399841339075584,
+          "singleton_pooled_nmae": 1.364473222883097,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.205134499880548,
+          "joint_pooled_nmae": 1.0310040322921143,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.44530868437118437,
+          "em": 0.3958333333333333,
+          "singleton_mean_logprob_effect_mae": 0.9471731761838117,
+          "singleton_pooled_nmae": 1.538591485441289,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.3511612117451806,
+          "joint_pooled_nmae": 1.15593127383214,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.4389985882173382,
+      "singleton_mae": 0.893578655045685,
+      "singleton_pooled_nmae": 1.451532354162193,
+      "joint_mae": 1.2781478558128643
+    },
+    "paired_0.1": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.4396329365079365,
+          "em": 0.3854166666666667,
+          "singleton_mean_logprob_effect_mae": 0.7946598437896735,
+          "singleton_pooled_nmae": 1.290848284368669,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1559056780678858,
+          "joint_pooled_nmae": 0.9888883067868902,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.4170634920634921,
+          "em": 0.3645833333333333,
+          "singleton_mean_logprob_effect_mae": 0.8585270348071713,
+          "singleton_pooled_nmae": 1.3945943772368066,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.2167024051681063,
+          "joint_pooled_nmae": 1.040900485341818,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.4283482142857143,
+      "singleton_mae": 0.8265934392984224,
+      "singleton_pooled_nmae": 1.3427213308027377,
+      "joint_mae": 1.186304041617996
+    },
+    "unpaired_1": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.4378968253968254,
+          "em": 0.3854166666666667,
+          "singleton_mean_logprob_effect_mae": 0.8105800939799059,
+          "singleton_pooled_nmae": 1.3167091955565013,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1687612091972042,
+          "joint_pooled_nmae": 0.999886335996823,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.4170634920634921,
+          "em": 0.3645833333333333,
+          "singleton_mean_logprob_effect_mae": 0.7978661131084418,
+          "singleton_pooled_nmae": 1.296056559685084,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1796335528834914,
+          "joint_pooled_nmae": 1.009187729477915,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.42748015873015877,
+      "singleton_mae": 0.8042231035441738,
+      "singleton_pooled_nmae": 1.3063828776207926,
+      "joint_mae": 1.1741973810403477
+    },
+    "paired_1": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.4118551587301587,
+          "em": 0.3645833333333333,
+          "singleton_mean_logprob_effect_mae": 0.8162532616174104,
+          "singleton_pooled_nmae": 1.3259247092999478,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1284038033214765,
+          "joint_pooled_nmae": 0.9653601912429811,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.4222718253968254,
+          "em": 0.3645833333333333,
+          "singleton_mean_logprob_effect_mae": 0.815056486594151,
+          "singleton_pooled_nmae": 1.3239806636839235,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.2238931147814385,
+          "joint_pooled_nmae": 1.0470522058403366,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.417063492063492,
+      "singleton_mae": 0.8156548741057807,
+      "singleton_pooled_nmae": 1.3249526864919356,
+      "joint_mae": 1.1761484590514575
+    },
+    "lexical32": {
+      "by_seed": {
+        "1729": {
+          "n": 96,
+          "f1": 0.3753968253968254,
+          "em": 0.3229166666666667,
+          "singleton_mean_logprob_effect_mae": 0.8474618301658676,
+          "singleton_pooled_nmae": 1.3766200193539442,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1238469191121805,
+          "joint_pooled_nmae": 0.9614617334401897,
+          "joint_zero_predictor_mae": 1.168894070376533
+        },
+        "1730": {
+          "n": 96,
+          "f1": 0.3753968253968254,
+          "em": 0.3229166666666667,
+          "singleton_mean_logprob_effect_mae": 0.8474618301658676,
+          "singleton_pooled_nmae": 1.3766200193539442,
+          "singleton_zero_predictor_mae": 0.615610566642483,
+          "joint_mean_logprob_effect_mae": 1.1238469191121805,
+          "joint_pooled_nmae": 0.9614617334401897,
+          "joint_zero_predictor_mae": 1.168894070376533
+        }
+      },
+      "qa_f1": 0.3753968253968254,
+      "singleton_mae": 0.8474618301658676,
+      "singleton_pooled_nmae": 1.3766200193539442,
+      "joint_mae": 1.1238469191121805
+    }
+  },
+  "comparisons": {
+    "paired_0.1-vs-factual_0": {
+      "effect_mae": {
+        "difference": -0.053045230954506896,
+        "question_bootstrap_95": [
+          -0.09568946226909168,
+          -0.014934195160497384
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": -0.02523637981227912,
+        "question_bootstrap_95": [
+          -0.08932683724506234,
+          0.03889972839535842
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": 0.012063746438746437,
+        "question_bootstrap_95": [
+          -0.010416666666666666,
+          0.036458333333333336
+        ],
+        "n_questions": 96
+      }
+    },
+    "paired_0.1-vs-unpaired_0.1": {
+      "effect_mae": {
+        "difference": -0.06698521574726268,
+        "question_bootstrap_95": [
+          -0.19722310644951685,
+          0.009232450836621987
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": -0.09184381419486816,
+        "question_bootstrap_95": [
+          -0.2467648759576317,
+          0.017611459080461887
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": -0.01065037393162393,
+        "question_bootstrap_95": [
+          -0.03495592948717949,
+          0.013888888888888888
+        ],
+        "n_questions": 96
+      }
+    },
+    "paired_0.1-vs-lexical32": {
+      "effect_mae": {
+        "difference": -0.02086839086744523,
+        "question_bootstrap_95": [
+          -0.12416471536801398,
+          0.10086918115614785
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": 0.06245712250581553,
+        "question_bootstrap_95": [
+          -0.06035427516866276,
+          0.20064466491727123
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": 0.05295138888888889,
+        "question_bootstrap_95": [
+          0.0077907986111111155,
+          0.10590277777777778
+        ],
+        "n_questions": 96
+      }
+    },
+    "paired_1-vs-factual_0": {
+      "effect_mae": {
+        "difference": -0.06398379614714861,
+        "question_bootstrap_95": [
+          -0.11059872479669332,
+          -0.022206225736272317
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": -0.03539196237881769,
+        "question_bootstrap_95": [
+          -0.10850620536698273,
+          0.03429590278076857
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": 0.0007790242165242161,
+        "question_bootstrap_95": [
+          -0.026801215277777776,
+          0.02488704148860395
+        ],
+        "n_questions": 96
+      }
+    },
+    "paired_1-vs-unpaired_1": {
+      "effect_mae": {
+        "difference": 0.011431770561606843,
+        "question_bootstrap_95": [
+          -0.022824102192214243,
+          0.05031344338285077
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": 0.0019510780111097758,
+        "question_bootstrap_95": [
+          -0.054465087851728954,
+          0.06162688052095415
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": -0.010416666666666666,
+        "question_bootstrap_95": [
+          -0.036458333333333336,
+          0.013020833333333334
+        ],
+        "n_questions": 96
+      }
+    },
+    "paired_1-vs-lexical32": {
+      "effect_mae": {
+        "difference": -0.03180695606008695,
+        "question_bootstrap_95": [
+          -0.12204845665126274,
+          0.07529448659874201
+        ],
+        "n_questions": 96
+      },
+      "joint_effect_mae": {
+        "difference": 0.05230153993927695,
+        "question_bootstrap_95": [
+          -0.07303439288731589,
+          0.19550894887157244
+        ],
+        "n_questions": 96
+      },
+      "qa_f1": {
+        "difference": 0.041666666666666664,
+        "question_bootstrap_95": [
+          -0.0026041666666666665,
+          0.09375
+        ],
+        "n_questions": 96
+      }
+    }
+  },
+  "trace_sha256": {
+    "1729/factual_0": "c744ad00a492d9b0ff4af85c5d66adbd4329336a34c10d3db1236e1db91e4a25",
+    "1729/unpaired_0.1": "9ec3ab265810725a27cb2eb9278afca53c1db7c3fdc12813ada4ae23ff419728",
+    "1729/paired_0.1": "b5bccb7e83a2b8fa415585e6ed84b862113f61579a3fa065c74a80b455f15b17",
+    "1729/unpaired_1": "11fa95b3021557d0c50cc4c004a14847a75876e3d681bef39ed8c43ba948af8e",
+    "1729/paired_1": "1eb79058c56ca5f891e78db6589a04a6f06fccd91a4311cdb09450d8457b4070",
+    "1729/lexical32": "2ff2d674904194712628de340ada321856d581b27716ce5c3abab7867d1a1857",
+    "1730/factual_0": "cb5e9072dd44fb56af35c5760f17dc0d4e5f24676dbf3c389139dcdeb0b7c4e3",
+    "1730/unpaired_0.1": "e99558e1c7d2f038ee0f9b62db90095401638860a2e5970bf2c1db003989fa3e",
+    "1730/paired_0.1": "52b63ab89cc71562efb9cbb3b7f661b0ffd405ddd48adfe1d227e937e994e9c0",
+    "1730/unpaired_1": "5bc87fe4722db15cf13764850941a06e95cda9c7f7c7c7f68e173e5049f49872",
+    "1730/paired_1": "07012cb4538f527e4fc3709f36ed75d00ed634daac301e06bd86a74ce3c52d0b",
+    "1730/lexical32": "2ff2d674904194712628de340ada321856d581b27716ce5c3abab7867d1a1857"
+  },
+  "all_three_seeds_complete": false
+}
