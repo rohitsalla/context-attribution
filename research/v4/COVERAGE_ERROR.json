@@ -1,0 +1,55 @@
+{
+  "scope": "post-hoc descriptive partition of prior BF16 error; not a causal decomposition or FP32 finding",
+  "coverage_sha256": "53ab21eba69f1202405c4d796d858ee5ca688142a21bbabdbdd9fb1923b80c08",
+  "studies": {
+    "hotpot_qwen7": {
+      "n": 96,
+      "total_absolute_effect_error": 638.522186222852,
+      "error_on_unrepresented_sources": 74.64606742787524,
+      "error_on_partly_or_fully_represented_sources": 563.8761187949768,
+      "fraction_error_on_unrepresented_sources": 0.11690442249068986,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.8830955775093102
+    },
+    "musique_qwen7": {
+      "n": 96,
+      "total_absolute_effect_error": 1338.720848994058,
+      "error_on_unrepresented_sources": 360.74004867293985,
+      "error_on_partly_or_fully_represented_sources": 977.9808003211182,
+      "fraction_error_on_unrepresented_sources": 0.2694662213888782,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.7305337786111218
+    },
+    "hotpot_llama8": {
+      "n": 96,
+      "total_absolute_effect_error": 427.78955846116514,
+      "error_on_unrepresented_sources": 66.2314840429776,
+      "error_on_partly_or_fully_represented_sources": 361.5580744181875,
+      "fraction_error_on_unrepresented_sources": 0.15482258211543073,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.8451774178845692
+    },
+    "musique_llama8": {
+      "n": 96,
+      "total_absolute_effect_error": 688.4667820952075,
+      "error_on_unrepresented_sources": 208.8941149865178,
+      "error_on_partly_or_fully_represented_sources": 479.5726671086897,
+      "fraction_error_on_unrepresented_sources": 0.3034193085551512,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.6965806914448488
+    },
+    "hotpot_mistral7": {
+      "n": 96,
+      "total_absolute_effect_error": 407.86143385141975,
+      "error_on_unrepresented_sources": 52.50682482021833,
+      "error_on_partly_or_fully_represented_sources": 355.3546090312014,
+      "fraction_error_on_unrepresented_sources": 0.12873692009660834,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.8712630799033916
+    },
+    "musique_mistral7": {
+      "n": 96,
+      "total_absolute_effect_error": 570.6998011528597,
+      "error_on_unrepresented_sources": 182.1307792530588,
+      "error_on_partly_or_fully_represented_sources": 388.5690218998009,
+      "fraction_error_on_unrepresented_sources": 0.3191358729846058,
+      "fraction_error_on_partly_or_fully_represented_sources": 0.6808641270153942
+    }
+  },
+  "interpretation": "Having any selected tokens is weaker than retaining relevant evidence. Most error occurs on sources with some selected tokens; this does not identify selection-policy changes as the cause. Within-source omission, changed calibration, numerical sensitivity and policy changes remain alternatives. Error location is not an explained variance or causal contribution."
+}
