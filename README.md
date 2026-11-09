@@ -16,6 +16,8 @@ The first completed Qwen/Llama development profiles show exact sampled replay bu
 
 **V3 is complete and does not establish a paired-effect training win.** Its independently repeated warm-ups diverged despite matching initial parameters, so the objective comparison is confounded. Expanded 96-question controls also overturn the optimistic eight-case lexical QA impression. See the [completed review](research/v4/RESULTS_REVIEW.md). The [V4 protocol](research/v4/PROTOCOL.md) repairs controls by restoring a single actual warm-up/optimizer/RNG state, tests an exact lexical identity with learned residual edits, and broadens evidence-versus-influence analysis to pinned MuSiQue, stronger extraction and a clearly labeled gold-support oracle. All of this remains development, not final paper evidence.
 
+**All three exact-state anchored suites are now complete.** The primary paired objective gives a modest improvement over factual-only, but no reliable special advantage over unpaired supervision. Strong global extraction answers much better under the same token allowance; increasing its allowance improves effect fidelity. See [anchored results and budget controls](research/v4/ANCHORED_RESULTS.md) and the [current paper direction](research/v4/PAPER_DIRECTION.md). Positional diagnostics have failed numerical equivalence checks and are being validated separately; their raw alternate-position aggregates are not accepted mechanism results. MuSiQue and stronger-compressor work continues with one GPU.
+
 ## Run the infrastructure validation
 
 ```sh

@@ -1,0 +1,20 @@
+[
+  {
+    "length": 16,
+    "removed": [
+      4,
+      9
+    ],
+    "same_live_causal_connectivity": true,
+    "differing_entries": 0
+  },
+  {
+    "length": 1500,
+    "removed": [
+      200,
+      460
+    ],
+    "same_live_causal_connectivity": true,
+    "differing_entries": 0
+  }
+]

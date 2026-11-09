@@ -4,6 +4,7 @@ Retaining position IDs defines a different intervention; it is not labeled a
 correction or a uniquely true source effect. No generation or test access.
 """
 import argparse
+from contextlib import nullcontext
 import hashlib
 import json
 import os
@@ -33,7 +34,8 @@ def score_inputs(tokens,positions,mask=None,device='cpu'):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--paths',type=Path,required=True)
     p.add_argument('--reference',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
-    p.add_argument('--limit',type=int,default=96);args=p.parse_args()
+    p.add_argument('--limit',type=int,default=96)
+    p.add_argument('--dtype',choices=['bfloat16','float32'],default='bfloat16');p.add_argument('--force-math',action='store_true');args=p.parse_args()
     if not 1<=args.limit<=96:raise ValueError('Limit must be 1..96')
     if args.output.exists() and any(args.output.iterdir()):raise ValueError('Fresh probe output required')
     items=[json.loads(s) for s in (args.root/'data/v2-hotpot/dev.jsonl').read_text().splitlines()]
@@ -43,17 +45,21 @@ def main():
     items=items[:args.limit]
     paths=json.loads(args.paths.read_text());info=json.loads((args.root/'research/v2/models.json').read_text())['qwen7']
     model=HFModel(paths['qwen7'],info['revision'],model_id=info['model_id'])
+    if args.dtype=='float32':
+        torch.backends.cuda.matmul.allow_tf32=False;torch.set_float32_matmul_precision('highest');model.model.float()
     args.output.mkdir(parents=True,exist_ok=True)
     (args.output/'manifest.json').write_text(json.dumps({'runtime':model.runtime(),'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'reference_sha256':hashlib.sha256(args.reference.read_bytes()).hexdigest(),
         'dataset_sha256':hashlib.sha256((args.root/'data/v2-hotpot/dev.jsonl').read_bytes()).hexdigest(),
         'scope':'deletion protocol sensitivity; alternative estimands, not causal credit ground truth',
-        'revision':2,'attention_policy':'explicit 2D mask prevents implicit packed-sequence detection from gapped position IDs',
+        'revision':3,'attention_policy':'explicit 2D mask prevents implicit packed-sequence detection from gapped position IDs',
+        'model_dtype':args.dtype,'primary_attention':'forced math' if args.force_math else 'default SDPA',
+        'target_scope':'fixed original BF16 answer tokens and copied reference QA; no new answer generation',
         'crosscheck_backend':'forced SDPA math for both equivalent constructions; default-versus-math drift recorded separately',
         'dense_crosscheck_mean_logprob_tolerance':.001},indent=2))
     def score(tokens,positions,mask=None,target_length=None):
         ids,pos,attention=score_inputs(tokens,positions,mask,model.device)
-        with torch.inference_mode():
+        with torch.inference_mode(),(sdpa_kernel(SDPBackend.MATH) if args.force_math else nullcontext()):
             prefix=len(tokens)-target_length
             logits=model.model(input_ids=ids,position_ids=pos,attention_mask=attention,use_cache=False).logits[0,prefix-1:-1].float()
             return float(logits.log_softmax(-1).gather(-1,ids[0,prefix:,None]).sum())
@@ -67,7 +73,7 @@ def main():
                 spans[source['id']]=(start,len(prefix))
             prefix+=right;full=prefix+target
             base=score(full,list(range(len(full))),target_length=n)
-            original=model.score(prefix,target)
+            with sdpa_kernel(SDPBackend.MATH) if args.force_math else nullcontext():original=model.score(prefix,target)
             if abs(base-original)/n>.001:raise ValueError('Position-aware scoring failed factual wrapper control')
             compact={};fixed={};cross=[]
             selected=sorted(spans,key=lambda sid:digest([item['id'],sid,'position-crosscheck']))[:2]
@@ -80,12 +86,14 @@ def main():
                         sparse_math=score(tokens,positions,target_length=n)
                         dense=score(full,list(range(len(full))),mask,target_length=n)
                     cross.append({'source':sid,'dense_vs_sparse_mean_logprob_error':abs(dense-sparse_math)/n,
+                                  'primary_vs_math_mean_logprob_error':abs(sparse_math-preserved)/n,
                                   'default_vs_math_mean_logprob_error':abs(sparse_math-preserved)/n,
                                   'within_tolerance':abs(dense-sparse_math)/n<=.001})
             row={'item_id':item['id'],'raw_qa':ref['qa'],'compact_position_effects':compact,'retained_position_effects':fixed,
                 'support_ids':item['support_ids'],'crosschecks':cross,'factual_wrapper_mean_logprob_error':abs(base-original)/n,
                 'max_previous_deletion_effect_drift':max(abs(compact[s]-ref['effects'][s]) for s in compact),
                 'note':'Effects are mean log p on the same fixed raw target; positional gaps include continuation positions.'}
+            row['reference_qa_scope']='QA copied from original BF16 answer; not FP32 generation accuracy'
             handle.write(json.dumps(row,allow_nan=False)+'\n');handle.flush();os.fsync(handle.fileno());all_rows.append(row)
             print(item['id'],'complete',flush=True)
     result={'complete':True,'n':len(all_rows),'scope':'one model/benchmark protocol diagnostic; no novelty/general mechanism claim'}
@@ -97,6 +105,8 @@ def main():
     result['all_dense_sparse_crosschecks_within_tolerance']=all(c['within_tolerance'] for r in all_rows for c in r['crosschecks'])
     result['max_default_vs_math_mean_logprob_error']=max(c['default_vs_math_mean_logprob_error'] for r in all_rows for c in r['crosschecks'])
     result['max_previous_effect_drift']=max(r['max_previous_deletion_effect_drift'] for r in all_rows)
+    result['primary_attention']='math' if args.force_math else 'default SDPA'
+    result['backend_drift_field_scope']='primary is already math' if args.force_math else 'default versus math'
     (args.output/'completed.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
 
 

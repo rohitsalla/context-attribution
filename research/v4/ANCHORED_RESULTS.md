@@ -33,6 +33,8 @@ The first positional probe accidentally triggered packed-sequence masking and is
 
 A selected-case FP32/explicit-4D-mask diagnostic will distinguish attention-mask construction from arithmetic precision. The failures remain preserved. Runtime-conditioned deletion experiments remain records of the executed implementation; interpreting them as semantic evidence influence requires these additional controls. Numerical/backend sensitivity is not a new discovery claim, nor an excuse to discard unfavorable results.
 
+The selected worst failure now passes the full-model CPU FP32 check (maximum dense/sparse discrepancy 0.0000513; 2D/4D discrepancy zero). This supports corrected semantics for that case, with the hardware/precision scope explicitly limited. The selected-case CUDA FP32 diagnostic remains queued; this CPU pass does not validate the full BF16 positional aggregate.
+
 ## Next decision
 
 Do not make paired-effect training the paper's headline. Complete cross-model and second-benchmark controls, validate intervention semantics, and test whether effect gains exceed ordinary perturbation supervision, token allocation and confidence calibration. A temperature-only control is also needed before attributing small probability-effect gains to learned evidence preservation: positive rescaling can alter probabilities while leaving greedy decisions unchanged. That control is outstanding, not an executed result.

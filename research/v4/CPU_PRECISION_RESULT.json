@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "selected_questions": 1,
+  "scope": "post-hoc selected numerical failures and low-error controls; not population inference",
+  "by_precision": {
+    "float32": {
+      "dense_sparse_2d_error": 5.1256744161953804e-05,
+      "dense_sparse_4d_error": 5.1256744161953804e-05,
+      "sparse_2d_4d_error": 0.0,
+      "dense_2d_4d_error": 0.0,
+      "all_4d_checks_within_1e_minus4": true
+    }
+  },
+  "final_runtime": {
+    "model_id": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "python": "3.10.20",
+    "torch": "2.10.0+cu128",
+    "transformers": "5.17.0",
+    "cuda": "12.8",
+    "device": "cpu",
+    "gpu": null,
+    "dtype": "torch.float32",
+    "attention_implementation": "sdpa"
+  },
+  "qualification": "One deliberately selected worst failure, CPU FP32; does not certify CUDA or all questions."
+}

@@ -8,13 +8,20 @@ All V3 jobs completed with exit code zero. The result review is in `RESULTS_REVI
 |---|---|---|
 | Exact-state, repeated-gradient and lexical-identity smoke | 8548538, task 0 | Completed, exit 0, 33 seconds |
 | First Qwen/Hotpot evidence/oracle study | 8548542, task 5 | Completed: all 384 records |
-| Three anchored seeds and exact-state pure-soft audit | 8548544, tasks 2–4 then 1, concurrency 1 | Task 2 running on H200; remaining tasks queued |
-| Positional intervention diagnostic | 8548641 | Queued after learning, ten-minute cap |
-| Remaining evidence/oracle and stronger compressor studies | 8548542, tasks 6–13 | Queued after position diagnostic |
+| Three anchored seeds, all five objectives per seed | 8548544, tasks 2–4 | Completed, exit 0; exact shared states pass |
+| Original positional intervention diagnostic | 8548641 | Completed, invalid packed-mask semantics |
+| Explicit-mask positional repair | 8549582 | Completed; BF16 equivalence remains outside tolerance |
+| Global extraction, anchor allowance and cap 512 | 8549468; 8549583 | Both completed on identical runtime/reference |
+| Selected CUDA BF16/FP32 and 2D/4D validation | 8549800 | Queued after remaining evidence work |
+| Worst selected case, scheduled CPU FP32 validation | 8550023 | Completed; 2D/4D equality and dense/sparse tolerance pass |
+| Pure-soft single-seed audit | 8548544, task 1 | Deferred/cancelled before allocation; resources reallocated |
+| Remaining evidence/oracle and stronger compressor studies | 8548542, tasks 8–13 | MuSiQue/strong-compressor stages continuing; Hotpot tasks 5–7 complete |
 | CPU aggregation | 8548545 | Queued after the remaining evidence array |
 
 Frozen runtime source is commit `d20dd98`. All 29 tests pass locally and in ARC's actual environment. On the real-HF smoke, same-state gradient hashes agree, source-local cached/cold embeddings agree, initial lexical inputs are exactly identical, and branch start hashes agree for pool parameters, full AdamW state, CPU RNG and CUDA RNG. These are implementation checks on two examples/two updates, not efficacy results.
 
-The first full Hotpot/Qwen evidence task is complete; see `INTERIM_REVIEW.md`. The repaired anchored comparison has not completed, so no efficacy judgment is available yet. Its shared warm-up and first branch checkpoint have been written. The other model/MuSiQue and learning tasks remain exploratory development. A limited cross-benchmark audit found zero exact case-folded question matches with the Hotpot train/dev subset and 11 shared document titles; this is not a pretraining-contamination test or a claim of corpus independence.
+All three 96-question Hotpot evidence studies and all anchored suites are complete. See `ANCHORED_RESULTS.md`, `ANCHORED_REVIEW.json`, and the three model-specific evidence records. The paired objective offers only a modest improvement over factual-only and no reliable unique advantage over unpaired supervision. The 353-to-506-position same-runtime global-extraction control reduces effect MAE substantially, with uncertain mean QA change. The other-model/MuSiQue and stronger-compressor work remains exploratory development. A limited cross-benchmark audit found zero exact case-folded question matches with the Hotpot train/dev subset and 11 shared document titles; this is not a pretraining-contamination test or a claim of corpus independence.
 
-The standalone position probe is separately frozen at commit `04a7e48` and leaves the active V4 runtime unchanged. The new positional-index test passes locally (30 tests total); the original 29 core tests also passed on ARC. The dependency chain allows at most one GPU. The maximum allocation is now 5 hours 40 minutes, including the ten-minute position probe. Timeouts stay visible as incomplete studies. CPU aggregation runs automatically after the arrays finish; no locked-test example is loaded. The full runtime, model/data/source hashes, traces and checkpoint receipts stay with the ARC outputs.
+The original position source is `04a7e48`, repair is `c7eb11b`, CUDA precision source is `a6d7042`, and the separately copied CPU variant is `f18bc1e`; the frozen V4 runtime is unchanged. The CPU check covers only one deliberately selected worst failure: its largest dense/sparse FP32 error is 0.0000513 mean log probability and its 2D/4D difference is zero. It does not certify CUDA behavior or the full cohort. The BF16 alternate-position aggregate remains unvalidated.
+
+All 31 local tests pass; the original 29 core tests also passed on ARC. The dependency chain allows at most one project GPU. The maximum stage allocation is 5 hours 59 minutes after deferring the unused pure audit; the CPU check separately has a 15-minute/32-CPU limit. The older main array was unblocked when the newer precision job lost immediate GPU priority. Timeouts stay visible as incomplete studies. CPU aggregation runs after the evidence array; no locked-test example is loaded. Runtime/model/data/source hashes, traces and checkpoint receipts stay with the ARC outputs.

@@ -1,0 +1,9 @@
+# Conditional completion of the positional control
+
+The single worst-case CPU FP32 check passed, but that does not certify CUDA arithmetic. After the already queued CUDA precision diagnostic, run the full 96-question FP32 positional comparison **only if every selected CUDA explicit-4D equivalence check passes the fixed 0.0001 tolerance**. Missing or failed gates produce a skip record before model loading. Do not silently treat a skipped experiment as completed evidence.
+
+The complete rerun upcasts the existing frozen Qwen weights to FP32, disables TF32, and forces math attention in both factual and intervention scoring. It supplies explicit single-stream masks, validates dense/sparse equivalence on the same two ID-selected branches/question, and retains the original target-token spans. QA labels refer to the original BF16-generated answers: this is a fixed-event numerical/intervention diagnostic, not newly measured FP32 answer accuracy. Old BF16 outputs remain unchanged.
+
+The standalone program supports these options in `position_probe.py`. On ARC it is copied under a separate module name so the original helper imported by the pending CUDA diagnostic stays frozen. The executable gate is `run_fp32_position.sh`.
+
+Budget policy: do not add this 30-minute maximum blindly to historical submission limits. Account for actual GPU time of finished jobs plus full time limits of running/pending project jobs, then reserve the new limit. Submit only if that conservative upper bound remains below the existing six-GPU-hour stage cap. Completed jobs have used substantially less than their limits. The exact accounting and Slurm receipt are retained in `logs/gpu_budget_accounting.json`. This extends validation, not the learning grid, and keeps at most one project GPU active. No locked-test data is loaded.
