@@ -34,6 +34,7 @@ def main():
               'selection':'six largest dense/sparse errors, six largest backend errors, four smallest dense/sparse errors; union',
               'case_ids':list(chosen),'native_runtime':model.runtime(),'tf32':False,'float32_matmul_precision':'highest',
               'device':args.device,'case_limit':args.case_limit,'cpu_scope':'CPU validation does not certify CUDA behavior' if args.device=='cpu' else None,
+              'torch_num_threads':torch.get_num_threads(),
               'prior_trace_sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
               'reference_sha256':hashlib.sha256((args.root/'results/v4/evidence_hotpot_qwen7/traces.jsonl').read_bytes()).hexdigest(),
               'mask_helper_sha256':hashlib.sha256((args.root/'src/context_attribution/position_probe.py').read_bytes()).hexdigest(),

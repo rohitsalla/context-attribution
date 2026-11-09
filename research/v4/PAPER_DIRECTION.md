@@ -17,7 +17,7 @@ Finish MuSiQue and the stronger 7B compressor comparisons already queued. Resolv
 
 Before attributing any modest gain to evidence-aware learning, include ordinary unpaired distillation, stronger global extraction, and calibration-only controls. Probability-based influence changes can reflect confidence calibration while greedy decisions stay fixed. That is a different declared answering distribution, not automatically a flaw in a probability estimand. Decision-level deletion responses and rank recovery should complement amplitude metrics; do not change the primary metric retrospectively to rescue a weak method.
 
-Use official released compression implementations/checkpoints where compatible (e.g. RECOMP/LLMLingua-2) before broad compressor comparisons. ContextCite/AttriBoT are required if the final paper makes estimator-efficiency claims; their estimands must match rather than relabeling a custom baseline. Additional baselines are not claimed implemented here.
+Use official released compression implementations/checkpoints where compatible (e.g. [RECOMP](https://arxiv.org/abs/2310.04408), [LLMLingua-2](https://arxiv.org/abs/2403.12968), [official LLMLingua code](https://github.com/microsoft/LLMLingua)) before broad compressor comparisons. ContextCite/AttriBoT are required if the final paper makes estimator-efficiency claims; their estimands must match rather than relabeling a custom baseline. Additional baselines are not claimed implemented here.
 
 ## Candidate manuscript structure
 
