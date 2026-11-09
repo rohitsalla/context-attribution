@@ -1,0 +1,39 @@
+{
+  "scope": "one adaptive development benchmark/model; exact same reference and runtime; large-minus-small",
+  "n": 96,
+  "quality": {
+    "mean_difference": 0.012664473684210526,
+    "question_bootstrap_95": [
+      -0.05400219298245614,
+      0.07950383771929813
+    ]
+  },
+  "effect_mae": {
+    "mean_difference": -0.3038126426990126,
+    "question_bootstrap_95": [
+      -0.5403164816087297,
+      -0.08365400835119262
+    ]
+  },
+  "joint_effect_mae": {
+    "mean_difference": -0.3083996441238161,
+    "question_bootstrap_95": [
+      -0.6325951516300926,
+      -0.016440577077642095
+    ]
+  },
+  "mean_positions": {
+    "matched_allowance": 353.4270833333333,
+    "cap512": 506.2291666666667
+  },
+  "same_factual_answer": {
+    "n": 75,
+    "effect_mae": {
+      "mean_difference": -0.053487068506657555,
+      "question_bootstrap_95": [
+        -0.2000870942589488,
+        0.10416432053430535
+      ]
+    }
+  }
+}
