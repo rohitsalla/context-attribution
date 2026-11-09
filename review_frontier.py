@@ -61,6 +61,29 @@ def main():
                 'mae':interval([mae(a[q])-mae(b[q]) for q in selected]),
                 'qa_f1':interval([a[q]['qa']['f1']-b[q]['qa']['f1'] for q in selected])}
                 for slice_name,selected in cohorts.items() if selected}
+        # Exact algebra on matched factual memories, not a unique causal decomposition.
+        policy_diffs=[];direct_mass=policy_mass=dynamic_mass=0.;excluded_raw=all_raw=0.;excluded_n=0
+        flips=0;active=0;raw_omitted_by_question=[]
+        for qid in ids:
+            frozen=groups['global_512_frozen'][qid];dynamic=groups['global_512_recomputed'][qid]
+            diffs=[dynamic['effects'][k]-frozen['effects'][k] for k in frozen['effects']]
+            policy_diffs.append(st.mean(abs(v) for v in diffs));policy_mass+=sum(abs(v) for v in diffs)
+            direct_mass+=sum(abs(v) for v in frozen['effects'].values())
+            dynamic_mass+=sum(abs(v) for v in dynamic['effects'].values())
+            omitted=[k for k,v in frozen['source_positions'].items() if v==0]
+            assert all(abs(frozen['effects'][k])<=1e-7 for k in omitted)
+            omitted_raw=sum(abs(frozen['raw_effects'][k]) for k in omitted)
+            excluded_raw+=omitted_raw;all_raw+=sum(abs(v) for v in frozen['raw_effects'].values());excluded_n+=len(omitted)
+            raw_omitted_by_question.append({'item_id':qid,'omitted_raw_l1':omitted_raw})
+            for k in frozen['effects']:
+                f,d=frozen['effects'][k],dynamic['effects'][k]
+                if abs(f)>.001 and abs(d)>.001:active+=1;flips+=int(f*d<0)
+        status['selection_policy_diagnostic']={'mean_question_absolute_dynamic_minus_frozen_effect':interval(policy_diffs),
+            'summed_absolute_frozen_effect':direct_mass,'summed_absolute_policy_difference':policy_mass,
+            'summed_absolute_recomputed_effect':dynamic_mass,
+            'n_unrepresented_source_deletions':excluded_n,'raw_l1_unrepresented_fraction':excluded_raw/max(all_raw,1e-12),
+            'n_both_effects_above_0_001':active,'n_sign_disagreements_in_that_subset':flips,
+            'interpretation':'dynamic = frozen + policy difference; magnitude ratios need not sum to one due to cancellation. Factual QA is identical; intervened lengths are not matched. This does not isolate IDF, refill, layout or unique causal mediation.'}
     args.root.mkdir(parents=True,exist_ok=True)
     (args.root/'review.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 
