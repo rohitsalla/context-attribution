@@ -13,7 +13,7 @@ Provisional question: **When can compressed context substitute for the original 
 
 ## Primary experiments to complete
 
-Finish MuSiQue and the stronger 7B compressor comparisons already queued. Resolve numerical semantics using explicit masks and precision controls. Then evaluate a fuller memory-budget curve with raw passthrough as a verified endpoint, equivalent target spans, actual achieved positions and answer-correctness slices. These expansions are future work, not executed outcomes.
+MuSiQue has completed on all three families (see `MUSIQUE_RESULTS.md`); finish the remaining stronger 7B compressor comparisons already queued. Resolve numerical semantics using explicit masks and precision controls. Then evaluate a fuller memory-budget curve with raw passthrough as a verified endpoint, equivalent target spans, actual achieved positions and answer-correctness slices. These expansions are future work, not executed outcomes.
 
 Before attributing any modest gain to evidence-aware learning, include ordinary unpaired distillation, stronger global extraction, and calibration-only controls. Probability-based influence changes can reflect confidence calibration while greedy decisions stay fixed. That is a different declared answering distribution, not automatically a flaw in a probability estimand. Decision-level deletion responses and rank recovery should complement amplitude metrics; do not change the primary metric retrospectively to rescue a weak method.
 

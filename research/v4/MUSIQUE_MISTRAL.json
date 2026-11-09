@@ -1,0 +1,58 @@
+{
+  "scope": "one completed exploratory model/benchmark; no prevalence or generality claim",
+  "trace_sha256": "6bcb456607bfc9bf67b80214539d64017fc567c40ed09abd3fadc3d80f963751",
+  "methods": {
+    "raw": {
+      "n": 96,
+      "f1": 0.15300889278491833,
+      "mean_positions": 2939.5208333333335,
+      "pooled_nmae": 0.0
+    },
+    "local_lexical": {
+      "n": 96,
+      "f1": 0.07096837650283536,
+      "mean_positions": 512,
+      "pooled_nmae": 1.6986978956309282
+    },
+    "global_lexical": {
+      "n": 96,
+      "f1": 0.1113628762541806,
+      "mean_positions": 505.2916666666667,
+      "pooled_nmae": 1.9333719207828182
+    },
+    "oracle_full": {
+      "n": 96,
+      "f1": 0.40392327624473545,
+      "mean_positions": 442.6145833333333,
+      "pooled_nmae": 1.0544924932811184
+    }
+  },
+  "raw_reference_outside_support": {
+    "pooled_l1_fraction": 0.4410495781444103,
+    "interpretation": "outside annotated support is not equivalent to irrelevant; support-only memory has zero deletion effects for excluded sources",
+    "oracle_error_lower_bound_holds": true
+  },
+  "same_questions_all_three_exactly_correct": {
+    "n": 2,
+    "question_ids": [
+      "2hop__23459_22946",
+      "3hop2__19639_90098_10557"
+    ],
+    "methods": {
+      "global_lexical": {
+        "pooled_nmae": 0.6079234885144497,
+        "rank_misses": 0
+      },
+      "oracle_full": {
+        "pooled_nmae": 0.35882940180709805,
+        "rank_misses": 0
+      }
+    },
+    "oracle_minus_global_mean_effect_mae": -0.03903905110476749,
+    "question_bootstrap_95": [
+      -0.059731341795304614,
+      -0.018346760414230362
+    ],
+    "selection": "post-outcome both-correct diagnostic, not population inference or causal effect of QA correctness"
+  }
+}
