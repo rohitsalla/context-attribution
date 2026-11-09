@@ -1,47 +1,27 @@
-# Current paper direction, after anchored results
+# Current paper direction after the complete FP32 frontier
 
-Provisional question: **When can compressed context substitute for the original context in a source-influence audit?** The main evidence should be a validated quality/influence/resource frontier, rather than a claimed new paired-training method.
+Provisional question: **Which compression and intervention contracts preserve a raw model's source-deletion responses?** Current results favor studying selection stability; they do not establish a successful new paired-training method or a universal compression law.
 
-## What the current evidence supports
+## Evidence that determines the direction
 
-- Exact cached replay within a compression pipeline and preservation of the raw pipeline's effects are different properties. The experiment separates their targets and validates each against the appropriate reference.
-- Three exact-state anchored seeds show a small primary paired-versus-factual improvement, but no reliable advantage beyond unpaired perturbation supervision. The learned method has not passed its advancement gates.
-- Stronger ordinary token allocation answers much better than the anchor under its same factual allowance. It has higher effect error at that allowance, so report the frontier rather than naming a blanket winner.
-- On Qwen/Hotpot, the same-runtime 353-to-506-position comparison reduces source-effect error by 30.3%; the mean QA change is small but uncertain. The unchanged-answer subset does not establish an independent budget effect. Replication remains necessary.
-- Gold-support oracles improve QA across all three Hotpot model families, but their raw-influence agreement differs by model and subgroup. Support labels are not causal truth; no universal evidence-quality/influence tradeoff is claimed.
-- The selected CUDA precision check completed: FP32 greatly reduces error, but one of 30 checks fails the fixed equivalence gate. The full positional run correctly skipped. Pause the positional mechanism claim; see `REMAINING_RESULTS.md`.
+- All four FP32 studies completed and passed independent validation. Both Hotpot models improve with 128-to-1024 budgets (61% and 56% lower effect MAE). Neither MuSiQue model reliably improves on that contrast. Do not headline a general larger-budget solution.
+- At identical factual memory and QA, frozen selection reduces error by 16%, 22%, 48% and 53% across Qwen/Hotpot, Llama/Hotpot, Qwen/MuSiQue and Llama/MuSiQue. The latter three unadjusted exploratory intervals exclude zero; the first remains uncertain. These are different intervention contracts, not a uniquely correct causal credit assignment.
+- Frozen MuSiQue fidelity still loses to zero-effect prediction, and raw QA is only 14–20%. Report the absolute failures alongside relative improvements and all budgets.
+- Three exact-state anchored seeds show no reliable unique paired-training advantage. Stronger generated summaries replay correctly in sampled checks but transfer raw effects poorly and strongly underfill their cap. These remain controlled negative/limitation results.
+- The positional equivalence gate failed, including one selected FP32 CUDA discrepancy above tolerance. No full positional mechanism result is claimed.
 
-## Primary experiments to complete
+Full measurements, intervals and job receipts are in `FP32_COMPLETE_RESULTS.md` and `FP32_FRONTIER_REVIEW.json`. Same-answer/both-correct and oracle scalar-rescaling analyses are post-hoc diagnostics, not substitutes for the primary metric or valid normalized probability calibration.
 
-MuSiQue and all three stronger 7B compressor comparisons have completed (see `MUSIQUE_RESULTS.md` and `REMAINING_RESULTS.md`). The generated summaries underfill their cap and do not recover raw effects. The next executable protocol is `FRONTIER_PROTOCOL.md`: four FP32 budget/selection studies on Qwen/Llama and Hotpot/MuSiQue, with a verified raw passthrough endpoint, fixed targets, actual achieved positions and answer-correctness slices. The Qwen/Hotpot FP32 study is now complete: see `FP32_FIRST_RESULTS.md`. Larger budgets improve fidelity, while the frozen-selection contrast remains uncertain; other model/benchmark replications are still pending.
+## Executable next experiment
 
-Before attributing any modest gain to evidence-aware learning, include ordinary unpaired distillation, stronger global extraction, and calibration-only controls. Probability-based influence changes can reflect confidence calibration while greedy decisions stay fixed. That is a different declared answering distribution, not automatically a flaw in a probability estimand. Decision-level deletion responses and rank recovery should complement amplitude metrics; do not change the primary metric retrospectively to rescue a weak method.
+Run the already specified `SELECTION_MECHANISM_PROTOCOL.md`: one additional fixed-ranking repacking branch on the same four cohorts. Frozen deletion removes selected chunks without replacement; fixed-ranking repacking preserves the original candidate priority/IDF but repacks surviving candidates; refitted selection changes both ranking and packing. Check archived raw/factual scores and exact factual hashes before interpreting the comparisons. These contrasts still do not isolate post-deletion content, length and positions or constitute unique causal mediation.
 
-Use official released compression implementations/checkpoints where compatible (e.g. [RECOMP](https://arxiv.org/abs/2310.04408), [LLMLingua-2](https://arxiv.org/abs/2403.12968), [official LLMLingua code](https://github.com/microsoft/LLMLingua)) before broad compressor comparisons. ContextCite/AttriBoT are required if the final paper makes estimator-efficiency claims; their estimands must match rather than relabeling a custom baseline. Additional baselines are not claimed implemented here.
+Smoke 8560784 gates array 8560785, four 15-minute jobs with concurrency one; CPU aggregation 8560786 follows. Including full new limits, the stage upper bound is 20,900 GPU seconds below 21,600. No new learning grid or locked-test run is scheduled.
 
-## Candidate manuscript structure
+## What a strong paper still needs
 
-1. Define own-pipeline replay fidelity, raw-reference transfer, and task quality independently.
-2. Specify source interventions as executable contracts: tokens, source identity, positions, attention routing, model/codec revisions, decoding and numerical backend.
-3. Establish a multi-model, two-benchmark frontier with fixed targets, achieved budgets, uncertainty and both-correct/incorrect-answer slices.
-4. Test why transfer fails: evidence selection, source allocation, calibration, layout and numerical execution. Keep failures that did not isolate a mechanism.
-5. Present anchored learning as a controlled candidate repair/negative ablation unless it beats the strongest alternatives. Report all coefficients/seeds and costs.
-6. Freeze the final hypothesis and protocol before locked confirmation. No test evaluation has run.
+Separate own-pipeline replay, raw-reference transfer and task quality. Specify the executed intervention, source ownership, numerical backend, fixed target and actual achieved memory for every system. Include zero-effect and raw identity checks, selection-policy alternatives, answer-correctness slices and decision/rank metrics without retrospectively replacing the primary error metric.
 
-## Limits of the claim
+Use official released implementations/checkpoints (e.g. RECOMP and LLMLingua-2) under achieved-budget curves before claiming broad compressor comparisons. ContextCite/AttriBoT comparisons are required if claiming estimator efficiency, with matched estimands. Representation/answer retention, attribution-compression frontiers, counterfactual distillation and selection effects have substantial precedent; elementary algebra and cache commutation are not novelty claims. See existing related-work audits in `research/v2` and `SELECTION_HYPOTHESIS.md`.
 
-Simple cache commutation, attention pooling, residual edits, counterfactual distillation and positional bias all have prior art. Current observations are adaptive development on shared public corpora, not a novelty certificate, a universal compression lower bound, or proof of unique knowledge origin. No ICML readiness is asserted. A strong paper depends on replicated results and rigorous alternatives, not the preferred narrative.
-
-## CPU validation while the GPU queue is blocked
-
-Run the single worst selected numerical failure in FP32 on a scheduled CPU compute node, with the same 2D/4D mask checks. This uses no GPU and leaves the full CUDA precision diagnostic unchanged. A CPU pass is a semantic cross-check, not a certificate of GPU numerical behavior or a population result. The separate output/source hashes identify this debugging scope.
-
-## While the FP32 queue is pending
-
-The CPU ownership audit exactly reconstructs all six completed BF16 global-extraction studies. On MuSiQue, sources with no selected factual tokens hold 35–40% of raw influence magnitude, and 12–17% of compressed-pipeline influence magnitude is attached to these sources. This motivates a candidate separation of omitted content and selection-policy changes, rather than another paired-learning grid. These are prior BF16 diagnostics, not new FP32 evidence or proof that freezing improves fidelity. See `SELECTION_COVERAGE.md` and `SELECTION_HYPOTHESIS.md`. The four FP32 studies remain queued; do not claim this candidate is established before their results.
-
-The error-location follow-up (`COVERAGE_ERROR.json`) shows that 68–73% of MuSiQue absolute transfer error is on sources having at least some selected tokens. Source-level absence alone does not locate most error. This observation does not rule out omission within selected sources or identify selection changes as the cause. Keep the FP32 matched-factual policy test primary rather than presenting a one-factor explanation.
-
-## First FP32 result and next gate
-
-On Qwen/Hotpot, 128-to-1024 reduces MAE by 61.3%, and the same-answer diagnostic remains favorable. The secondary 512-to-1024 change reduces MAE by 26.9% with uncertain QA change. Frozen selection has a favorable 16.1% point reduction but its interval includes zero. A cross-fitted oracle one-scalar diagnostic does not erase the large-versus-small budget gap; it is not probability calibration. Prioritize the already queued Llama/MuSiQue replications, then released baselines under achieved resource curves. The candidate distinction between answering sufficiency and audit transfer is not yet a general or novel claim.
+All findings remain adaptive development on public corpora. A frozen final hypothesis, independent review and locked confirmation must follow promising replicated evidence. No ICML readiness, universal fidelity limit or unique knowledge-origin claim is asserted.
