@@ -17,7 +17,8 @@ from .v4.evidence import global_lexical
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--paths',type=Path,required=True)
-    p.add_argument('--suite',type=Path,required=True);p.add_argument('--output',type=Path,required=True);args=p.parse_args()
+    p.add_argument('--suite',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--budget',type=int,choices=[512]);args=p.parse_args()
     if args.output.exists() and any(args.output.iterdir()):raise ValueError('Fresh output required')
     if not (args.suite/'completed.json').exists():raise ValueError('Completed reference suite required')
     dataset=args.root/'data/v2-hotpot/dev.jsonl';items=[json.loads(s) for s in dataset.read_text().splitlines()]
@@ -37,6 +38,7 @@ def main():
         'reference_sha256':hashlib.sha256((args.suite/'raw_reference.json').read_bytes()).hexdigest(),
         'literal_trace_sha256':hashlib.sha256((args.suite/'lexical32.jsonl').read_bytes()).hexdigest(),
         'python_hash_seed':os.environ.get('PYTHONHASHSEED'),
+        'budget_policy':'fixed 512' if args.budget else 'literal baseline factual allowance',
         'scope':'factual allowance matched per question; global method refills after deletions, local anchor loses removed slots',
         'generation_repetition_penalty':1.}
     (args.output/'manifest.json').write_text(json.dumps(manifest,indent=2));values=[]
@@ -45,7 +47,7 @@ def main():
             ref=refs[item['id']];target=ref['answer']['tokens'];n=len(target)
             if target!=literal[item['id']]['raw_answer']['tokens']:raise ValueError('Fixed target mismatch')
             sources=[Source(s['id'],s['title'],s['text']) for s in item['sources']]
-            budget=literal[item['id']]['memory_positions']
+            budget=args.budget if args.budget is not None else literal[item['id']]['memory_positions']
             raw_base=model.score(model.qa_ids(item['question'],raw_memory(model.tokenizer,sources)),target)
             if abs(raw_base-ref['base'])/n>.001:raise ValueError('Raw-reference score drift exceeds tolerance')
             memory=global_lexical(model.tokenizer,sources,item['question'],budget)
@@ -59,7 +61,7 @@ def main():
                 effects[key]=(base-model.score(model.qa_ids(item['question'],changed),target))/n;positions[key]=len(changed)
             truth={k:(ref['base']-v)/n for k,v in ref['changed'].items()}
             single={k:v for k,v in effects.items() if ',' not in k};joint={k:v for k,v in effects.items() if ',' in k}
-            row={'item_id':item['id'],'method':'global_lexical_matched_allowance','qa':qa(answer['text'],item['gold']),
+            row={'item_id':item['id'],'method':'global_lexical_budget512' if args.budget else 'global_lexical_matched_allowance','qa':qa(answer['text'],item['gold']),
                 'answer':answer,'raw_qa':ref['qa'],'raw_answer':ref['answer'],'memory_positions':len(memory),'budget':budget,
                 'intervention_positions':positions,'common_target_tokens':target,'raw_effects':truth,'effects':effects,
                 'single_comparison':effect_comparison({k:truth[k] for k in single},single),

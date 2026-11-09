@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import torch
+from torch.nn.attention import sdpa_kernel,SDPBackend
 from .v2.hf import HFModel
 from .v2.memory import digest
 
@@ -20,14 +21,26 @@ def remove_layout(tokens,span):
     return [tokens[i] for i in keep],keep,[int(not start<=i<end) for i in range(len(tokens))]
 
 
+def score_inputs(tokens,positions,mask=None,device='cpu'):
+    if len(tokens)!=len(positions) or (mask is not None and len(mask)!=len(tokens)):raise ValueError('Input dimensions differ')
+    ids=torch.tensor([tokens],device=device);pos=torch.tensor([positions],device=device)
+    # Transformers 5.17 infers packed sequence boundaries from gapped positions
+    # when no attention mask is supplied. Always declare a single live stream.
+    attention=torch.ones_like(ids) if mask is None else torch.tensor([mask],device=device)
+    return ids,pos,attention
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--paths',type=Path,required=True)
-    p.add_argument('--reference',type=Path,required=True);p.add_argument('--output',type=Path,required=True);args=p.parse_args()
+    p.add_argument('--reference',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--limit',type=int,default=96);args=p.parse_args()
+    if not 1<=args.limit<=96:raise ValueError('Limit must be 1..96')
     if args.output.exists() and any(args.output.iterdir()):raise ValueError('Fresh probe output required')
     items=[json.loads(s) for s in (args.root/'data/v2-hotpot/dev.jsonl').read_text().splitlines()]
     if any(i['split']!='dev' for i in items):raise ValueError('Development only')
     refs={r['item_id']:r for r in map(json.loads,args.reference.read_text().splitlines()) if r['method']=='raw'}
     if set(refs)!={i['id'] for i in items}:raise ValueError('Complete matched reference required')
+    items=items[:args.limit]
     paths=json.loads(args.paths.read_text());info=json.loads((args.root/'research/v2/models.json').read_text())['qwen7']
     model=HFModel(paths['qwen7'],info['revision'],model_id=info['model_id'])
     args.output.mkdir(parents=True,exist_ok=True)
@@ -35,10 +48,11 @@ def main():
         'reference_sha256':hashlib.sha256(args.reference.read_bytes()).hexdigest(),
         'dataset_sha256':hashlib.sha256((args.root/'data/v2-hotpot/dev.jsonl').read_bytes()).hexdigest(),
         'scope':'deletion protocol sensitivity; alternative estimands, not causal credit ground truth',
+        'revision':2,'attention_policy':'explicit 2D mask prevents implicit packed-sequence detection from gapped position IDs',
+        'crosscheck_backend':'forced SDPA math for both equivalent constructions; default-versus-math drift recorded separately',
         'dense_crosscheck_mean_logprob_tolerance':.001},indent=2))
     def score(tokens,positions,mask=None,target_length=None):
-        ids=torch.tensor([tokens],device=model.device);pos=torch.tensor([positions],device=model.device)
-        attention=None if mask is None else torch.tensor([mask],device=model.device)
+        ids,pos,attention=score_inputs(tokens,positions,mask,model.device)
         with torch.inference_mode():
             prefix=len(tokens)-target_length
             logits=model.model(input_ids=ids,position_ids=pos,attention_mask=attention,use_cache=False).logits[0,prefix-1:-1].float()
@@ -62,9 +76,12 @@ def main():
                 compact[sid]=(base-score(tokens,list(range(len(tokens))),target_length=n))/n
                 preserved=score(tokens,positions,target_length=n);fixed[sid]=(base-preserved)/n
                 if sid in selected:
-                    dense=score(full,list(range(len(full))),mask,target_length=n)
-                    cross.append({'source':sid,'dense_vs_sparse_mean_logprob_error':abs(dense-preserved)/n,
-                                  'within_tolerance':abs(dense-preserved)/n<=.001})
+                    with sdpa_kernel(SDPBackend.MATH):
+                        sparse_math=score(tokens,positions,target_length=n)
+                        dense=score(full,list(range(len(full))),mask,target_length=n)
+                    cross.append({'source':sid,'dense_vs_sparse_mean_logprob_error':abs(dense-sparse_math)/n,
+                                  'default_vs_math_mean_logprob_error':abs(sparse_math-preserved)/n,
+                                  'within_tolerance':abs(dense-sparse_math)/n<=.001})
             row={'item_id':item['id'],'raw_qa':ref['qa'],'compact_position_effects':compact,'retained_position_effects':fixed,
                 'support_ids':item['support_ids'],'crosschecks':cross,'factual_wrapper_mean_logprob_error':abs(base-original)/n,
                 'max_previous_deletion_effect_drift':max(abs(compact[s]-ref['effects'][s]) for s in compact),
@@ -78,6 +95,7 @@ def main():
         result[name]={'pooled_l1':scale,'fraction_outside_annotated_support':outside/max(scale,1e-8)}
     result['max_dense_sparse_mean_logprob_error']=max(c['dense_vs_sparse_mean_logprob_error'] for r in all_rows for c in r['crosschecks'])
     result['all_dense_sparse_crosschecks_within_tolerance']=all(c['within_tolerance'] for r in all_rows for c in r['crosschecks'])
+    result['max_default_vs_math_mean_logprob_error']=max(c['default_vs_math_mean_logprob_error'] for r in all_rows for c in r['crosschecks'])
     result['max_previous_effect_drift']=max(r['max_previous_deletion_effect_drift'] for r in all_rows)
     (args.output/'completed.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
 
