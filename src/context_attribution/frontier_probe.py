@@ -14,6 +14,9 @@ from .v2.memory import Source
 from .v2.run import raw_memory
 from .v4.evidence import answer_quality, global_lexical
 
+HELDOUT_SHA256 = '75598f99e35a5def46c440b42fc2c5168541dd751265d3d3e9f79964991cad5a'
+HELDOUT_SHARDS = 8
+
 
 def selected_chunks(tokenizer, sources, question, budget):
     """Same selection as the frozen global baseline, retaining chunk ownership."""
@@ -51,11 +54,25 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--paths',type=Path,required=True)
     p.add_argument('--dataset',type=Path,required=True);p.add_argument('--model-key',choices=['qwen7','llama8'],required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--limit',type=int,default=96)
+    p.add_argument('--heldout-shard',type=int,choices=range(HELDOUT_SHARDS))
+    p.add_argument('--selection-only',action='store_true')
     args=p.parse_args()
     if not 1<=args.limit<=96:raise ValueError('Development limit must be 1..96')
     if args.output.exists() and any(args.output.iterdir()):raise ValueError('Fresh output required')
-    items=[json.loads(s) for s in args.dataset.read_text().splitlines()][:args.limit]
-    if not items or any(i['split']!='dev' for i in items):raise ValueError('Development only')
+    dataset_bytes=args.dataset.read_bytes()
+    dataset_hash=hashlib.sha256(dataset_bytes).hexdigest()
+    items=[json.loads(line) for line in dataset_bytes.splitlines()]
+    heldout=args.heldout_shard is not None
+    if heldout:
+        if dataset_hash!=HELDOUT_SHA256 or len(items)!=400 or any(i['split']!='locked_test' for i in items):
+            raise ValueError('Expected the frozen Hotpot held-out dataset')
+        if len({i['id'] for i in items})!=400:
+            raise ValueError('Duplicate held-out question ID')
+        items=items[args.heldout_shard::HELDOUT_SHARDS]
+    else:
+        items=items[:args.limit]
+        if not items or any(i['split']!='dev' for i in items):raise ValueError('Development only')
+    budgets=[512] if heldout or args.selection_only else [128,256,512,1024]
     torch.backends.cuda.matmul.allow_tf32=False;torch.set_float32_matmul_precision('highest')
     torch.use_deterministic_algorithms(True)
     registry=json.loads((args.root/'research/v2/models.json').read_text());info=registry[args.model_key]
@@ -63,9 +80,9 @@ def main():
     model=HFModel(paths[args.model_key],info['revision'],model_id=info['model_id'])
     model.model.float().requires_grad_(False);model.model.generation_config.repetition_penalty=1.
     args.output.mkdir(parents=True,exist_ok=True)
-    manifest={'scope':'adaptive development, new FP32 answering/scoring distribution; no positional equivalence claim',
-        'runtime':model.runtime(),'budgets':[128,256,512,1024],'frozen_selection_budget':512,
-        'dataset_sha256':hashlib.sha256(args.dataset.read_bytes()).hexdigest(),'limit':args.limit,
+    manifest={'scope':'held-out Hotpot confirmation' if heldout else 'adaptive development, FP32 answering/scoring distribution',
+        'runtime':model.runtime(),'budgets':budgets,'frozen_selection_budget':512,
+        'dataset_sha256':dataset_hash,'limit':len(items),'heldout_shard':args.heldout_shard,
         'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'helpers_sha256':{str(f.relative_to(args.root)):hashlib.sha256(f.read_bytes()).hexdigest()
             for f in [args.root/'src/context_attribution'/s for s in ['v2/hf.py','v4/evidence.py']]},
@@ -101,7 +118,7 @@ def main():
                     'same_shape_repeat_error':repeat_error,'raw_memory_positions':len(raw)}
             rows=[dict(common,method='raw',qa=common['raw_qa'],answer=raw_answer,memory_positions=len(raw),
                        effects=raw_effects,factual_target_logp=raw_base,raw_identity_endpoint_error=0.)]
-            for budget in [128,256,512,1024]:
+            for budget in budgets:
                 chunks=selected_chunks(model.tokenizer,sources,item['question'],budget);tokens=flatten(chunks)
                 if tokens!=global_lexical(model.tokenizer,sources,item['question'],budget):raise ValueError('Selector drift')
                 if len(tokens)>budget:raise ValueError('Budget exceeded')
@@ -132,7 +149,7 @@ def main():
             for row in rows:handle.write(json.dumps(row,allow_nan=False)+'\n')
             handle.flush();os.fsync(handle.fileno());count+=1
             print(item['id'],'complete',count,'seconds',round(time.monotonic()-started,1),flush=True)
-    (args.output/'completed.json').write_text(json.dumps({'complete':True,'n':count,'conditions':count*6,
+    (args.output/'completed.json').write_text(json.dumps({'complete':True,'n':count,'conditions':count*(2+len(budgets)),
         'elapsed_seconds':time.monotonic()-started},indent=2)+'\n')
 
 
