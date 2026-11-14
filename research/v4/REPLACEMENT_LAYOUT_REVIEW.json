@@ -1,0 +1,334 @@
+{
+  "scope": "exploratory development, unadjusted paired question intervals",
+  "paper_direction": "incomplete or validation failed",
+  "studies": {
+    "hotpot_qwen7": {
+      "complete": true,
+      "n": 24,
+      "n_deletions": 240,
+      "n_replacement_deletions": 180,
+      "n_eviction_deletions": 65,
+      "n_mask_checked_questions": 24,
+      "max_archive_error": 0.0,
+      "max_shape_error": 5.417304001920087e-05,
+      "validation_passed": true,
+      "mean_question_mae": {
+        "frozen": 0.3498113819487089,
+        "common_compact": 0.35597795892769163,
+        "common_dense_compact_ids": 0.3559779110297416,
+        "common_dense_expanded_ids": 0.3584659394722326,
+        "replacement_visible": 0.4576152734829231,
+        "matched_donor_visible": 0.38018078541096845
+      },
+      "mean_positions": {
+        "frozen_positions": 455.0625,
+        "shared_positions": 448.73333333333335,
+        "repacked_positions": 505.6375
+      },
+      "paired_mae_differences": {
+        "eviction": {
+          "mean": 0.006166576978982724,
+          "question_bootstrap_95": [
+            -0.0022122114757627365,
+            0.015844892738865572
+          ]
+        },
+        "shape_residual": {
+          "mean": -4.789795006076795e-08,
+          "question_bootstrap_95": [
+            -1.380756553204975e-06,
+            1.283769069811882e-06
+          ]
+        },
+        "position_expansion": {
+          "mean": 0.002488028442491049,
+          "question_bootstrap_95": [
+            -0.03220723464492994,
+            0.05011905994324886
+          ]
+        },
+        "replacement_activation": {
+          "mean": 0.0991493340106905,
+          "question_bootstrap_95": [
+            -0.05965529740050516,
+            0.3564919081356838
+          ]
+        },
+        "matched_length_evidence_identity": {
+          "mean": 0.07743448807195466,
+          "question_bootstrap_95": [
+            -0.07355515833666056,
+            0.315443482717601
+          ]
+        },
+        "donor_activation": {
+          "mean": 0.021714845938735825,
+          "question_bootstrap_95": [
+            -0.020671200937757747,
+            0.06235464977402532
+          ]
+        },
+        "full_repacking": {
+          "mean": 0.1078038915342142,
+          "question_bootstrap_95": [
+            -0.05185589035543276,
+            0.36228867699159895
+          ]
+        },
+        "activation_minus_position": {
+          "mean": 0.09666130556819945,
+          "question_bootstrap_95": [
+            -0.08508742809358438,
+            0.36728833281752393
+          ]
+        }
+      }
+    },
+    "hotpot_llama8": {
+      "complete": true,
+      "n": 24,
+      "n_deletions": 240,
+      "n_replacement_deletions": 186,
+      "n_eviction_deletions": 43,
+      "n_mask_checked_questions": 24,
+      "max_archive_error": 0.0,
+      "max_shape_error": 0.00010581963853439902,
+      "validation_passed": false,
+      "mean_question_mae": {
+        "frozen": 0.4220440261433018,
+        "common_compact": 0.4219297915335183,
+        "common_dense_compact_ids": 0.42193110298297687,
+        "common_dense_expanded_ids": 0.4293295174884282,
+        "replacement_visible": 0.47443079070096883,
+        "matched_donor_visible": 0.4935137256285994
+      },
+      "mean_positions": {
+        "frozen_positions": 455.0625,
+        "shared_positions": 451.85,
+        "repacked_positions": 506.1333333333333
+      },
+      "paired_mae_differences": {
+        "eviction": {
+          "mean": -0.00011423460978348913,
+          "question_bootstrap_95": [
+            -0.00877184718498224,
+            0.009007054420471247
+          ]
+        },
+        "shape_residual": {
+          "mean": 1.311449458558166e-06,
+          "question_bootstrap_95": [
+            -1.8457307129664263e-07,
+            3.2226655672824904e-06
+          ]
+        },
+        "position_expansion": {
+          "mean": 0.007398414505451328,
+          "question_bootstrap_95": [
+            -0.039207412990914674,
+            0.07327737121901673
+          ]
+        },
+        "replacement_activation": {
+          "mean": 0.04510127321254067,
+          "question_bootstrap_95": [
+            0.0015206833483141426,
+            0.09695562606471099
+          ]
+        },
+        "matched_length_evidence_identity": {
+          "mean": -0.019082934927630538,
+          "question_bootstrap_95": [
+            -0.0707122570489608,
+            0.03474332287192175
+          ]
+        },
+        "donor_activation": {
+          "mean": 0.0641842081401712,
+          "question_bootstrap_95": [
+            0.03155928761924168,
+            0.09856737068538624
+          ]
+        },
+        "full_repacking": {
+          "mean": 0.05238676455766706,
+          "question_bootstrap_95": [
+            -0.022670277510072077,
+            0.1599003747100057
+          ]
+        },
+        "activation_minus_position": {
+          "mean": 0.037702858707089344,
+          "question_bootstrap_95": [
+            -0.007006581888434169,
+            0.09048831227160864
+          ]
+        }
+      }
+    },
+    "musique_qwen7": {
+      "complete": true,
+      "n": 24,
+      "n_deletions": 480,
+      "n_replacement_deletions": 203,
+      "n_eviction_deletions": 125,
+      "n_mask_checked_questions": 24,
+      "max_archive_error": 0.0,
+      "max_shape_error": 0.00012206517605051204,
+      "validation_passed": false,
+      "mean_question_mae": {
+        "frozen": 0.3346533548726867,
+        "common_compact": 0.3601758207136887,
+        "common_dense_compact_ids": 0.36017540473061976,
+        "common_dense_expanded_ids": 0.35675320972470503,
+        "replacement_visible": 0.5219253102035185,
+        "matched_donor_visible": 0.43265612092527334
+      },
+      "mean_positions": {
+        "frozen_positions": 482.28333333333336,
+        "shared_positions": 475.125,
+        "repacked_positions": 507.4375
+      },
+      "paired_mae_differences": {
+        "eviction": {
+          "mean": 0.025522465841002023,
+          "question_bootstrap_95": [
+            0.004901641781264835,
+            0.048291567039332114
+          ]
+        },
+        "shape_residual": {
+          "mean": -4.159830689414329e-07,
+          "question_bootstrap_95": [
+            -1.3255985613373432e-06,
+            4.7357571334200003e-07
+          ]
+        },
+        "position_expansion": {
+          "mean": -0.0034221950059147173,
+          "question_bootstrap_95": [
+            -0.027228797250639265,
+            0.025758931916459588
+          ]
+        },
+        "replacement_activation": {
+          "mean": 0.16517210047881345,
+          "question_bootstrap_95": [
+            0.0084929865055511,
+            0.4400690574554243
+          ]
+        },
+        "matched_length_evidence_identity": {
+          "mean": 0.08926918927824522,
+          "question_bootstrap_95": [
+            -0.058168300879637855,
+            0.34110778820427595
+          ]
+        },
+        "donor_activation": {
+          "mean": 0.07590291120056826,
+          "question_bootstrap_95": [
+            0.030545230667638135,
+            0.12500188126165945
+          ]
+        },
+        "full_repacking": {
+          "mean": 0.18727195533083185,
+          "question_bootstrap_95": [
+            0.005469368553469233,
+            0.49782076316120233
+          ]
+        },
+        "activation_minus_position": {
+          "mean": 0.16859429548472818,
+          "question_bootstrap_95": [
+            0.022104327124927742,
+            0.4252927402778448
+          ]
+        }
+      }
+    },
+    "musique_llama8": {
+      "complete": true,
+      "n": 24,
+      "n_deletions": 480,
+      "n_replacement_deletions": 205,
+      "n_eviction_deletions": 108,
+      "n_mask_checked_questions": 24,
+      "max_archive_error": 0.0,
+      "max_shape_error": 7.687374699649752e-05,
+      "validation_passed": true,
+      "mean_question_mae": {
+        "frozen": 0.17698057336655962,
+        "common_compact": 0.1760718603756022,
+        "common_dense_compact_ids": 0.176071505610399,
+        "common_dense_expanded_ids": 0.1686924892090715,
+        "replacement_visible": 0.4567913718845523,
+        "matched_donor_visible": 0.17859853147833854
+      },
+      "mean_positions": {
+        "frozen_positions": 482.71875,
+        "shared_positions": 477.58958333333334,
+        "repacked_positions": 508.02916666666664
+      },
+      "paired_mae_differences": {
+        "eviction": {
+          "mean": -0.0009087129909574046,
+          "question_bootstrap_95": [
+            -0.005348231319288584,
+            0.002781626444575128
+          ]
+        },
+        "shape_residual": {
+          "mean": -3.5476520322148716e-07,
+          "question_bootstrap_95": [
+            -1.1694384656983067e-06,
+            2.9072654975762146e-07
+          ]
+        },
+        "position_expansion": {
+          "mean": -0.007379016401327478,
+          "question_bootstrap_95": [
+            -0.03111753766357191,
+            0.009447207045198145
+          ]
+        },
+        "replacement_activation": {
+          "mean": 0.28809888267548084,
+          "question_bootstrap_95": [
+            -0.026709409671195106,
+            0.7376859010820834
+          ]
+        },
+        "matched_length_evidence_identity": {
+          "mean": 0.2781928404062138,
+          "question_bootstrap_95": [
+            -0.05506866469022559,
+            0.7410646282534175
+          ]
+        },
+        "donor_activation": {
+          "mean": 0.009906042269267008,
+          "question_bootstrap_95": [
+            -0.014615457088964244,
+            0.037890737148566084
+          ]
+        },
+        "full_repacking": {
+          "mean": 0.2798107985179927,
+          "question_bootstrap_95": [
+            -0.01997190262459741,
+            0.7116655147675481
+          ]
+        },
+        "activation_minus_position": {
+          "mean": 0.2954778990768083,
+          "question_bootstrap_95": [
+            -0.032920190101281624,
+            0.7600027002199048
+          ]
+        }
+      }
+    }
+  }
+}

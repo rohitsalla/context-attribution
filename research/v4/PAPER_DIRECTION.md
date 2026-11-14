@@ -25,3 +25,7 @@ Separate own-pipeline replay, raw-reference transfer and task quality. Specify t
 Use official released implementations/checkpoints (e.g. RECOMP and LLMLingua-2) under achieved-budget curves before claiming broad compressor comparisons. ContextCite/AttriBoT comparisons are required if claiming estimator efficiency, with matched estimands. Representation/answer retention, attribution-compression frontiers, counterfactual distillation and selection effects have substantial precedent; elementary algebra and cache commutation are not novelty claims. See existing related-work audits in `research/v2` and `SELECTION_HYPOTHESIS.md`.
 
 All findings remain adaptive development on public corpora. A frozen final hypothesis, independent review and locked confirmation must follow promising replicated evidence. No ICML readiness, universal fidelity limit or unique knowledge-origin claim is asserted.
+
+## Direction after the replacement and position controls
+
+Lead with the impact of the deletion protocol on audit fidelity at fixed factual context and answers. The four development studies favor frozen deletion over full refitting. The follow-up points toward an effect of making extra text visible, but the preset numerical check failed in two studies and every equal-length text-identity interval includes zero. Keep that follow-up as an ablation, and confirm the deletion-protocol comparison on held-out questions before making a broader claim. See [Replacement and position results](REPLACEMENT_LAYOUT_RESULTS.md).
