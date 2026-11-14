@@ -56,6 +56,7 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--limit',type=int,default=96)
     p.add_argument('--heldout-shard',type=int,choices=range(HELDOUT_SHARDS))
     p.add_argument('--selection-only',action='store_true')
+    p.add_argument('--recomp-path',type=Path)
     args=p.parse_args()
     if not 1<=args.limit<=96:raise ValueError('Development limit must be 1..96')
     if args.output.exists() and any(args.output.iterdir()):raise ValueError('Fresh output required')
@@ -63,6 +64,8 @@ def main():
     dataset_hash=hashlib.sha256(dataset_bytes).hexdigest()
     items=[json.loads(line) for line in dataset_bytes.splitlines()]
     heldout=args.heldout_shard is not None
+    if args.recomp_path is not None and (heldout or not args.selection_only):
+        raise ValueError('RECOMP requires the development selection-only comparison')
     if heldout:
         if dataset_hash!=HELDOUT_SHA256 or len(items)!=400 or any(i['split']!='locked_test' for i in items):
             raise ValueError('Expected the frozen Hotpot held-out dataset')
@@ -79,6 +82,10 @@ def main():
     paths=json.loads(args.paths.read_text())
     model=HFModel(paths[args.model_key],info['revision'],model_id=info['model_id'])
     model.model.float().requires_grad_(False);model.model.generation_config.repetition_penalty=1.
+    selector=None
+    if args.recomp_path is not None:
+        from . import recomp_selector
+        selector=recomp_selector.RecompSelector(args.recomp_path,model.device)
     args.output.mkdir(parents=True,exist_ok=True)
     manifest={'scope':'held-out Hotpot confirmation' if heldout else 'adaptive development, FP32 answering/scoring distribution',
         'runtime':model.runtime(),'budgets':budgets,'frozen_selection_budget':512,
@@ -91,6 +98,10 @@ def main():
         'target':'fresh FP32 raw factual greedy answer; fixed across all methods/interventions per question',
         'selection_control':'same factual 512 tokens/answer; frozen removes owned chunks, recomputed refits IDF and repacks',
         'generation_cap':64,'generation_repetition_penalty':1.,'python_hash_seed':os.environ.get('PYTHONHASHSEED')}
+    if selector is not None:
+        manifest['selector']={'model_id':recomp_selector.MODEL_ID,'revision':recomp_selector.REVISION,
+            'source_sha256':hashlib.sha256(Path(recomp_selector.__file__).read_bytes()).hexdigest()}
+        manifest['selection_control']='RECOMP sentence scores held fixed, recomputed branch repacks surviving candidates'
     (args.output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     def score(prefix,target):
         ids=torch.tensor([list(prefix)+list(target)],device=model.device)
@@ -118,18 +129,30 @@ def main():
                     'same_shape_repeat_error':repeat_error,'raw_memory_positions':len(raw)}
             rows=[dict(common,method='raw',qa=common['raw_qa'],answer=raw_answer,memory_positions=len(raw),
                        effects=raw_effects,factual_target_logp=raw_base,raw_identity_endpoint_error=0.)]
+            ranking=selector.rank(model.tokenizer,sources,item['question']) if selector is not None else None
             for budget in budgets:
-                chunks=selected_chunks(model.tokenizer,sources,item['question'],budget);tokens=flatten(chunks)
-                if tokens!=global_lexical(model.tokenizer,sources,item['question'],budget):raise ValueError('Selector drift')
+                if selector is None:
+                    chunks=selected_chunks(model.tokenizer,sources,item['question'],budget)
+                    if flatten(chunks)!=global_lexical(model.tokenizer,sources,item['question'],budget):
+                        raise ValueError('Selector drift')
+                else:
+                    chunks=selector.pack(ranking,sources,budget)
+                tokens=flatten(chunks)
                 if len(tokens)>budget:raise ValueError('Budget exceeded')
                 prefix=model.qa_ids(item['question'],tokens);answer=model.generate(prefix);base=score(prefix,target)
                 for frozen in ([False,True] if budget==512 else [False]):
                     effects={};positions={};replacement={}
                     for source in sources:
                         kept=[s for s in sources if s.sid!=source.sid]
-                        changed=flatten(chunks,source.sid) if frozen else flatten(selected_chunks(model.tokenizer,kept,item['question'],budget))
+                        if frozen:
+                            changed=flatten(chunks,source.sid)
+                        elif selector is None:
+                            changed=flatten(selected_chunks(model.tokenizer,kept,item['question'],budget))
+                        else:
+                            changed=flatten(selector.pack(ranking,sources,budget,source.sid))
                         if len(changed)>budget:raise ValueError('Intervention budget exceeded')
-                        if not frozen and changed!=global_lexical(model.tokenizer,kept,item['question'],budget):raise ValueError('Deleted selector drift')
+                        if not frozen and selector is None and changed!=global_lexical(model.tokenizer,kept,item['question'],budget):
+                            raise ValueError('Deleted selector drift')
                         effects[source.sid]=base-score(model.qa_ids(item['question'],changed),target)
                         positions[source.sid]=len(changed)
                         replacement[source.sid]=changed!=flatten(chunks,source.sid)

@@ -19,10 +19,18 @@ def mae(row):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);args=p.parse_args()
-    result={'scope':'adaptive development; two planned contrasts per study; unadjusted exploratory question intervals',
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True)
+    p.add_argument('--selection-only',action='store_true');args=p.parse_args()
+    result={'scope':'adaptive development; unadjusted exploratory question intervals',
             'studies':{}}
-    for name in ['hotpot_qwen7','hotpot_llama8','musique_qwen7','musique_llama8']:
+    names=['hotpot_qwen7','hotpot_llama8']
+    if not args.selection_only:names+=['musique_qwen7','musique_llama8']
+    methods=['raw','global_512_recomputed','global_512_frozen']
+    contrasts=[('global_512_frozen','global_512_recomputed')]
+    if not args.selection_only:
+        methods+=['global_128_recomputed','global_256_recomputed','global_1024_recomputed']
+        contrasts.insert(0,('global_1024_recomputed','global_128_recomputed'))
+    for name in names:
         folder=args.root/name;trace=folder/'traces.jsonl'
         rows=[json.loads(s) for s in trace.read_text().splitlines()] if trace.exists() else []
         status={'complete':(folder/'completed.json').exists(),'available_rows':len(rows)}
@@ -30,9 +38,16 @@ def main():
         if not status['complete']:continue
         expected=32 if name.startswith('musique_') else 96
         done=json.loads((folder/'completed.json').read_text());assert done['complete'] and done['n']==expected
-        groups={method:{r['item_id']:r for r in rows if r['method']==method} for method in
-                ['raw','global_128_recomputed','global_256_recomputed','global_512_recomputed','global_1024_recomputed','global_512_frozen']}
+        groups={method:{r['item_id']:r for r in rows if r['method']==method} for method in methods}
         ids=sorted(groups['raw']);assert len(ids)==expected and all(set(g)==set(ids) for g in groups.values())
+        assert len(rows)==expected*len(methods)==done['conditions']
+        status['manifest']=json.loads((folder/'manifest.json').read_text())
+        if args.selection_only:
+            from context_attribution.recomp_selector import MODEL_ID, REVISION
+            manifest=status['manifest']
+            assert manifest['selector']['model_id']==MODEL_ID and manifest['selector']['revision']==REVISION
+            assert manifest['dataset_sha256']=='7b7640e3360e9ec5c286510be40a331fe08db1ad46c4990d548ab26116725a63'
+            assert manifest['budgets']==[512] and manifest['python_hash_seed']=='0'
         for qid in ids:
             ref=groups['raw'][qid]
             assert ref['raw_identity_endpoint_error']<=1e-7
@@ -54,7 +69,7 @@ def main():
                 'raw_effect_l1':den,'top_source_non_negligible_n':len(valid_hits),
                 'top_source_hit_rate':st.mean(valid_hits) if valid_hits else None}
         status['contrasts']={}
-        for left,right in [('global_1024_recomputed','global_128_recomputed'),('global_512_frozen','global_512_recomputed')]:
+        for left,right in contrasts:
             a,b=groups[left],groups[right];cohorts={'all':ids,
                 'same_normalized_factual_answer':[q for q in ids if normalize(a[q]['answer']['text'])==normalize(b[q]['answer']['text'])],
                 'both_exactly_correct':[q for q in ids if a[q]['qa']['em']==b[q]['qa']['em']==1]}
@@ -85,6 +100,15 @@ def main():
             'n_unrepresented_source_deletions':excluded_n,'raw_l1_unrepresented_fraction':excluded_raw/max(all_raw,1e-12),
             'n_both_effects_above_0_001':active,'n_sign_disagreements_in_that_subset':flips,
             'interpretation':'dynamic = frozen + policy difference; magnitude ratios need not sum to one due to cancellation. Factual QA is identical; intervened lengths are not matched. This does not isolate IDF, refill, layout or unique causal mediation.'}
+    if args.selection_only:
+        completed=list(result['studies'].values())
+        key='global_512_frozen-minus-global_512_recomputed'
+        if not all(study['complete'] for study in completed):
+            result['claim']='pending or incomplete'
+        elif all(study['contrasts'][key]['all']['mae']['question_bootstrap_95'][1]<0 for study in completed):
+            result['claim']='development evidence favors frozen deletion for both readers'
+        else:
+            result['claim']='cross-reader development criterion unmet'
     args.root.mkdir(parents=True,exist_ok=True)
     (args.root/'review.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 
