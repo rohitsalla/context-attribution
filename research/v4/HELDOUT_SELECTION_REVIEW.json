@@ -1,0 +1,134 @@
+{
+  "scope": "held-out Hotpot, shared 400 questions across models",
+  "claim": "replicated on held-out Hotpot with both models",
+  "studies": {
+    "qwen7": {
+      "complete": true,
+      "validated_questions": 400,
+      "missing_shards": [],
+      "trace_receipts": [
+        {
+          "shard": 0,
+          "trace_sha256": "5b5c90e2e8991be35759cd6af8e06ae0decd845fb078f77390ae9ba46d6eed6e"
+        },
+        {
+          "shard": 1,
+          "trace_sha256": "d4c3a7ac372b29e9441f25f4511b1b030e13e4c803d68d2a24aac4a1b7356af4"
+        },
+        {
+          "shard": 2,
+          "trace_sha256": "0ec60b3107ec6759d4e8cf3ef0881210de4dd9f49c421a929fe40de9ec96cb58"
+        },
+        {
+          "shard": 3,
+          "trace_sha256": "4213a5276e590d951fe893f7201f1b6c9b44bd894c148e490747419cab57baa1"
+        },
+        {
+          "shard": 4,
+          "trace_sha256": "bacc49a882b294e08b0b8b7ced1c34e65c70bbb9949d9d257ad1d98d231f07eb"
+        },
+        {
+          "shard": 5,
+          "trace_sha256": "f727ae2c683f890f4695c9300e940982279e68d51050606d4e5796553889e074"
+        },
+        {
+          "shard": 6,
+          "trace_sha256": "8c22bdc6245c3ffaad6f13c7a1d8c75482e28d8d758473eb8db32f39a5755235"
+        },
+        {
+          "shard": 7,
+          "trace_sha256": "1e9ebb0e4c942fdf5ee99575da303e710d6a1589b13117f6dd17972bcb4d1a67"
+        }
+      ],
+      "methods": {
+        "global_512_frozen": {
+          "question_mae": 0.5644952543936114,
+          "pooled_nmae": 0.906687674328454,
+          "top_source_hit_rate": 0.6925,
+          "mean_factual_positions": 506.16,
+          "mean_intervention_positions": 455.4915
+        },
+        "global_512_recomputed": {
+          "question_mae": 0.749374785122658,
+          "pooled_nmae": 1.2045507186403672,
+          "top_source_hit_rate": 0.655,
+          "mean_factual_positions": 506.16,
+          "mean_intervention_positions": 505.89317857142856
+        }
+      },
+      "paired_frozen_minus_recomputed_mae": {
+        "mean": -0.18487953072904656,
+        "question_bootstrap_95": [
+          -0.2496477075835688,
+          -0.1263530566917313
+        ]
+      },
+      "raw_qa_f1": 0.5466481122276317,
+      "shared_compressed_qa_f1": 0.44574230491730493
+    },
+    "llama8": {
+      "complete": true,
+      "validated_questions": 400,
+      "missing_shards": [],
+      "trace_receipts": [
+        {
+          "shard": 0,
+          "trace_sha256": "2e45d6247d95271691e2f9c11b9ee1227f0445cb86d92e79f37c88abfb13de31"
+        },
+        {
+          "shard": 1,
+          "trace_sha256": "c0eb536b13b05ddd671386a43ee675c8f168a58799da10bf87ea325c3a7363b9"
+        },
+        {
+          "shard": 2,
+          "trace_sha256": "0c0665352312fb37814eb65b5c696f6b75b358f5e5df56426ae5d73da7402b6c"
+        },
+        {
+          "shard": 3,
+          "trace_sha256": "861e639394a67f8322ea6c5c62cc48f0f2141fd9fe199912545cb585a6cb9edd"
+        },
+        {
+          "shard": 4,
+          "trace_sha256": "8a650277f4a7199a38c8fb129c33aa1485c9bd9fc29afd769605fc046e5f2353"
+        },
+        {
+          "shard": 5,
+          "trace_sha256": "2b0d0b6771966c7834da684bd1b6fa59fd74e04d3c1f0a67a0b80c810bf35e65"
+        },
+        {
+          "shard": 6,
+          "trace_sha256": "e8d7de8d456a14867405706a3749f372322950d4ede1b16c491c495923e484be"
+        },
+        {
+          "shard": 7,
+          "trace_sha256": "74917135be67230b5e068b4b30f937046f7716fc8a901a3d7efb02257c85ccbb"
+        }
+      ],
+      "methods": {
+        "global_512_frozen": {
+          "question_mae": 0.3112527088694384,
+          "pooled_nmae": 0.8507668335261289,
+          "top_source_hit_rate": 0.695,
+          "mean_factual_positions": 506.25,
+          "mean_intervention_positions": 455.5707857142857
+        },
+        "global_512_recomputed": {
+          "question_mae": 0.3952333760404978,
+          "pooled_nmae": 1.0803720507123034,
+          "top_source_hit_rate": 0.6975,
+          "mean_factual_positions": 506.25,
+          "mean_intervention_positions": 506.1832142857143
+        }
+      },
+      "paired_frozen_minus_recomputed_mae": {
+        "mean": -0.08398066717105941,
+        "question_bootstrap_95": [
+          -0.13157780061053603,
+          -0.047348930313761424
+        ]
+      },
+      "raw_qa_f1": 0.6016192067192068,
+      "shared_compressed_qa_f1": 0.5296307839763722
+    }
+  }
+}

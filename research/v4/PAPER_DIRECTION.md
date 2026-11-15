@@ -29,3 +29,7 @@ All findings remain adaptive development on public corpora. A frozen final hypot
 ## Direction after the replacement and position controls
 
 Lead with the impact of the deletion protocol on audit fidelity at fixed factual context and answers. The four development studies favor frozen deletion over full refitting. The follow-up points toward an effect of making extra text visible, but the preset numerical check failed in two studies and every equal-length text-identity interval includes zero. Keep that follow-up as an ablation, and confirm the deletion-protocol comparison on held-out questions before making a broader claim. See [Replacement and position results](REPLACEMENT_LAYOUT_RESULTS.md).
+
+## Held-out confirmation and learned selector scope
+
+The frozen Hotpot criterion passed for both Qwen and Llama with the tested BM25-style selector. Mean source-effect error fell by about 25% and 21% respectively on the same 400 held-out questions. The separately run extractive RECOMP development comparison has favorable but inconclusive frozen-minus-recomputed estimates on both readers. Lead with the BM25 held-out result and report the uncertainty beyond BM25. See [verified results](HELDOUT_SELECTION_RESULTS.md).

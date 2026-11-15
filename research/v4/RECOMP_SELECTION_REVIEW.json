@@ -1,0 +1,302 @@
+{
+  "scope": "adaptive development; unadjusted exploratory question intervals",
+  "studies": {
+    "hotpot_qwen7": {
+      "complete": true,
+      "available_rows": 288,
+      "manifest": {
+        "scope": "adaptive development, FP32 answering/scoring distribution",
+        "runtime": {
+          "model_id": "Qwen/Qwen2.5-7B-Instruct",
+          "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "python": "3.10.20",
+          "torch": "2.10.0+cu128",
+          "transformers": "5.17.0",
+          "cuda": "12.8",
+          "device": "cuda",
+          "gpu": "NVIDIA A100-SXM4-80GB",
+          "dtype": "torch.float32",
+          "attention_implementation": "sdpa"
+        },
+        "budgets": [
+          512
+        ],
+        "frozen_selection_budget": 512,
+        "dataset_sha256": "7b7640e3360e9ec5c286510be40a331fe08db1ad46c4990d548ab26116725a63",
+        "limit": 96,
+        "heldout_shard": null,
+        "source_sha256": "6f3ab687b6caf19a6028effb3afada9b34f4eae64729c7336ce5958ca5d89e0e",
+        "helpers_sha256": {
+          "src/context_attribution/v2/hf.py": "97cd6d9cbdbd5d8f2dea91cb08b342db2266cf0a778d7226e35057cf27f27b64",
+          "src/context_attribution/v4/evidence.py": "84d85d990249f8df54da3f80395c30d3460a1f2eb0b25d7fb9833e1c12b61cba"
+        },
+        "attention": "forced math; explicit 4D causal boolean mask for all likelihood scores; explicit 2D ones for greedy generation",
+        "scoring": "mean target log probability, double-precision log-softmax, TF32 disabled",
+        "target": "fresh FP32 raw factual greedy answer; fixed across all methods/interventions per question",
+        "selection_control": "RECOMP sentence scores held fixed, recomputed branch repacks surviving candidates",
+        "generation_cap": 64,
+        "generation_repetition_penalty": 1.0,
+        "python_hash_seed": "0",
+        "selector": {
+          "model_id": "fangyuan/nq_extractive_compressor",
+          "revision": "46f98c1f57fa919c72d86ced16e3ece3403f9e9e",
+          "source_sha256": "594503fea7aaa71b215b636e3d899892abe46883edc4a0abe1e351b7e5932131"
+        }
+      },
+      "trace_sha256": "f34ae7d8a1fe2be35d5abceb2f153908bdbb457c8f3888c53a80f997a73a3218",
+      "methods": {
+        "raw": {
+          "n": 96,
+          "f1": 0.5892517752715121,
+          "mean_positions": 1465.5208333333333,
+          "mean_question_mae": 0.0,
+          "pooled_nmae": 0.0,
+          "raw_effect_l1": 572.2772092312565,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 1
+        },
+        "global_512_recomputed": {
+          "n": 96,
+          "f1": 0.5318055555555555,
+          "mean_positions": 507.1354166666667,
+          "mean_question_mae": 0.7398869236495155,
+          "pooled_nmae": 1.24116675493276,
+          "raw_effect_l1": 572.2772092312565,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.5625
+        },
+        "global_512_frozen": {
+          "n": 96,
+          "f1": 0.5318055555555555,
+          "mean_positions": 507.1354166666667,
+          "mean_question_mae": 0.6961721703598377,
+          "pooled_nmae": 1.1678348757645085,
+          "raw_effect_l1": 572.2772092312565,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.6041666666666666
+        }
+      },
+      "contrasts": {
+        "global_512_frozen-minus-global_512_recomputed": {
+          "all": {
+            "n": 96,
+            "mae": {
+              "mean": -0.04371475328967783,
+              "question_bootstrap_95": [
+                -0.13955114022853213,
+                0.03914484250073555
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "same_normalized_factual_answer": {
+            "n": 96,
+            "mae": {
+              "mean": -0.04371475328967783,
+              "question_bootstrap_95": [
+                -0.13955114022853213,
+                0.03914484250073555
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "both_exactly_correct": {
+            "n": 44,
+            "mae": {
+              "mean": -0.052472937613545594,
+              "question_bootstrap_95": [
+                -0.19097189562370717,
+                0.04044700126310422
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "selection_policy_diagnostic": {
+        "mean_question_absolute_dynamic_minus_frozen_effect": {
+          "mean": 0.42490248516181134,
+          "question_bootstrap_95": [
+            0.3172599751838542,
+            0.5557287475383811
+          ]
+        },
+        "summed_absolute_frozen_effect": 769.4299072669402,
+        "summed_absolute_policy_difference": 407.9063857553387,
+        "summed_absolute_recomputed_effect": 804.9849076920881,
+        "n_unrepresented_source_deletions": 373,
+        "raw_l1_unrepresented_fraction": 0.18905302891307438,
+        "n_both_effects_above_0_001": 401,
+        "n_sign_disagreements_in_that_subset": 82,
+        "interpretation": "dynamic = frozen + policy difference; magnitude ratios need not sum to one due to cancellation. Factual QA is identical; intervened lengths are not matched. This does not isolate IDF, refill, layout or unique causal mediation."
+      }
+    },
+    "hotpot_llama8": {
+      "complete": true,
+      "available_rows": 288,
+      "manifest": {
+        "scope": "adaptive development, FP32 answering/scoring distribution",
+        "runtime": {
+          "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+          "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+          "python": "3.10.20",
+          "torch": "2.10.0+cu128",
+          "transformers": "5.17.0",
+          "cuda": "12.8",
+          "device": "cuda",
+          "gpu": "NVIDIA A100-SXM4-80GB",
+          "dtype": "torch.float32",
+          "attention_implementation": "sdpa"
+        },
+        "budgets": [
+          512
+        ],
+        "frozen_selection_budget": 512,
+        "dataset_sha256": "7b7640e3360e9ec5c286510be40a331fe08db1ad46c4990d548ab26116725a63",
+        "limit": 96,
+        "heldout_shard": null,
+        "source_sha256": "6f3ab687b6caf19a6028effb3afada9b34f4eae64729c7336ce5958ca5d89e0e",
+        "helpers_sha256": {
+          "src/context_attribution/v2/hf.py": "97cd6d9cbdbd5d8f2dea91cb08b342db2266cf0a778d7226e35057cf27f27b64",
+          "src/context_attribution/v4/evidence.py": "84d85d990249f8df54da3f80395c30d3460a1f2eb0b25d7fb9833e1c12b61cba"
+        },
+        "attention": "forced math; explicit 4D causal boolean mask for all likelihood scores; explicit 2D ones for greedy generation",
+        "scoring": "mean target log probability, double-precision log-softmax, TF32 disabled",
+        "target": "fresh FP32 raw factual greedy answer; fixed across all methods/interventions per question",
+        "selection_control": "RECOMP sentence scores held fixed, recomputed branch repacks surviving candidates",
+        "generation_cap": 64,
+        "generation_repetition_penalty": 1.0,
+        "python_hash_seed": "0",
+        "selector": {
+          "model_id": "fangyuan/nq_extractive_compressor",
+          "revision": "46f98c1f57fa919c72d86ced16e3ece3403f9e9e",
+          "source_sha256": "594503fea7aaa71b215b636e3d899892abe46883edc4a0abe1e351b7e5932131"
+        }
+      },
+      "trace_sha256": "b954118be5e382ac177ac57835edf40c65cf646e1d14471c4b5ffb3858a5766a",
+      "methods": {
+        "raw": {
+          "n": 96,
+          "f1": 0.7099596766537556,
+          "mean_positions": 1403.1666666666667,
+          "mean_question_mae": 0.0,
+          "pooled_nmae": 0.0,
+          "raw_effect_l1": 389.6700861091372,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 1
+        },
+        "global_512_recomputed": {
+          "n": 96,
+          "f1": 0.5399405772495756,
+          "mean_positions": 506.5833333333333,
+          "mean_question_mae": 0.41200375322103766,
+          "pooled_nmae": 1.0150217252792135,
+          "raw_effect_l1": 389.6700861091372,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.6666666666666666
+        },
+        "global_512_frozen": {
+          "n": 96,
+          "f1": 0.5399405772495756,
+          "mean_positions": 506.5833333333333,
+          "mean_question_mae": 0.37433132051464335,
+          "pooled_nmae": 0.9222110716330688,
+          "raw_effect_l1": 389.6700861091372,
+          "top_source_non_negligible_n": 96,
+          "top_source_hit_rate": 0.6458333333333334
+        }
+      },
+      "contrasts": {
+        "global_512_frozen-minus-global_512_recomputed": {
+          "all": {
+            "n": 96,
+            "mae": {
+              "mean": -0.03767243270639431,
+              "question_bootstrap_95": [
+                -0.11098732211931196,
+                0.024401214736714735
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "same_normalized_factual_answer": {
+            "n": 96,
+            "mae": {
+              "mean": -0.03767243270639431,
+              "question_bootstrap_95": [
+                -0.11098732211931196,
+                0.024401214736714735
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "both_exactly_correct": {
+            "n": 42,
+            "mae": {
+              "mean": 0.01054610160128134,
+              "question_bootstrap_95": [
+                -0.00688905750860756,
+                0.02859083210287565
+              ]
+            },
+            "qa_f1": {
+              "mean": 0.0,
+              "question_bootstrap_95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "selection_policy_diagnostic": {
+        "mean_question_absolute_dynamic_minus_frozen_effect": {
+          "mean": 0.19366134650882608,
+          "question_bootstrap_95": [
+            0.12937417565210269,
+            0.26801442097185985
+          ]
+        },
+        "summed_absolute_frozen_effect": 430.7778075680789,
+        "summed_absolute_policy_difference": 185.91489264847303,
+        "summed_absolute_recomputed_effect": 478.29924916374546,
+        "n_unrepresented_source_deletions": 355,
+        "raw_l1_unrepresented_fraction": 0.21051624073284672,
+        "n_both_effects_above_0_001": 541,
+        "n_sign_disagreements_in_that_subset": 131,
+        "interpretation": "dynamic = frozen + policy difference; magnitude ratios need not sum to one due to cancellation. Factual QA is identical; intervened lengths are not matched. This does not isolate IDF, refill, layout or unique causal mediation."
+      }
+    }
+  },
+  "claim": "cross-reader development criterion unmet"
+}
