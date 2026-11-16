@@ -125,7 +125,7 @@ def main():
             raw_base = score(question, raw_memory(reader.tokenizer, sources), target)
             sampled = min(order, key=lambda sid: digest(f"{qid}:{sid}".encode()))
             survivors = [s for s in sources if s.sid != sampled]
-            bm25_old = selected_chunks(reader.tokenizer, survivors, question, SELECTION_CAP)
+            bm25_old = flatten(selected_chunks(reader.tokenizer, survivors, question, SELECTION_CAP))
             sampled_frozen = flatten(pack_fixed(bm25_rank, order, SELECTION_CAP), sampled)
             drift = max(
                 abs(bm25_base - frozen["factual_target_logp"]),
