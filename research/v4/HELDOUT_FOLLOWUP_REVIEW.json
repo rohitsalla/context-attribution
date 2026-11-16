@@ -1,0 +1,165 @@
+{
+  "scope": "secondary follow-up on shared 400 Hotpot questions",
+  "studies": {
+    "qwen7": {
+      "complete": true,
+      "n": 400,
+      "max_archive_drift": 0.0,
+      "mae": {
+        "bm25_frozen": 0.5644952543936114,
+        "bm25_fixed_rank": 0.6898246808439741,
+        "bm25_refitted": 0.749374785122658,
+        "recomp_frozen": 0.5800151386929031,
+        "recomp_repacked": 0.6539202259422412
+      },
+      "nmae": {
+        "bm25_frozen": 0.9066876743284534,
+        "bm25_fixed_rank": 1.108780253314909,
+        "bm25_refitted": 1.2045507186403666,
+        "recomp_frozen": 0.931827691020922,
+        "recomp_repacked": 1.0507969634469276
+      },
+      "bm25_mae_increase": {
+        "refill": {
+          "mean": 0.1253294264503627,
+          "question_bootstrap_95": [
+            0.0770931403424236,
+            0.17898303077418307
+          ]
+        },
+        "rerank": {
+          "mean": 0.05955010427868382,
+          "question_bootstrap_95": [
+            0.021022001624572233,
+            0.10902030002767489
+          ]
+        },
+        "refill_minus_rerank": {
+          "mean": 0.0657793221716789,
+          "question_bootstrap_95": [
+            -0.009615993567086496,
+            0.13456854506541027
+          ]
+        }
+      },
+      "bm25_represented_source_contribution": {
+        "refill": {
+          "mean": 0.1253294264503627,
+          "question_bootstrap_95": [
+            0.0770931403424236,
+            0.1789830307741831
+          ]
+        },
+        "rerank": {
+          "mean": 0.03437454629718464,
+          "question_bootstrap_95": [
+            0.0024086756650869125,
+            0.07471106228742565
+          ]
+        },
+        "refill_minus_rerank": {
+          "mean": 0.09095488015317808,
+          "question_bootstrap_95": [
+            0.021907061724513142,
+            0.155971691947519
+          ]
+        }
+      },
+      "recomp_frozen_gain": {
+        "mean": 0.07390508724933814,
+        "question_bootstrap_95": [
+          0.02884514748598132,
+          0.12181654998874251
+        ]
+      },
+      "bm25_gain_minus_recomp_gain": {
+        "mean": 0.1109744434797084,
+        "question_bootstrap_95": [
+          0.04161578426654206,
+          0.18437799063943916
+        ]
+      }
+    },
+    "llama8": {
+      "complete": true,
+      "n": 400,
+      "max_archive_drift": 0.0,
+      "mae": {
+        "bm25_frozen": 0.3112527088694384,
+        "bm25_fixed_rank": 0.3541277473978086,
+        "bm25_refitted": 0.3952333760404978,
+        "recomp_frozen": 0.3309686061090327,
+        "recomp_repacked": 0.35936680688438327
+      },
+      "nmae": {
+        "bm25_frozen": 0.850766833526128,
+        "bm25_fixed_rank": 0.967933823603798,
+        "bm25_refitted": 1.0803720507123042,
+        "recomp_frozen": 0.9037125998400055,
+        "recomp_repacked": 0.9814003643080192
+      },
+      "bm25_mae_increase": {
+        "refill": {
+          "mean": 0.042875038528370234,
+          "question_bootstrap_95": [
+            0.019746666471873196,
+            0.06962585369126328
+          ]
+        },
+        "rerank": {
+          "mean": 0.041105628642689206,
+          "question_bootstrap_95": [
+            0.01523091012815118,
+            0.07875566246793754
+          ]
+        },
+        "refill_minus_rerank": {
+          "mean": 0.0017694098856810303,
+          "question_bootstrap_95": [
+            -0.0416355041519909,
+            0.03965284779601604
+          ]
+        }
+      },
+      "bm25_represented_source_contribution": {
+        "refill": {
+          "mean": 0.04287503852837023,
+          "question_bootstrap_95": [
+            0.019746666471873193,
+            0.06962585369126327
+          ]
+        },
+        "rerank": {
+          "mean": 0.018993496982886743,
+          "question_bootstrap_95": [
+            -0.00030081143113567025,
+            0.04646736464722974
+          ]
+        },
+        "refill_minus_rerank": {
+          "mean": 0.02388154154548348,
+          "question_bootstrap_95": [
+            -0.011929385655838136,
+            0.05750879873076349
+          ]
+        }
+      },
+      "recomp_frozen_gain": {
+        "mean": 0.028398200775350553,
+        "question_bootstrap_95": [
+          0.004905274514450478,
+          0.054387125394532804
+        ]
+      },
+      "bm25_gain_minus_recomp_gain": {
+        "mean": 0.05558246639570889,
+        "question_bootstrap_95": [
+          0.010506319261084706,
+          0.10754056449741677
+        ]
+      }
+    }
+  },
+  "bm25_direction": "dominant contribution unresolved across readers",
+  "recomp_direction": "frozen deletion improves RECOMP MAE on both readers"
+}
