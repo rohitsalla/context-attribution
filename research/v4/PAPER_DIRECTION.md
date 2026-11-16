@@ -24,7 +24,7 @@ Separate own-pipeline replay, raw-reference transfer and task quality. Specify t
 
 Use official released implementations/checkpoints (e.g. RECOMP and LLMLingua-2) under achieved-budget curves before claiming broad compressor comparisons. ContextCite/AttriBoT comparisons are required if claiming estimator efficiency, with matched estimands. Representation/answer retention, attribution-compression frontiers, counterfactual distillation and selection effects have substantial precedent; elementary algebra and cache commutation are not novelty claims. See existing related-work audits in `research/v2` and `SELECTION_HYPOTHESIS.md`.
 
-All findings remain adaptive development on public corpora. A frozen final hypothesis, independent review and locked confirmation must follow promising replicated evidence. No ICML readiness, universal fidelity limit or unique knowledge-origin claim is asserted.
+The prespecified BM25 conclusion now has held-out Hotpot confirmation on two readers. The mechanism and learned-selector comparisons are secondary analyses.
 
 ## Direction after the replacement and position controls
 
@@ -33,3 +33,10 @@ Lead with the impact of the deletion protocol on audit fidelity at fixed factual
 ## Held-out confirmation and learned selector scope
 
 The frozen Hotpot criterion passed for both Qwen and Llama with the tested BM25-style selector. Mean source-effect error fell by about 25% and 21% respectively on the same 400 held-out questions. The separately run extractive RECOMP development comparison has favorable but inconclusive frozen-minus-recomputed estimates on both readers. Lead with the BM25 held-out result and report the uncertainty beyond BM25. See [verified results](HELDOUT_SELECTION_RESULTS.md).
+
+
+## Fixed-ranking and RECOMP follow-up
+
+Keep the held-out BM25 result as the lead. On Hotpot development data, fixed-ranking repacking increased MAE by 0.090 on Qwen and 0.099 on Llama relative to frozen deletion. The Llama interval excludes zero. Refitting the rankings after repacking changed MAE by +0.017 and −0.003, with both intervals crossing zero. These earlier comparisons make refilling the leading hypothesis. The direct comparison of the two contributions on the 400-question cohort is pending.
+
+RECOMP favored frozen deletion on both readers in the 96-question development study, with both intervals crossing zero. The new runs pair BM25 and RECOMP against each reader's archived raw responses on the same 400 questions. Keep the learned-selector result scoped to development until that review completes. See [the follow-up protocol and decision rule](HELDOUT_FOLLOWUP_PROTOCOL.md).
