@@ -1,0 +1,594 @@
+{
+  "source_commit": "b11f39e",
+  "smokes": {
+    "qwen7": "8857288",
+    "llama8": "8857313",
+    "mistral7": "8857339",
+    "qwen14": "8857364"
+  },
+  "shards": [
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 0,
+      "job": "8857289"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 1,
+      "job": "8857290"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 2,
+      "job": "8857291"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 3,
+      "job": "8857292"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 4,
+      "job": "8857293"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 5,
+      "job": "8857294"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 6,
+      "job": "8857295"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "musique240",
+      "shard": 7,
+      "job": "8857296"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 0,
+      "job": "8857297"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 1,
+      "job": "8857298"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 2,
+      "job": "8857299"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 3,
+      "job": "8857300"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 4,
+      "job": "8857301"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 5,
+      "job": "8857302"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 6,
+      "job": "8857303"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "2wiki200",
+      "shard": 7,
+      "job": "8857304"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 0,
+      "job": "8857305"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 1,
+      "job": "8857306"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 2,
+      "job": "8857307"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 3,
+      "job": "8857308"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 4,
+      "job": "8857309"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 5,
+      "job": "8857310"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 6,
+      "job": "8857311"
+    },
+    {
+      "model": "qwen7",
+      "dataset": "hotpot400",
+      "shard": 7,
+      "job": "8857312"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 0,
+      "job": "8857314"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 1,
+      "job": "8857315"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 2,
+      "job": "8857316"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 3,
+      "job": "8857317"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 4,
+      "job": "8857318"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 5,
+      "job": "8857319"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 6,
+      "job": "8857320"
+    },
+    {
+      "model": "llama8",
+      "dataset": "musique240",
+      "shard": 7,
+      "job": "8857321"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 0,
+      "job": "8857322"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 1,
+      "job": "8857323"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 2,
+      "job": "8857324"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 3,
+      "job": "8857325"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 4,
+      "job": "8857326"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 5,
+      "job": "8857327"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 6,
+      "job": "8857328"
+    },
+    {
+      "model": "llama8",
+      "dataset": "2wiki200",
+      "shard": 7,
+      "job": "8857329"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 0,
+      "job": "8857330"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 1,
+      "job": "8857331"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 2,
+      "job": "8857332"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 3,
+      "job": "8857333"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 4,
+      "job": "8857334"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 5,
+      "job": "8857335"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 6,
+      "job": "8857336"
+    },
+    {
+      "model": "llama8",
+      "dataset": "hotpot400",
+      "shard": 7,
+      "job": "8857338"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 0,
+      "job": "8857340"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 1,
+      "job": "8857341"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 2,
+      "job": "8857342"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 3,
+      "job": "8857343"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 4,
+      "job": "8857344"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 5,
+      "job": "8857345"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 6,
+      "job": "8857346"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "musique240",
+      "shard": 7,
+      "job": "8857347"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 0,
+      "job": "8857348"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 1,
+      "job": "8857349"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 2,
+      "job": "8857350"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 3,
+      "job": "8857351"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 4,
+      "job": "8857352"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 5,
+      "job": "8857353"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 6,
+      "job": "8857354"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "2wiki200",
+      "shard": 7,
+      "job": "8857355"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 0,
+      "job": "8857356"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 1,
+      "job": "8857357"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 2,
+      "job": "8857358"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 3,
+      "job": "8857359"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 4,
+      "job": "8857360"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 5,
+      "job": "8857361"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 6,
+      "job": "8857362"
+    },
+    {
+      "model": "mistral7",
+      "dataset": "hotpot400",
+      "shard": 7,
+      "job": "8857363"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 0,
+      "job": "8857365"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 1,
+      "job": "8857366"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 2,
+      "job": "8857367"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 3,
+      "job": "8857368"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 4,
+      "job": "8857369"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 5,
+      "job": "8857370"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 6,
+      "job": "8857371"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "musique240",
+      "shard": 7,
+      "job": "8857372"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 0,
+      "job": "8857373"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 1,
+      "job": "8857374"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 2,
+      "job": "8857375"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 3,
+      "job": "8857376"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 4,
+      "job": "8857377"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 5,
+      "job": "8857378"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 6,
+      "job": "8857379"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "2wiki200",
+      "shard": 7,
+      "job": "8857380"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 0,
+      "job": "8857381"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 1,
+      "job": "8857382"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 2,
+      "job": "8857383"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 3,
+      "job": "8857384"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 4,
+      "job": "8857385"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 5,
+      "job": "8857386"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 6,
+      "job": "8857387"
+    },
+    {
+      "model": "qwen14",
+      "dataset": "hotpot400",
+      "shard": 7,
+      "job": "8857388"
+    }
+  ],
+  "max_concurrent_project_gpus": 1,
+  "reader_question_evaluations": 3360,
+  "max_requeues": 2,
+  "process_attempts_per_allocation": 3,
+  "base_gpu_hours": 145.33333333333334,
+  "max_gpu_hours_with_requeues": 436,
+  "review": "8857389"
+}
