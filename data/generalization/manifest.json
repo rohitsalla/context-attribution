@@ -1,0 +1,23 @@
+{
+  "selection": "fixed SHA256 ID order within hop or question-type strata, normalized-question deduplication",
+  "counts": {
+    "musique240": 240,
+    "2wiki200": 200
+  },
+  "files": {
+    "musique240": "998e14aabb59ff7112ee96e7dd4817f28b2b2420469e2f751c6a6117de038b3a",
+    "2wiki200": "037cd052c971435e5be05a1e27bd19fab970577c9f5f80ca27bd15734c94ac07"
+  },
+  "revisions": {
+    "musique": "c8f4f8c9465fb69d31a8eae894c3fd509c4ca321",
+    "2wiki": "fe713bfbd1afbca1a65246741a75890405d56a3a"
+  },
+  "raw_hashes": {
+    "musique": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b",
+    "2wiki": "408e2dbb28edc6c8b9ca3ba0c94d4fc7bf17ffb923766593a3a7f546ab4cba59"
+  },
+  "previous_project_question_overlap": 0,
+  "cross_new_benchmark_question_overlap": 0,
+  "official_release_byte_equivalence_verified": false,
+  "provenance": "Pinned third-party mirrors of official development/validation data"
+}
