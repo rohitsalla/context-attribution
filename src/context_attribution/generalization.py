@@ -1,5 +1,6 @@
 """Four-reader, three-dataset comparison with shared targets and source ownership."""
 import argparse
+import fcntl
 from itertools import combinations
 import json
 import os
@@ -43,6 +44,21 @@ def omissions(item):
     return single + pairs
 
 
+def atomic_text(path, text):
+    """Publish an entire checkpoint or leave its predecessor intact."""
+    temporary = path.with_name(path.name + ".tmp")
+    with temporary.open("w") as handle:
+        handle.write(text)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
+    descriptor = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 def main():
     import torch
     from torch.nn.attention import SDPBackend, sdpa_kernel
@@ -56,11 +72,15 @@ def main():
     parser.add_argument("--dataset", choices=DATASETS)
     parser.add_argument("--shard", type=int, choices=range(SHARDS))
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     smoke = args.dataset is None
     assert smoke == (args.shard is None)
-    if args.output.exists() and any(args.output.iterdir()):
-        raise ValueError("Fresh output required")
+    args.output.mkdir(parents=True, exist_ok=True)
+    lock = (args.output / ".lock").open("w")
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    if not args.resume and any(p.name != ".lock" for p in args.output.iterdir()):
+        raise ValueError("Fresh output required; use --resume for matching checkpoints")
     datasets = DATASETS if smoke else [args.dataset]
     selected = []
     data_hashes = {}
@@ -94,7 +114,20 @@ def main():
         "policies": POLICIES, "expected_questions": len(selected),
         "python_hash_seed": os.environ.get("PYTHONHASHSEED"),
     }
-    (args.output / "manifest.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    # Compare JSON-normalized values, including scientific source/data identity.
+    receipt = json.loads(json.dumps(receipt))
+    manifest = args.output / "manifest.json"
+    if manifest.exists():
+        previous = json.loads(manifest.read_text())
+        if previous != receipt:
+            raise ValueError("Resume manifest mismatch; refusing to mix experiments")
+    else:
+        atomic_text(manifest, json.dumps(receipt, indent=2) + "\n")
+    trace = args.output / "traces.jsonl"
+    saved = [json.loads(line) for line in trace.read_text().splitlines()] if trace.exists() else []
+    expected = [(name, item["id"]) for name, item in selected]
+    if [(row["dataset"], row["item_id"]) for row in saved] != expected[:len(saved)] or len(saved) > len(expected):
+        raise ValueError("Checkpoint question order mismatch")
 
     def direct_score(question, memory, target):
         prefix = reader.qa_ids(question, memory)
@@ -109,8 +142,8 @@ def main():
             return float(logits.log_softmax(-1).gather(-1, ids[0, -len(target):, None]).mean())
 
     started = time.monotonic()
-    with sdpa_kernel(SDPBackend.MATH), (args.output / "traces.jsonl").open("w") as handle:
-        for name, item in selected:
+    with sdpa_kernel(SDPBackend.MATH):
+        for name, item in selected[len(saved):]:
             question = item["question"]
             sources = [Source(s["id"], s["title"], s["text"]) for s in item["sources"]]
             order = [source.sid for source in sources]
@@ -178,11 +211,10 @@ def main():
                 "top_raw_source": top, "branch_answers": branch_answers,
                 "branch_qa": {k: answer_quality(v["text"], item) for k, v in branch_answers.items()},
             }
-            handle.write(json.dumps(row, allow_nan=False) + "\n")
-            handle.flush()
-            os.fsync(handle.fileno())
+            saved.append(row)
+            atomic_text(trace, "".join(json.dumps(r, allow_nan=False) + "\n" for r in saved))
             print(name, item["id"], "complete", round(time.monotonic()-started, 1), flush=True)
-    (args.output / "completed.json").write_text(json.dumps({"complete": True, "n": len(selected),
+    atomic_text(args.output / "completed.json", json.dumps({"complete": True, "n": len(selected),
         "elapsed_seconds": time.monotonic()-started}) + "\n")
 
 
