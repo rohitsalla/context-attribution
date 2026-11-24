@@ -1,0 +1,263 @@
+{
+  "identity": {
+    "source_commit": "b74241d805ce2815ea91c81f7723add018527355",
+    "project": "/projects/tealab/rohit/context-attribution-stability-b74241d805ce",
+    "model_paths": "/projects/tealab/rohit/context-attribution-stability-b74241d805ce/logs/model_paths.json",
+    "python_bin": "/projects/tealab/rohit/qwen35-neuron-probe-20261026/.venv/bin/python",
+    "recomp_path": "/projects/tealab/rohit/recomp-nq-46f98c1"
+  },
+  "jobs": {
+    "smoke/qwen7": {
+      "job": "8976082",
+      "kind": "smoke",
+      "model": "qwen7"
+    },
+    "smoke/mistral7": {
+      "job": "8976083",
+      "kind": "smoke",
+      "model": "mistral7"
+    },
+    "full/qwen7/musique/0": {
+      "job": "8976084",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 0
+    },
+    "full/qwen7/musique/1": {
+      "job": "8976085",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 1
+    },
+    "full/qwen7/musique/2": {
+      "job": "8976086",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 2
+    },
+    "full/qwen7/musique/3": {
+      "job": "8976087",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 3
+    },
+    "full/qwen7/musique/4": {
+      "job": "8976088",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 4
+    },
+    "full/qwen7/musique/5": {
+      "job": "8976089",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 5
+    },
+    "full/qwen7/musique/6": {
+      "job": "8976090",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 6
+    },
+    "full/qwen7/musique/7": {
+      "job": "8976091",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 7
+    },
+    "full/qwen7/2wiki/0": {
+      "job": "8976092",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 0
+    },
+    "full/qwen7/2wiki/1": {
+      "job": "8976093",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 1
+    },
+    "full/qwen7/2wiki/2": {
+      "job": "8976094",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 2
+    },
+    "full/qwen7/2wiki/3": {
+      "job": "8976095",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 3
+    },
+    "full/qwen7/2wiki/4": {
+      "job": "8976096",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 4
+    },
+    "full/qwen7/2wiki/5": {
+      "job": "8976097",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 5
+    },
+    "full/qwen7/2wiki/6": {
+      "job": "8976098",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 6
+    },
+    "full/qwen7/2wiki/7": {
+      "job": "8976099",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 7
+    },
+    "full/mistral7/musique/0": {
+      "job": "8976100",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 0
+    },
+    "full/mistral7/musique/1": {
+      "job": "8976101",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 1
+    },
+    "full/mistral7/musique/2": {
+      "job": "8976102",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 2
+    },
+    "full/mistral7/musique/3": {
+      "job": "8976103",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 3
+    },
+    "full/mistral7/musique/4": {
+      "job": "8976104",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 4
+    },
+    "full/mistral7/musique/5": {
+      "job": "8976105",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 5
+    },
+    "full/mistral7/musique/6": {
+      "job": "8976106",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 6
+    },
+    "full/mistral7/musique/7": {
+      "job": "8976107",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 7
+    },
+    "full/mistral7/2wiki/0": {
+      "job": "8976108",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 0
+    },
+    "full/mistral7/2wiki/1": {
+      "job": "8976109",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 1
+    },
+    "full/mistral7/2wiki/2": {
+      "job": "8976110",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 2
+    },
+    "full/mistral7/2wiki/3": {
+      "job": "8976111",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 3
+    },
+    "full/mistral7/2wiki/4": {
+      "job": "8976112",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 4
+    },
+    "full/mistral7/2wiki/5": {
+      "job": "8976113",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 5
+    },
+    "full/mistral7/2wiki/6": {
+      "job": "8976114",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 6
+    },
+    "full/mistral7/2wiki/7": {
+      "job": "8976115",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 7
+    },
+    "review": {
+      "job": "8976116",
+      "kind": "review"
+    }
+  },
+  "released": true,
+  "max_concurrent_study_gpus": 1,
+  "full_shards": 32,
+  "reader_question_evaluations": 1288,
+  "reader_question_budget_configurations": 5152,
+  "base_max_gpu_hours": 97.5,
+  "max_gpu_hours_with_two_requeues": 292.5,
+  "runtime_preflight": {
+    "python_major_minor": "3.10",
+    "torch": "2.10.0+cu128",
+    "transformers": "5.17.0",
+    "cuda": "12.8",
+    "prefix": "/projects/tealab/rohit/qwen35-neuron-probe-20261026/.venv"
+  }
+}
