@@ -74,7 +74,7 @@ def run(a):
     import torch
     from torch.nn.attention import SDPBackend, sdpa_kernel
     from .v2.hf import HFModel
-    selected=[];cohorts={};data_manifests={} 
+    selected=[];cohorts={};data_manifests={}
     for dataset in DATASETS if a.smoke else (a.dataset,):
         rows,data_manifest=read_cohort(a.project,dataset);data_manifests[dataset]=data_manifest;cohorts[dataset]={r['id']:r for r in rows}
         selected.extend((dataset,r) for r in chosen_rows(rows,a.shard,a.smoke))

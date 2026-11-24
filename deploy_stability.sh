@@ -6,7 +6,7 @@ study_host="${1:-tc}"
 study_commit="$(git rev-parse --verify HEAD)"
 [[ "$study_commit" =~ ^[0-9a-f]{40}$ ]]
 study_root="/projects/tealab/rohit/context-attribution-stability-${study_commit:0:12}"
-study_archive="$(mktemp -t context-stability).tar.gz"
+study_archive="$(mktemp "${TMPDIR:-/tmp}/context-stability.XXXXXX")"
 trap 'rm -f "$study_archive"' EXIT
 git archive "$study_commit" | gzip > "$study_archive"
 study_sha="$(shasum -a 256 "$study_archive" | awk '{print $1}')"
