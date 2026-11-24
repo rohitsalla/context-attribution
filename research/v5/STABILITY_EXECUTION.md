@@ -1,0 +1,11 @@
+# Stability-study execution
+
+The scientific specification is STABILITY_PROTOCOL.md. The fresh cohort manifest fixes 644 unique questions, 164 development and 480 test. Pinned-tokenizer preflight passed every question: maximum raw prompt plus 64 tokens was 4,856/3,177 (MuSiQue/2Wiki) on Qwen7 and 5,243/3,371 on Mistral7. Model weights were not loaded during this CPU preflight.
+
+Validation covers the development-only L1 scale fit, degenerate scales, fair rank ties, stratified bootstrap weights, exact-length donor replacement, stride-shard disjointness, the CPU tensor runner, interrupted-question checkpoint recovery, complete-output resume, and smoke-gated/idempotent submission. The existing selector identity and repacking tests also passed. Actual-model GPU smokes remain mandatory before releasing each model's full jobs.
+
+From this checkout, `bash deploy_stability.sh tc` stages a checksum-verified immutable archive on ARC and starts a detached submission process. The server-side submitter holds all 35 jobs until the full dependency graph exists, then releases the batch. Both model smokes precede full computation. Inspect `logs/stability_submission.json` and `logs/deployment.log` under the printed ARC project root to verify release; invocation alone is not proof that jobs were accepted. Repeated deployment of the same committed source reuses its receipt, and a process lock prevents concurrent duplicate submission. The submitter rejects a competing ctx-stab batch.
+
+There are 2 smoke GPU jobs, 32 full GPU jobs and one CPU review. Eight shards per reader/benchmark contain both development and test rows, preserving their split labels. The full matrix is 5,152 reader-question-budget configurations, not 5,152 independent questions. At most one study GPU is allocated. The explicit base reservation is 97.5 GPU-hours, with at most two time-limit requeues giving 292.5 hours; actual usage should be lower. Infrastructure and node-requeue policies remain external constraints.
+
+Checkpoint writes are atomic and locked. Before resuming, the runner checks exact source, data, policy and runtime identities. The review launcher explicitly sets PYTHONPATH, preventing the preceding study's CPU-import failure. No recurring Codex automation is installed.

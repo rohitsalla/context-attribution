@@ -1,0 +1,38 @@
+{
+  "qwen7": {
+    "musique": {
+      "n": 324,
+      "max_raw_prompt_plus_64": 4856,
+      "smoke_ids": [
+        "3hop2__304722_692815_63959",
+        "3hop1__194006_42197_18397"
+      ]
+    },
+    "2wiki": {
+      "n": 320,
+      "max_raw_prompt_plus_64": 3177,
+      "smoke_ids": [
+        "1bae0cd6088111ebbd6dac1f6bf848b6",
+        "5e9d435708f711ebbdaaac1f6bf848b6"
+      ]
+    }
+  },
+  "mistral7": {
+    "musique": {
+      "n": 324,
+      "max_raw_prompt_plus_64": 5243,
+      "smoke_ids": [
+        "3hop2__304722_692815_63959",
+        "3hop1__194006_42197_18397"
+      ]
+    },
+    "2wiki": {
+      "n": 320,
+      "max_raw_prompt_plus_64": 3371,
+      "smoke_ids": [
+        "1bae0cd6088111ebbd6dac1f6bf848b6",
+        "5e9d435708f711ebbdaaac1f6bf848b6"
+      ]
+    }
+  }
+}
