@@ -1,0 +1,256 @@
+{
+  "identity": {
+    "source_commit": "f71ad4eae4fe1ac86342f0a73150d0adcf8d7189",
+    "project": "/projects/tealab/rohit/context-attribution-stability-f71ad4eae4fe",
+    "model_paths": "/projects/tealab/rohit/context-attribution-stability-f71ad4eae4fe/logs/model_paths.json",
+    "python_bin": "/home/rohits25/.conda/envs/sata-vllm/bin/python3.10",
+    "recomp_path": "/projects/tealab/rohit/recomp-nq-46f98c1"
+  },
+  "jobs": {
+    "smoke/qwen7": {
+      "job": "8975838",
+      "kind": "smoke",
+      "model": "qwen7"
+    },
+    "smoke/mistral7": {
+      "job": "8975839",
+      "kind": "smoke",
+      "model": "mistral7"
+    },
+    "full/qwen7/musique/0": {
+      "job": "8975840",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 0
+    },
+    "full/qwen7/musique/1": {
+      "job": "8975841",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 1
+    },
+    "full/qwen7/musique/2": {
+      "job": "8975842",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 2
+    },
+    "full/qwen7/musique/3": {
+      "job": "8975843",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 3
+    },
+    "full/qwen7/musique/4": {
+      "job": "8975844",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 4
+    },
+    "full/qwen7/musique/5": {
+      "job": "8975845",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 5
+    },
+    "full/qwen7/musique/6": {
+      "job": "8975846",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 6
+    },
+    "full/qwen7/musique/7": {
+      "job": "8975847",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "musique",
+      "shard": 7
+    },
+    "full/qwen7/2wiki/0": {
+      "job": "8975848",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 0
+    },
+    "full/qwen7/2wiki/1": {
+      "job": "8975849",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 1
+    },
+    "full/qwen7/2wiki/2": {
+      "job": "8975850",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 2
+    },
+    "full/qwen7/2wiki/3": {
+      "job": "8975851",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 3
+    },
+    "full/qwen7/2wiki/4": {
+      "job": "8975852",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 4
+    },
+    "full/qwen7/2wiki/5": {
+      "job": "8975853",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 5
+    },
+    "full/qwen7/2wiki/6": {
+      "job": "8975854",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 6
+    },
+    "full/qwen7/2wiki/7": {
+      "job": "8975855",
+      "kind": "full",
+      "model": "qwen7",
+      "dataset": "2wiki",
+      "shard": 7
+    },
+    "full/mistral7/musique/0": {
+      "job": "8975856",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 0
+    },
+    "full/mistral7/musique/1": {
+      "job": "8975857",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 1
+    },
+    "full/mistral7/musique/2": {
+      "job": "8975858",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 2
+    },
+    "full/mistral7/musique/3": {
+      "job": "8975859",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 3
+    },
+    "full/mistral7/musique/4": {
+      "job": "8975860",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 4
+    },
+    "full/mistral7/musique/5": {
+      "job": "8975861",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 5
+    },
+    "full/mistral7/musique/6": {
+      "job": "8975862",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 6
+    },
+    "full/mistral7/musique/7": {
+      "job": "8975863",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "musique",
+      "shard": 7
+    },
+    "full/mistral7/2wiki/0": {
+      "job": "8975864",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 0
+    },
+    "full/mistral7/2wiki/1": {
+      "job": "8975865",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 1
+    },
+    "full/mistral7/2wiki/2": {
+      "job": "8975866",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 2
+    },
+    "full/mistral7/2wiki/3": {
+      "job": "8975867",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 3
+    },
+    "full/mistral7/2wiki/4": {
+      "job": "8975868",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 4
+    },
+    "full/mistral7/2wiki/5": {
+      "job": "8975869",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 5
+    },
+    "full/mistral7/2wiki/6": {
+      "job": "8975870",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 6
+    },
+    "full/mistral7/2wiki/7": {
+      "job": "8975871",
+      "kind": "full",
+      "model": "mistral7",
+      "dataset": "2wiki",
+      "shard": 7
+    },
+    "review": {
+      "job": "8975872",
+      "kind": "review"
+    }
+  },
+  "released": true,
+  "max_concurrent_study_gpus": 1,
+  "full_shards": 32,
+  "reader_question_evaluations": 1288,
+  "reader_question_budget_configurations": 5152,
+  "base_max_gpu_hours": 97.5,
+  "max_gpu_hours_with_two_requeues": 292.5
+}
