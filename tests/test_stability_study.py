@@ -96,7 +96,7 @@ class StabilityTests(unittest.TestCase):
         class Reader:
             def __init__(self,path,revision,model_id=None):
                 self.tokenizer=Tokenizer();self.device='cpu';self.model=LM();self.revision=revision
-            def runtime(self):return {'dtype':'torch.float32','revision':self.revision,'device':'cpu'}
+            def runtime(self):return {'dtype':'torch.float32','revision':self.revision,'device':'cpu','python':'3.10.0','torch':'2.10.0+cu128','transformers':'5.17.0','cuda':'12.8'}
             def qa_ids(self,question,memory):return [1]+list(memory)+[2]
             def generate(self,prefix):return {'tokens':[5,6],'text':'answer','cap_reached':False}
         class Selector:

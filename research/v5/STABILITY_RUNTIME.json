@@ -1,0 +1,6 @@
+{
+  "python_major_minor": "3.10",
+  "torch": "2.10.0+cu128",
+  "transformers": "5.17.0",
+  "cuda": "12.8"
+}

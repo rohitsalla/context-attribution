@@ -61,6 +61,8 @@ def load_cell(project, model, dataset):
         assert m['model']==model and m['dataset']==dataset and m['shard']==shard and not m['smoke']
         assert m['data_manifest_sha256']==digest((project/'data/stability/manifest.json').read_bytes())
         assert m['runtime']['dtype']=='torch.float32' and m['python_hash_seed']=='0'
+        runtime=m['runtime'];required=json.loads((project/'research/v5/STABILITY_RUNTIME.json').read_text())
+        assert {'python_major_minor':'.'.join(runtime['python'].split('.')[:2]),**{k:runtime[k] for k in ('torch','transformers','cuda')}}==required
         registry=json.loads((project/'research/v4/GENERALIZATION_MODELS.json').read_text())
         assert m['runtime']['revision']==registry[model]['revision']
         assert m['budgets']==list(BUDGETS) and m['policies']==list(POLICIES)

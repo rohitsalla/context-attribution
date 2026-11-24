@@ -16,7 +16,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--project',type=Path,required=True);p.add_argument('--paths',type=Path,required=True)
     p.add_argument('--python-bin',type=Path,required=True);p.add_argument('--recomp-path',type=Path,required=True)
     p.add_argument('--source-commit',required=True);a=p.parse_args();root=a.project.resolve()
-    a.paths=a.paths.resolve();a.python_bin=a.python_bin.resolve();a.recomp_path=a.recomp_path.resolve()
+    a.paths=a.paths.resolve();a.python_bin=a.python_bin.absolute();a.recomp_path=a.recomp_path.resolve()
     (root/'logs').mkdir(exist_ok=True)
     with (root/'logs/submission.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -28,16 +28,22 @@ def execute(a,root):
     paths=json.loads(a.paths.read_text());assert all((Path(paths[m])/'config.json').is_file() for m in ('qwen7','mistral7'))
     assert a.python_bin.is_file() and (a.recomp_path/'config.json').is_file()
     assert (root/'data/stability/manifest.json').is_file()
-    os.environ.update(PROJECT_ROOT=str(root),MODEL_PATHS=str(a.paths.resolve()),PYTHON_BIN=str(a.python_bin.resolve()),RECOMP_PATH=str(a.recomp_path.resolve()))
+    expected_runtime=json.loads((root/'research/v5/STABILITY_RUNTIME.json').read_text())
+    probe='import json,sys,torch,transformers;print(json.dumps(dict(python_major_minor=".".join(map(str,sys.version_info[:2])),torch=torch.__version__,transformers=transformers.__version__,cuda=torch.version.cuda,prefix=sys.prefix)))'
+    runtime=json.loads(subprocess.check_output([str(a.python_bin),'-c',probe],text=True))
+    for key,value in expected_runtime.items():
+        if runtime.get(key)!=value:raise RuntimeError('Interpreter runtime mismatch: '+repr(runtime))
+    print('Validated Python runtime',json.dumps(runtime),flush=True)
+    os.environ.update(PROJECT_ROOT=str(root),MODEL_PATHS=str(a.paths.resolve()),PYTHON_BIN=str(a.python_bin.absolute()),RECOMP_PATH=str(a.recomp_path.resolve()))
     (root/'logs').mkdir(exist_ok=True);receipt_path=root/'logs/stability_submission.json'
-    identity={'source_commit':a.source_commit,'project':str(root),'model_paths':str(a.paths.resolve()),'python_bin':str(a.python_bin.resolve()),'recomp_path':str(a.recomp_path.resolve())}
+    identity={'source_commit':a.source_commit,'project':str(root),'model_paths':str(a.paths.resolve()),'python_bin':str(a.python_bin.absolute()),'recomp_path':str(a.recomp_path.resolve())}
     if receipt_path.exists():
         receipt=json.loads(receipt_path.read_text());assert receipt['identity']==identity
         if receipt.get('released'):
             print(json.dumps(receipt,indent=2));return
     else:
         receipt={'identity':identity,'jobs':{},'released':False,'max_concurrent_study_gpus':1,'full_shards':32,
-            'reader_question_evaluations':1288,'reader_question_budget_configurations':5152,'base_max_gpu_hours':97.5,'max_gpu_hours_with_two_requeues':292.5}
+            'reader_question_evaluations':1288,'reader_question_budget_configurations':5152,'base_max_gpu_hours':97.5,'max_gpu_hours_with_two_requeues':292.5,'runtime_preflight':runtime}
         atomic(receipt_path,receipt)
     own_ids={v['job'] for v in receipt['jobs'].values()}
     live=subprocess.check_output(['squeue','-h','-u',getpass.getuser(),'-o','%i|%j|%T'],text=True).splitlines()

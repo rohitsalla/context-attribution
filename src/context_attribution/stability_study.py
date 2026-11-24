@@ -83,11 +83,15 @@ def run(a):
     torch.set_float32_matmul_precision('highest');torch.use_deterministic_algorithms(True)
     reader=HFModel(paths[a.model],info['revision'],model_id=info['model_id']);reader.model.float().requires_grad_(False)
     reader.model.generation_config.repetition_penalty=1.
+    runtime=reader.runtime();requirements=json.loads((a.project/'research/v5/STABILITY_RUNTIME.json').read_text())
+    observed={'python_major_minor':'.'.join(runtime['python'].split('.')[:2]),**{k:runtime[k] for k in ('torch','transformers','cuda')}}
+    if observed!=requirements:raise ValueError('GPU runtime differs from frozen requirements: '+repr(observed))
+    print('Validated GPU runtime',json.dumps(runtime),flush=True)
     selector=RecompSelector(a.recomp_path,reader.device)
     scientific_files=['src/context_attribution/stability_study.py','src/context_attribution/selection_mechanism.py',
         'src/context_attribution/frontier_probe.py','src/context_attribution/recomp_selector.py','src/context_attribution/v2/hf.py',
         'src/context_attribution/v2/run.py','src/context_attribution/v2/memory.py','src/context_attribution/generalization.py',
-        'src/context_attribution/attribution.py','src/context_attribution/v4/evidence.py','review_stability.py','prepare_stability.py','research/v5/STABILITY_PROTOCOL.md','research/v4/GENERALIZATION_MODELS.json']
+        'src/context_attribution/attribution.py','src/context_attribution/v4/evidence.py','review_stability.py','prepare_stability.py','research/v5/STABILITY_PROTOCOL.md','research/v5/STABILITY_RUNTIME.json','research/v4/GENERALIZATION_MODELS.json']
     receipt={'model':a.model,'dataset':a.dataset,'shard':a.shard,'smoke':a.smoke,'runtime':reader.runtime(),
         'source_hashes':{f:digest((a.project/f).read_bytes()) for f in scientific_files},
         'data_manifest_sha256':digest((a.project/'data/stability/manifest.json').read_bytes()),
