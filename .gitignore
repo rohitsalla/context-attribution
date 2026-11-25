@@ -18,3 +18,6 @@ models/
 data/source-cache/
 data/v2-cache/
 research/v2/cache/
+
+# Local PDF/LaTeX intermediates; final figures are tracked separately.
+tmp/pdfs/

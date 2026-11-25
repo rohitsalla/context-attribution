@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage[paperwidth=15in,paperheight=8.5in,margin=0.35in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\definecolor{ink}{HTML}{19324D}
+\definecolor{refblue}{HTML}{4878B8}
+\definecolor{frozengreen}{HTML}{31845C}
+\definecolor{reorange}{HTML}{C67532}
+\definecolor{muted}{HTML}{546779}
+\tikzset{
+  title/.style={anchor=north west,text=ink,font=\fontsize{25}{29}\selectfont\bfseries,align=left,text width=35.2cm},
+  subtitle/.style={anchor=north west,text=muted,font=\fontsize{13}{17}\selectfont,align=left,text width=35.2cm},
+  box/.style={draw,rounded corners=5pt,line width=1.1pt,align=center,minimum height=2.6cm,inner xsep=0.3cm,inner ysep=0.2cm,text=ink,font=\fontsize{15}{20}\selectfont},
+  before/.style={box,text width=7.0cm},
+  after/.style={box,text width=10.1cm},
+  outcome/.style={box,text width=7.3cm},
+  flow/.style={-{Stealth[length=4mm,width=3mm]},line width=1.3pt},
+  rowlabel/.style={anchor=west,font=\fontsize{12}{14}\selectfont\bfseries},
+  collabel/.style={font=\fontsize{11}{13}\selectfont\bfseries,text=muted},
+  footer/.style={anchor=north west,text=ink,font=\fontsize{12}{16}\selectfont,align=left,text width=35.2cm}
+}

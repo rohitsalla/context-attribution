@@ -1,0 +1,308 @@
+[
+  {
+    "kind": "gain",
+    "selection": "closest to median eligible question-level contrast, ID tie break; source maximizes absolute difference in the two absolute errors",
+    "eligible_questions": 241,
+    "model": "qwen7",
+    "dataset": "hotpot400",
+    "item_id": "5a713b325542994082a3e6b5",
+    "question": "What was the capital of India when the Taj Mahal was commissioned?",
+    "raw_answer": "Agra",
+    "gold": "Agra",
+    "raw_qa": {
+      "em": 1,
+      "f1": 1
+    },
+    "question_mae": {
+      "frozen": 0.1236344904760287,
+      "recomputed": 0.21359918839998362,
+      "zero": 0.2573722402906592
+    },
+    "source_id": "d0",
+    "source_title": "Taj Mahal",
+    "source_excerpt": "The Taj Mahal ( , more often ; meaning Crown of the Palace) is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra.  It was commissioned in 1632 by the Mug",
+    "source_effects": {
+      "raw": 0.0023368939538930705,
+      "bm25_frozen": 0.6459001941704549,
+      "bm25_fixed_rank": 1.2854432208579205,
+      "bm25_refitted": 1.2854432208579205
+    },
+    "source_commit": "b11f39e",
+    "reader": "Qwen/Qwen2.5-7B-Instruct",
+    "budget": 512,
+    "selector": "BM25",
+    "trace_relative_path": "results/generalization/qwen7/hotpot400/4/traces.jsonl",
+    "trace_sha256": "e192dd76b6f009a70166b3a440cd065a26aad783a73d76679e24e739431c68ca",
+    "common_target_tokens": [
+      32,
+      31950
+    ],
+    "singleton_effect_vectors": {
+      "raw": {
+        "d0": 0.0023368939538930705,
+        "d1": 0.00000860666536771162,
+        "d2": 0.00004533347743045619,
+        "d3": -0.000006573628520140332,
+        "d4": 0.000006320996286602944,
+        "d5": 2.571292302838963,
+        "d6": -0.000007407357670437484,
+        "d7": -0.000005788312783884153,
+        "d8": -0.000007309268122436359,
+        "d9": -0.000005866407554688535
+      },
+      "bm25_frozen": {
+        "d0": 0.6459001941704549,
+        "d1": -0.00000764153379126412,
+        "d2": 0,
+        "d3": 0,
+        "d4": 0.00003769249313412054,
+        "d5": 1.9790087342708955,
+        "d6": 0.00037752242437555264,
+        "d7": 0,
+        "d8": 0,
+        "d9": -0.000006348218303173579
+      },
+      "bm25_fixed_rank": {
+        "d0": 1.2854432208579205,
+        "d1": -0.000011319343627442288,
+        "d2": 0,
+        "d3": 0,
+        "d4": 0.000005581630007507195,
+        "d5": 1.7185035011359744,
+        "d6": -0.000011896414450078754,
+        "d7": 0,
+        "d8": 0,
+        "d9": -0.000012462681463883477
+      },
+      "bm25_refitted": {
+        "d0": 1.2854432208579205,
+        "d1": -0.000011319343627442288,
+        "d2": 0,
+        "d3": 0,
+        "d4": 0.000005581630007507195,
+        "d5": 1.7185035011359744,
+        "d6": -0.000011896414450078754,
+        "d7": 0,
+        "d8": 0,
+        "d9": -0.000012462681463883477
+      }
+    }
+  },
+  {
+    "kind": "counterexample",
+    "selection": "closest to median negative question-level recomputed-minus-frozen MAE; source maximizes frozen-error minus recomputed-error",
+    "eligible_questions": 159,
+    "model": "qwen7",
+    "dataset": "hotpot400",
+    "item_id": "5abd72475542993062266c9a",
+    "question": "Are After Midnight Project and Aaroh both rock bands?",
+    "raw_answer": "UNKNOWN",
+    "gold": "yes",
+    "raw_qa": {
+      "em": 0,
+      "f1": 0
+    },
+    "question_mae": {
+      "frozen": 0.43495727972592874,
+      "recomputed": 0.39296701440777376,
+      "zero": 0.34673654476506355
+    },
+    "source_id": "d0",
+    "source_title": "The Becoming (EP)",
+    "source_excerpt": "The Becoming is an EP released by American rock band, After Midnight Project.  It was released in 2007.",
+    "source_effects": {
+      "raw": -0.3630065406195393,
+      "bm25_frozen": 0.48063595905822143,
+      "bm25_fixed_rank": 0.10087128599114223,
+      "bm25_refitted": 0.10087128599114223
+    },
+    "source_commit": "b11f39e",
+    "reader": "Qwen/Qwen2.5-7B-Instruct",
+    "budget": 512,
+    "selector": "BM25",
+    "trace_relative_path": "results/generalization/qwen7/hotpot400/4/traces.jsonl",
+    "trace_sha256": "e192dd76b6f009a70166b3a440cd065a26aad783a73d76679e24e739431c68ca",
+    "common_target_tokens": [
+      51378
+    ],
+    "singleton_effect_vectors": {
+      "raw": {
+        "d0": -0.3630065406195393,
+        "d1": 0.04230708901712643,
+        "d2": -0.15155444074718294,
+        "d3": -0.07970263186998894,
+        "d4": -0.22124704878524026,
+        "d5": -0.33454309365376556,
+        "d6": -0.5507500015771305,
+        "d7": -1.0467461591773375,
+        "d8": -0.09991104039121623,
+        "d9": -0.577597401812108
+      },
+      "bm25_frozen": {
+        "d0": 0.48063595905822143,
+        "d1": 0.05743719009158141,
+        "d2": 0,
+        "d3": 0.1216518256619192,
+        "d4": 0.30641541894985436,
+        "d5": -0.18693976580849622,
+        "d6": 0,
+        "d7": -0.21391830711494592,
+        "d8": 0.6039213415075794,
+        "d9": -0.20238213470280947
+      },
+      "bm25_fixed_rank": {
+        "d0": 0.10087128599114223,
+        "d1": 0.16041412110678668,
+        "d2": 0,
+        "d3": -0.030739663429793646,
+        "d4": 0.031517850496430744,
+        "d5": 0.2974082313971089,
+        "d6": 0,
+        "d7": -0.2138069314083953,
+        "d8": 0.375478726623258,
+        "d9": -0.18269142196636123
+      },
+      "bm25_refitted": {
+        "d0": 0.10087128599114223,
+        "d1": 0.16041412110678668,
+        "d2": 0,
+        "d3": -0.030739663429793646,
+        "d4": 0.06813906637998915,
+        "d5": 0.2974082313971089,
+        "d6": 0,
+        "d7": -0.2138069314083953,
+        "d8": 0.34732418639087803,
+        "d9": -0.18269142196636123
+      }
+    }
+  },
+  {
+    "kind": "absolute_failure",
+    "selection": "closest to median eligible question-level contrast, ID tie break; source maximizes absolute difference in the two absolute errors",
+    "eligible_questions": 102,
+    "model": "qwen7",
+    "dataset": "musique240",
+    "item_id": "3hop1__358853_339990_54675",
+    "question": "What mountain can you see from Portland, in the state that Raven Creek is located in?",
+    "raw_answer": "Mount Hood",
+    "gold": "Tualatin Mountains",
+    "raw_qa": {
+      "em": 0,
+      "f1": 0
+    },
+    "question_mae": {
+      "frozen": 0.3423480297349275,
+      "recomputed": 1.847770576333824,
+      "zero": 0.2273076591040395
+    },
+    "source_id": "d10",
+    "source_title": "Federalism",
+    "source_excerpt": "Usually, a federation is formed at two levels: the central government and the regions (states, provinces, territories), and little to nothing is said about second or third level administrative politic",
+    "source_effects": {
+      "raw": -0.0017109721192300476,
+      "bm25_frozen": 0.3089843703244437,
+      "bm25_fixed_rank": -7.13807583224254,
+      "bm25_refitted": -7.13807583224254
+    },
+    "source_commit": "b11f39e",
+    "reader": "Qwen/Qwen2.5-7B-Instruct",
+    "budget": 512,
+    "selector": "BM25",
+    "trace_relative_path": "results/generalization/qwen7/musique240/1/traces.jsonl",
+    "trace_sha256": "c3de66ea6e5f91558e550773e25af8f6a15ccccdee9c516ed665c23c3fc97293",
+    "common_target_tokens": [
+      16284,
+      35343
+    ],
+    "singleton_effect_vectors": {
+      "raw": {
+        "d0": 0.1899905200699934,
+        "d1": 0.18513237803974958,
+        "d2": 0.04172051348193556,
+        "d3": 1.053044208392313,
+        "d4": 0.005120237402865713,
+        "d5": 0.15469142118382995,
+        "d6": -0.04150189529239581,
+        "d7": 2.3811273727377893,
+        "d8": 0.14321296082753715,
+        "d9": 0.07133877756867038,
+        "d10": -0.0017109721192300476,
+        "d11": -0.017534846776973922,
+        "d12": 0.006786934367123076,
+        "d13": 0.07390462143419374,
+        "d14": -0.00014176116129771543,
+        "d15": 0.06033240161501649,
+        "d16": 0.034486406015804105,
+        "d17": 0.04388988487060069,
+        "d18": 0.007078331525753323,
+        "d19": -0.03340673719771692
+      },
+      "bm25_frozen": {
+        "d0": 0,
+        "d1": 0,
+        "d2": 0,
+        "d3": -0.17158541851366316,
+        "d4": 0,
+        "d5": 1.9578442347348552,
+        "d6": 0,
+        "d7": 1.5968769159369405,
+        "d8": 0,
+        "d9": 0.13145002865140043,
+        "d10": 0.3089843703244437,
+        "d11": 0.7468018435498056,
+        "d12": 0.2775571565555328,
+        "d13": 0.3923247757904349,
+        "d14": 0.4719825946132499,
+        "d15": 0,
+        "d16": 0,
+        "d17": 0.14037718467015026,
+        "d18": 0,
+        "d19": 0
+      },
+      "bm25_fixed_rank": {
+        "d0": 0,
+        "d1": 0,
+        "d2": 0,
+        "d3": -0.2713853000010573,
+        "d4": 0,
+        "d5": -4.456039122232183,
+        "d6": 0,
+        "d7": -4.316895535494586,
+        "d8": 0,
+        "d9": 0.0183060524291232,
+        "d10": -7.13807583224254,
+        "d11": 2.0745089250663824,
+        "d12": 1.41672680799598,
+        "d13": 0.10955996474654128,
+        "d14": 0.08638056138642547,
+        "d15": 0,
+        "d16": 0,
+        "d17": -5.006745797735672,
+        "d18": 0,
+        "d19": 0
+      },
+      "bm25_refitted": {
+        "d0": 0,
+        "d1": 0,
+        "d2": 0,
+        "d3": -0.2713853000010573,
+        "d4": -0.41537019026888977,
+        "d5": 4.670646757368852,
+        "d6": 2.241987335338381,
+        "d7": -4.316895535494586,
+        "d8": 0,
+        "d9": 0.0183060524291232,
+        "d10": -7.13807583224254,
+        "d11": 2.0745089250663824,
+        "d12": 2.3368293102625923,
+        "d13": 0.10955996474654128,
+        "d14": 0.08638056138642547,
+        "d15": 0,
+        "d16": 2.241987335338381,
+        "d17": -5.006745797735672,
+        "d18": 2.0745089250663824,
+        "d19": 0
+      }
+    }
+  }
+]

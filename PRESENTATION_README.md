@@ -82,3 +82,5 @@ Fit a separate nonnegative effect scale per reader/dataset/budget/policy on deve
 Present a replicated **deletion-protocol effect**. Pairing-specific training, a universal larger-budget solution, and a pure replacement-versus-position mechanism are not established. The next decision is whether the advantage survives development-only rescaling and beats zero prediction in absolute error. Matched-length donor controls are secondary; donors are not neutral padding.
 
 [Full numerical tables, QA, rank metrics and historical controls](research/PRESENTATION_TABLES.md) · [Main aggregate JSON](research/v4/GENERALIZATION_RESULTS.json) · [New frozen protocol](research/v5/STABILITY_PROTOCOL.md) · [New cohort manifest](data/stability/manifest.json) · [Related-work audit](research/v4/LITERATURE_EXPLORATION.md)
+
+For a beginner-facing report narrative, diagrams, verified examples and slide order, use [FINAL_REPORT_DESIGN.md](FINAL_REPORT_DESIGN.md).

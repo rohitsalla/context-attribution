@@ -1,6 +1,6 @@
 # Replay-validated context attribution
 
-> **Current presentation summary:** [Short project README](PRESENTATION_README.md) · [Full numerical tables](research/PRESENTATION_TABLES.md). The four-reader generalization study is complete; the fresh calibration/budget study is running.
+> **Current presentation summary:** [Short project README](PRESENTATION_README.md) · [Full numerical tables](research/PRESENTATION_TABLES.md) · [Beginner report design](FINAL_REPORT_DESIGN.md). The four-reader generalization study is complete; the fresh calibration/budget study is running.
 
 Research code for tracing source influence through a summarize-then-answer pipeline. Based on Rohit Kumar Salla's November 2, 2026 project proposal. The implementation includes a reproducible pilot harness, complete source interventions, recursive local ranking, and budgeted replay evaluation. This is exploratory research infrastructure; no general attribution or efficiency guarantee is claimed. See [the pilot protocol](PILOT_PROTOCOL.md) for hypotheses and limitations.
 

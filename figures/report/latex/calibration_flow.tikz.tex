@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\path[use as bounding box] (0,0) rectangle (35.6,18.3);
+\node[title] at (0.1,17.9) {A fair adjustment: practice first, test later};
+\node[subtitle,text=reorange] at (0.1,16.5) {Planned fresh-cohort analysis. Result cells stay empty until cohorts are complete.};
+\node[before,draw=refblue,fill=refblue!6] (dev) at (4.0,12.4) {Practice questions\\164 unique questions};
+\node[after,draw=refblue,fill=refblue!6,text width=8.8cm] (fit) at (17.1,12.4) {Fit a score scale\\for each method};
+\node[outcome,draw=frozengreen,fill=frozengreen!6] (lock) at (30.1,12.4) {Freeze the scales\\before evaluation};
+\draw[flow,refblue] (dev.east)--(fit.west);
+\draw[flow,refblue] (fit.east)--(lock.west);
+\node[before,draw=refblue,fill=refblue!3] (test) at (4.0,5.9) {New test questions\\480 unique questions};
+\node[after,draw=refblue,fill=refblue!3,text width=8.8cm] (eval) at (17.1,5.9) {Evaluate both methods\\at four note budgets};
+\node[outcome,draw=reorange,fill=reorange!7] (compare) at (30.1,5.9) {Compare errors\\and the zero baseline};
+\draw[flow,refblue] (test.east)--(eval.west);
+\draw[flow,refblue] (eval.east)--(compare.west);
+\draw[flow,frozengreen,rounded corners=5pt] (lock.south)--(30.1,9.1)--(17.1,9.1)--(eval.north);
+\node[fill=white,inner sep=5pt,text=frozengreen,font=\fontsize{13}{16}\selectfont] at (23.4,9.1) {Apply fixed scales};
+\node[text=muted,font=\fontsize{12}{15}\selectfont] at (17.1,3.6) {256 / 512 / 1,024 / 2,048 tokens};
+\node[footer] at (0.1,1.7) {Scales are fitted separately by reader, dataset, budget and policy. The language models are not retrained.};
+\end{tikzpicture}

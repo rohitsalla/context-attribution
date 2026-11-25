@@ -1,0 +1,17 @@
+flowchart TD
+    A["Question and source pages"] --> B["Record the full-context answer once"]
+    A --> C["Choose the original short notes"]
+    A --> R["Remove source A from all pages"]
+    C --> F["Remove only A's selected notes"]
+    A --> U["Remove A, then choose notes again"]
+    B -. "same answer target" .-> RS["Full-context before/after score difference"]
+    R --> RS
+    B -. "same answer target" .-> FS["Fixed-notes before/after score difference"]
+    F --> FS
+    C -. "shared original-notes baseline" .-> FS
+    B -. "same answer target" .-> US["Rewritten-notes before/after score difference"]
+    U --> US
+    C -. "shared original-notes baseline" .-> US
+    RS --> E["Compare influence measurements"]
+    FS --> E
+    US --> E

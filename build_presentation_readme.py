@@ -116,6 +116,7 @@ Present a replicated **deletion-protocol effect**. Pairing-specific training, a 
 
 [Full numerical tables, QA, rank metrics and historical controls](research/PRESENTATION_TABLES.md) · [Main aggregate JSON](research/v4/GENERALIZATION_RESULTS.json) · [New frozen protocol](research/v5/STABILITY_PROTOCOL.md) · [New cohort manifest](data/stability/manifest.json) · [Related-work audit](research/v4/LITERATURE_EXPLORATION.md)
 '''
+    readme+='\nFor a beginner-facing report narrative, diagrams, verified examples and slide order, use [FINAL_REPORT_DESIGN.md](FINAL_REPORT_DESIGN.md).\n'
     (ROOT/'PRESENTATION_README.md').write_text(readme)
     appendix=['# Full presentation tables','', 'These tables reproduce the verified main-study aggregate JSON. No pending calibration values are inferred. Main source: b11f39e; repaired CPU review 8951475. The new study remains source b74241d. Numeric precision is rounded for display; use the [aggregate JSON](v4/GENERALIZATION_RESULTS.json) for full precision.','',
       '## 1. Primary four-reader paired contrasts','',table(['Dataset','Selector','Frozen-minus-recomputed MAE','95% question-bootstrap CI'],mean_ci_rows),'',
@@ -183,7 +184,7 @@ Present a replicated **deletion-protocol effect**. Pairing-specific training, a 
       'New-run status comes from STABILITY_STATUS_20261125.json; no model scores were fit or selected to fill pending tables.']
     (ROOT/'research/PRESENTATION_TABLES.md').write_text('\n'.join(appendix)+'\n')
     root_readme=ROOT/'README.md';text=root_readme.read_text()
-    notice='> **Current presentation summary:** [Short project README](PRESENTATION_README.md) · [Full numerical tables](research/PRESENTATION_TABLES.md). The four-reader generalization study is complete; the fresh calibration/budget study is running.\n\n'
+    notice='> **Current presentation summary:** [Short project README](PRESENTATION_README.md) · [Full numerical tables](research/PRESENTATION_TABLES.md) · [Beginner report design](FINAL_REPORT_DESIGN.md). The four-reader generalization study is complete; the fresh calibration/budget study is running.\n\n'
     if notice not in text:
         first,rest=text.split('\n',1);root_readme.write_text(first+'\n\n'+notice+rest.lstrip('\n'))
     print('Created PRESENTATION_README.md and research/PRESENTATION_TABLES.md')

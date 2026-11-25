@@ -1,0 +1,34 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\path[use as bounding box] (0,0) rectangle (35.6,18.3);
+\node[title] at (0.1,17.9) {Keeping selected notes fixed reduced influence error on average};
+\node[subtitle] at (0.1,16.5) {Completed 512-token study: three question collections, two note selectors, four fixed readers.};
+\begin{axis}[
+ at={(4.7cm,3.3cm)},anchor=south west,scale only axis,width=28.0cm,height=11.2cm,
+ xmin=-0.25,xmax=0.105,ymin=-0.65,ymax=5.65,
+ xtick={-0.25,-0.20,-0.15,-0.10,-0.05,0,0.05,0.10},
+ ytick={0,1,2,3,4,5},
+ yticklabels={2Wiki / Learned,2Wiki / Word-based,MuSiQue / Learned,MuSiQue / Word-based,Hotpot / Learned,Hotpot / Word-based},
+ yticklabel style={font=\normalsize,align=right},xticklabel style={font=\normalsize},scaled x ticks=false,xticklabel={\pgfmathprintnumber[fixed,fixed zerofill,precision=2]{\tick}},
+ axis y line=none,axis x line*=bottom,xmajorgrids=true,grid style={draw=gray!15},
+ xlabel={Error difference: fixed notes minus notes chosen again\\Negative values favor fixed notes},
+ xlabel style={font=\normalsize,align=center},clip=false]
+\addplot+[only marks,mark=*,mark size=3.2pt,color=refblue,mark options={fill=refblue,draw=refblue},error bars/.cd,x dir=both,x explicit,error bar style={line width=1.1pt},error mark options={rotate=90,mark size=4pt,line width=1pt}]
+ table[x=mean,y=y,x error minus=errlo,x error plus=errhi] {bm25_results.dat};
+\addplot+[only marks,mark=*,mark size=3.2pt,color=reorange,mark options={fill=reorange,draw=reorange},error bars/.cd,x dir=both,x explicit,error bar style={line width=1.1pt},error mark options={rotate=90,mark size=4pt,line width=1pt}]
+ table[x=mean,y=y,x error minus=errlo,x error plus=errhi] {recomp_results.dat};
+\draw[muted,dashed,line width=0.8pt] (axis cs:0,-0.65)--(axis cs:0,5.65);
+\node[anchor=west,text=refblue,font=\large] at (axis cs:0.015,5) {25.9\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,5) {Hotpot / Word-based};
+\node[anchor=west,text=reorange,font=\large] at (axis cs:0.015,4) {13.3\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,4) {Hotpot / Learned};
+\node[anchor=west,text=refblue,font=\large] at (axis cs:0.015,3) {26.8\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,3) {MuSiQue / Word-based};
+\node[anchor=west,text=reorange,font=\large] at (axis cs:0.015,2) {13.0\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,2) {MuSiQue / Learned};
+\node[anchor=west,text=refblue,font=\large] at (axis cs:0.015,1) {20.8\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,1) {2Wiki / Word-based};
+\node[anchor=west,text=reorange,font=\large] at (axis cs:0.015,0) {10.6\% less error};
+\node[anchor=east,text=ink,font=\normalsize] at (axis cs:-0.254,0) {2Wiki / Learned};
+\end{axis}
+\node[footer,font=\fontsize{11}{14}\selectfont] at (0.1,1.25) {95\% question-bootstrap intervals after averaging four fixed readers. Word-based = BM25; learned = extractive RECOMP.\\Percentages describe attribution-error reductions, not increases in answer accuracy.};
+\end{tikzpicture}
