@@ -1,0 +1,15 @@
+{
+  "as_of": "November 25, 2026, 17:14 EST",
+  "source_commit": "b74241d805ce2815ea91c81f7723add018527355",
+  "full_shards_complete": 5,
+  "full_shards_planned": 32,
+  "smokes_passed": ["8976082", "8976083"],
+  "cohorts": {
+    "qwen7/musique": {"complete_shards": 5, "dev_complete": 54, "test_complete": 150, "status": "Sixth shard running; 18 additional saved questions"},
+    "qwen7/2wiki": {"complete_shards": 0, "dev_complete": 0, "test_complete": 0, "status": "Queued"},
+    "mistral7/musique": {"complete_shards": 0, "dev_complete": 0, "test_complete": 0, "status": "Queued"},
+    "mistral7/2wiki": {"complete_shards": 0, "dev_complete": 0, "test_complete": 0, "status": "Queued"}
+  },
+  "incomplete_analysis": "No complete fresh cohort; effect-rescaling and budget conclusions remain pending",
+  "validation": {"complete_question_records": 204, "max_numerical_repeat_error": 0.0, "unresolved_errors": [], "completed_shards_with_one_checkpoint_requeue": 5}
+}

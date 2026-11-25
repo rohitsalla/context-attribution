@@ -1,5 +1,7 @@
 # Replay-validated context attribution
 
+> **Current presentation summary:** [Short project README](PRESENTATION_README.md) · [Full numerical tables](research/PRESENTATION_TABLES.md). The four-reader generalization study is complete; the fresh calibration/budget study is running.
+
 Research code for tracing source influence through a summarize-then-answer pipeline. Based on Rohit Kumar Salla's November 2, 2026 project proposal. The implementation includes a reproducible pilot harness, complete source interventions, recursive local ranking, and budgeted replay evaluation. This is exploratory research infrastructure; no general attribution or efficiency guarantee is claimed. See [the pilot protocol](PILOT_PROTOCOL.md) for hypotheses and limitations.
 
 The expanded study is specified in [FULL_RUN_PROTOCOL.md](FULL_RUN_PROTOCOL.md). Its frozen dataset contains 80 fictional questions and 40 assistant-checked official facts-page examples, with a 40/80 development/test split. The natural subset is not a completed human audit or a long-form prose benchmark. Source URLs and provenance checks are in `data/main-v1/natural_audit.json`.
