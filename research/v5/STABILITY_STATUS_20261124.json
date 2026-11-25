@@ -1,0 +1,35 @@
+{
+  "as_of": "2026-11-24 evening America/New_York",
+  "source_commit": "b74241d805ce2815ea91c81f7723add018527355",
+  "smokes": {
+    "qwen7": {
+      "job": "8976082",
+      "status": "COMPLETED",
+      "elapsed": "00:14:23"
+    },
+    "mistral7": {
+      "job": "8976083",
+      "status": "COMPLETED",
+      "elapsed": "00:15:53"
+    }
+  },
+  "full_shards_complete": 1,
+  "full_shards_planned": 32,
+  "complete_shard": {
+    "model": "qwen7",
+    "dataset": "musique",
+    "shard": 0,
+    "job": "8976084",
+    "questions": 41,
+    "dev": 11,
+    "test": 30,
+    "budget_rows": 164,
+    "allocation_restarts": 1,
+    "max_repeat_error": 0.0
+  },
+  "next_job": "8976085",
+  "next_state": "PENDING Priority",
+  "next_start_estimate": "2026-11-25 01:03:04 EST, subject to scheduler changes",
+  "calibrated_and_budget_efficacy": "not yet evaluable under the protocol: no complete cohort",
+  "execution": "planned pre-limit requeue resumed completed questions successfully; no unresolved failure found"
+}
